@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.custom.i18n.resources" value="imsUIMsgs" /> 	
+	<constant name="struts.devMode" value="false" />
+	<include file = "adminuser.struts.xml"/>
+	<include file = "normaluser.struts.xml"/>
+	<include file = "mainuser.struts.xml"/>
+	<include file = "mobile.struts.xml"/>
+	<include file = "mid.struts.xml"/>
+	<include file = "sms.struts.xml"/>
+	<include file = "support.struts.xml"/>
+	<include file = "api.struts.xml"/>
+	<include file = "alerts.struts.xml"/>	
+	<include file = "superuser.struts.xml"/>				
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index" />
+	
+		<action name="install" class="in.xpeditions.jawlin.imonitor.cms.action.InstallAction">
+			<result name="success">index.jsp</result>
+		</action>
+		
+		<action name="index" class="in.xpeditions.jawlin.imonitor.cms.action.IndexAction" method="index">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+			<result name="adminuser" type="redirect">/admin/home</result>
+			<result name="mainuser" type="redirect">/mainuser/home</result>
+			<result name="normaluser" type="redirect">/normaluser/home</result>
+			<result name="supportuser" type="redirect" >/support/home</result>
+			<result name="alertservice" type="redirect" >/alerts/home</result>
+		</action>
+		
+		<action name="admin" class="in.xpeditions.jawlin.imonitor.cms.action.IndexAction" method="admin">
+			<result name="success">/view/admin/index.jsp</result>
+			<result name="error">index.jsp</result>
+			<result name="adminuser" type="redirect">/admin/home</result>
+			<result name="mainuser" type="redirect">/mainuser/home</result>
+			<result name="normaluser" type="redirect">/normaluser/home</result>
+		</action>
+		
+		<action name="logout" class="in.xpeditions.jawlin.imonitor.cms.action.LogoutAction">
+			<result name="success">index.jsp</result>
+			<result name="admin">/view/admin/index.jsp</result>
+			<result name="supportuser">/view/alertMonitor/index.jsp</result>
+		</action>
+		
+		<action name="login" class="in.xpeditions.jawlin.imonitor.cms.action.LoginAction">
+			<result name="error">index.jsp</result>
+			<result name="adminuser" type="redirect">/admin/home</result>
+			<result name="mainuser" type="redirect">/mainuser/home</result>
+			<result name="normaluser" type="redirect">/normaluser/home</result>
+		</action>
+		<action name="adminLogin" class="in.xpeditions.jawlin.imonitor.cms.action.LoginAction" method="adminLogin">
+			<result name="error">/view/admin/index.jsp</result>
+			<result name="adminuser" type="redirect">/admin/home</result>
+		</action>
+		<action name="forgetPassword">
+			<result name="success">/view/mainuser/forgetPassword.jsp</result>
+		</action>
+		
+		<!-- **************************************************** sumit start ************************************************************** -->
+		<action name="forgotPasswordAssistance"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="forgotPasswordAssistance">
+			<!-- <result name="success" type="redirect">/mainuser/forgotPassword</result> -->
+			<result name="success">/view/mainuser/usermanagement/forgotPasswordAssistance.jsp</result> 
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<!-- ****************************************************** sumit end ************************************************************** -->
+		
+		<action name="resetPassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="resetPassword">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		<action name="support" class="in.xpeditions.jawlin.imonitor.cms.action.IndexAction" method="support">
+			<result name="success">/view/support/index.jsp</result>
+			<result name="error">/view/support/index.jsp</result>
+			<result name="supportuser" type="redirect">/support/home</result>
+		</action>
+		
+		
+		<action name="apiLogin" class="in.xpeditions.jawlin.imonitor.cms.action.LoginAction" method="api">
+			<result name="mainuser" type="redirect">/api/setup</result>
+			<result name="error">/view/api/index.jsp</result>
+		</action>
+		
+		<action name="supportLogin" class="in.xpeditions.jawlin.imonitor.cms.action.LoginAction" method="supportLogin">
+			<result name="error">/view/support/index.jsp</result>
+			<result name="supportuser" type="redirect">/support/home</result>
+		  </action>
+		  
+		  <action name="alerts" class="in.xpeditions.jawlin.imonitor.cms.action.IndexAction" method="monitorAlert">
+			<result name="success">/view/alertMonitor/index.jsp</result>
+			<result name="error">/view/alertMonitor/index.jsp</result>
+			<result name="alertservice" type="redirect">/alerts/home</result>
+		</action>
+		
+		
+		
+		<action name="monitorAlertLogin" class="in.xpeditions.jawlin.imonitor.cms.action.LoginAction" method="alertServiceLogin">
+			<result name="error">/view/support/index.jsp</result>
+			<result name="alertservice" type="redirect">/alerts/home</result>
+		  </action>
+		  
+		  
+		  <!-- Register Zing Gateway -->
+		   <action name="RegisterZingGateway" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="toZingGatewayCustomer">
+			<result name="success">/view/mainuser/RegisterZingGtwy.jsp</result>
+		</action> 
+		  
+		  <!-- Save Zing Gateway -->
+		 <action name="saveZingGateway" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="saveCustomerForZing">
+			 <result name="success">/view/mainuser/registrationSuccess.jsp</result>
+			<result name="error" type="redirect">RegisterZingGateway</result> 
+		</action> 
+		
+		<!-- AdminSuperUser -->
+		<action name="superuser" class="in.xpeditions.jawlin.imonitor.cms.action.IndexAction" method="monitorAlert">
+			<result name="success">/view/superuser/index.jsp</result>
+			<result name="error">/view/superuser/index.jsp</result>
+			<result name="alertservice" type="redirect">/alerts/home</result>
+		</action>
+		
+			 <action name="verifySuperUserLogin" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="verifySuperUserLogin">
+			 <result name="success">/view/superuser/listOfSuperUserCustomers.jsp</result> 
+			 <result name="error">/view/superuser/index.jsp</result>
+		</action> 
+		
+		 <action name="getDeviceDetailsForSingleSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="getDeviceDetailsForSingleSuperUser">
+			 <result name="success" type="redirect">/mainuser/home</result>
+			 <result name="error">/view/superuser/index.jsp</result>
+		</action> 
+		
+		<action name="getDeviceDetailsForMultipleSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="getDeviceDetailsForMultipleSuperUser">
+			 <result name="success">/view/superuser/listOfSuperUserCustomers.jsp</result> 
+			 <result name="error">/view/superuser/index.jsp</result>
+		</action> 
+		
+		
+		  
+	</package>
+		
+		
+	<!-- Add packages here -->
+
+</struts>

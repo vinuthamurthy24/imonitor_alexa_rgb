@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+	<package name="mobile" namespace="/mobile" extends="struts-default">
+		<!--
+		The following actions are for testing purpose...
+		 -->
+		<action name="home">
+			<result name="success">/view/mobile/index.jsp</result>
+		</action>
+		
+		<!--
+		The following actions are for real purpose... Don't Delete it !! 
+		 -->
+		<action name="login" class="in.xpeditions.jawlin.imonitor.cms.action.mobile.LoginAction">
+			<result name="success">/view/mobile/home.jsp</result>
+		</action>
+		
+		<action name="listDevices" class="in.xpeditions.jawlin.imonitor.cms.action.mobile.ListDevicesAction">
+			<result name="success">/view/mobile/home.jsp</result>
+		</action>
+		
+		<action name="controlDevice" class="in.xpeditions.jawlin.imonitor.cms.action.mobile.ControlDeviceAction">
+			<result name="success">/view/mobile/home.jsp</result>
+		</action>
+		
+		<action name="startLiveStream" class="in.xpeditions.jawlin.imonitor.cms.action.mobile.LiveStreamAction">
+			<result name="success">/view/mobile/home.jsp</result>
+		</action>
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>

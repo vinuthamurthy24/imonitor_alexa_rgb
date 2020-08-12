@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+	<package name="normaluser" namespace="/normaluser" extends="struts-default">
+		<interceptors>
+  		    <interceptor name="params" class="com.opensymphony.xwork2.interceptor.ParametersInterceptor"/>
+			<interceptor name="useraccess" class="in.xpeditions.jawlin.imonitor.cms.interceptor.UserAccessInterceptor"></interceptor>
+			
+			<interceptor-stack name="checkauth">
+				<interceptor-ref name="params"></interceptor-ref>
+			 <interceptor-ref name="useraccess"></interceptor-ref> 
+			</interceptor-stack>
+		</interceptors>
+		<default-action-ref name="home" />
+		 <global-results>
+			<result name="sessionexpired" type="redirectAction">logout</result>
+			<result name="forbidden" type="redirectAction">logout</result>
+		</global-results>
+		<!-- ********************************** sumit start : SUB USER RESTRICTION ****************************
+		<action name="home" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.UserHomeAction">
+			<result name="success">/view/mainuser/home.jsp</result>
+		</action> -->
+		
+		<action name="home" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.UserHomeAction">
+			<result name="success">/view/mainuser/subUserHome.jsp</result>
+		</action>
+		<!-- ********************************** sumit end : SUB USER RESTRICTION **************************** -->
+		<action name="userdetails"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.UserDetailsAction">
+			<result name="success">/view/mainuser/userdetails.jsp</result>
+		</action>
+       <!-- vibhu start -->
+		<action name="scenariodetails"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions"
+			method="getScenarioDetails">
+			<result name="success">/view/mainuser/scenariodetails.jsp</result>
+		</action>
+		
+		<action name="executeScenario"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions"
+			method="executeScenario">
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+       <!-- Vibhu end -->
+		<action name="listImvgAlerts"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listImvgAlert">
+			<result name="success">/view/mainuser/devicemanagement/imvgalert.jsp
+			</result>
+		</action>
+
+		<action name="isAttachment"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="uploadedImvgAlertAttachment">
+			<result name="success">/view/mainuser/devicemanagement/alertAttachment.jsp
+			</result>
+		</action>
+
+		<action name="isStreamAttachment"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="uploadedImvgAlertStreamAttachment">
+			<result name="success">/view/mainuser/devicemanagement/alertStreamAttachment.jsp
+			</result>
+		</action>
+
+		<action name="controlNightVision"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.CameraControlAction"
+			method="updateNightVisionControl">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+			<result name="error">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+		</action>
+
+		<action name="controlPanTilt"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.CameraControlAction"
+			method="updatePanTiltControl">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+			<result name="error">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+		</action>
+
+		<action name="retrieveTemperature"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="retrieveTemperature">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+		</action>
+
+		<action name="getLiveStream"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="getLiveStream">
+			<result name="success">/view/mainuser/devicecontrol/liveStreamSucess.jsp
+			</result>
+		</action>
+
+		<action name="getStoredStream"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="getStoredStream">
+			<result name="success">/view/mainuser/devicecontrol/success.jsp</result>
+		</action>
+		
+		<action name="stopStreaming"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="stopStreaming">
+			<result name="success">/view/mainuser/devicecontrol/success.jsp</result>
+		</action>
+
+		<action name="captureIamge"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="captureIamge">
+			<result name="success">/view/mainuser/devicecontrol/success.jsp</result>
+		</action>
+		
+		<action name="controlac" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ACControlAction" method="controlAc">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="changeAcTemperature" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ACControlAction" method="changeAcTemperature">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="armdisamAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="deviceArmDisarmStatusUpdate">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+		</action>
+
+		<action name="enableDisableAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="deviceEnableDisableStatusUpdate">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+		</action>
+	
+		<action name="Curtainopenclose"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="Curtainopenclose">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+
+		<action name="allArmDisarm"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="deviceDisarmStatusUpdate">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		
+		<!-- **************************************************** sumit begin ************************************************************** -->
+
+		<action name="allArmDisarmSelectivearm"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="activateMode">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		<!-- ****************************************************** sumit end ************************************************************** -->
+
+		<action name="dimmerChange"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="dimmer">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+
+		<action name="switchonff"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="switchOnOff">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp
+			</result>
+		</action>
+
+<!-- parishod begin -->
+		<action name="setToCameraPreset"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="activateSet">
+			<result name="success">/view/mainuser/setup/setup.jsp		<!--  /view/mainuser/usermanagement/success.jsp-->
+			</result>
+		</action>
+
+		<action name="moveToCameraPreset"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="activateMove">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+
+<!-- parishod end -->
+
+		<action name="toChangeUserPassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toChangeUserPassword">
+			<result name="success">/view/mainuser/usermanagement/toChangeUserPassword.jsp
+			</result>
+		</action>
+
+		<action name="changePassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="changePassword">
+			<result name="success" type="redirect">editCustomerByuser</result>
+		<!-- 	<result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result> -->
+<!-- 			<result name="error">/view/mainuser/usermanagement/toChangeUserPassword.jsp</result> -->
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<!-- ***************************************** sumit start: forgot password user authentication feature ***************************** -->
+		<action name="toValidatePassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toValidatePassword">
+			<result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+
+		<action name="toConfigureResetPasswordInfo"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toConfigureResetPasswordInfo">
+			<result name="success">/view/mainuser/usermanagement/toConfigureResetPasswordInfo.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toConfigureResetPasswordInfoFromHome"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toConfigureResetPasswordInfo">
+			<result name="success">/view/mainuser/usermanagement/toConfigureResetPasswordInfoFromHome.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+
+		<action name="saveResetPasswordInfo"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="saveResetPasswordInfo">
+<!-- 			<result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result> -->
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="saveResetPasswordInfoFromHome"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="saveResetPasswordInfo">
+<!-- 			<result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result> -->
+			<result name="success">/view/mainuser/home.jsp</result>
+			<result name="error">/view/mainuser/home.jsp</result>
+		</action>
+		
+		<!-- *********************************************************** sumit end ********************************************************** -->
+		<action name="setup">
+			<result>/view/mainuser/setup/setup.jsp</result>
+		</action>
+		
+		<action name="getdeviceforalerts"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="getdeviceforalerts">
+			<result name="success">/view/mainuser/devicemanagement/AlarmDisplay.jsp</result>
+		</action>
+		
+		
+		<!-- <action name="listAlarms"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listImvgAlertForAlarm">
+			<result name="success">/view/mainuser/devicemanagement/listOfAlertsForAlarm.jsp
+			</result>
+		</action> -->
+	
+		<action name="GetAlarmsByDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="GetAlarmsByDevice">
+			<result name="success">/view/mainuser/devicemanagement/ListOfAlarmsPerDeviceAndDate.jsp</result>
+		</action>
+		<action name="deleteAlaram"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="deleteAlaram">
+			<result name="success">/view/mainuser/devicemanagement/AlarmDisplay.jsp</result>
+		</action>
+		
+		<action name="DeleteSelectedAlarm"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="deleteAlaram">
+			<result name="success">/view/mainuser/devicemanagement/ListOfAlarmsPerDeviceAndDate.jsp</result>
+		</action>
+		<action name="requetForPdf"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="requetForPdf">
+			<result name="success">/view/mainuser/devicemanagement/downloadSlerts.jsp</result>
+		</action>
+		<action name="lockUnlock"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="lockUnlock">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		<action name="updatePositionOfDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="updatePositionOfDevice">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		<action name="resetPositionOfDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="resetPositionOfDevice">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		<action name="getCameraView"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="getCameraView">
+			<result name="success">/view/mainuser/devicecontrol/Cameraview.jsp</result>
+		</action>
+		<action name="GetStoredDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="GetStoredDevice">
+			<result name="success">/view/mainuser/devicecontrol/Cameradetails.jsp</result>
+		</action>
+		
+		<action name="listAlerts"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listImvgAlertForAlarm">
+			<result name="success">/view/mainuser/devicemanagement/listOfAlertsForAlarm.jsp
+			</result>
+		</action>
+		
+		<action name="listAlarms"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listImvgAlarm">
+			<result name="success">/view/mainuser/devicemanagement/listOfAlarm.jsp
+			</result>
+		</action>
+		
+		<action name="updatealert"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="updatealert">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		
+		<action name="getlistofLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="getlistofLocation">
+			<result name="success">/view/mainuser/locations/map.jsp</result>
+		</action>
+		<action name="listlocationsForMap"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="listlocationsForMap">
+			<result name="success">/view/mainuser/locations/listoflocations.jsp</result>
+		</action>
+
+		<action name="changeFanMode" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ACControlAction" method="changeFanMode">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		<action name="controlacswing" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ACControlAction" method="controlacswing">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		<action name="getlistofLocationforEnergyMg"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="getlistofLocationforEnergyMg">
+			<result name="success">/view/mainuser/Energy Management/map.jsp</result>
+			</action>
+		<action name="listlocationsForMap"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="listlocationsForMap">
+			<result name="success">/view/mainuser/locations/listoflocations.jsp</result>
+		</action>
+		
+		<action name="piechart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="piechart">
+			<result name="success">/view/mainuser/Energy Management/barchartforTotal.jsp</result>
+		</action>
+		
+		<action name="stopstream" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction" method="killLiveStream">
+			<result name="success">/view/mainuser/devicecontrol/success.jsp</result>
+		</action>
+
+		<action name="piechartroom"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="piechartroom">
+			<result name="success">/view/mainuser/Energy Management/barchartforTotal.jsp</result>
+		</action>
+		
+		<action name="barchart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="barchart">
+			<result name="success">/view/mainuser/Energy Management/barchart.jsp</result>
+		</action>
+		
+		<action name="barchartweek"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="barchartweek">
+			<result name="success">/view/mainuser/Energy Management/barchartweek.jsp</result>
+		</action>
+		
+		<action name="barchartmonth"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="barchartmonth">
+			<result name="success">/view/mainuser/Energy Management/barchartmonth.jsp</result>
+		</action>
+		
+		<action name="linechart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="linechart">
+			<result name="success">/view/mainuser/Energy Management/linechart.jsp</result>
+		</action>
+
+         <action name="totargetCost"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="totargetCost">
+			<result name="success">/view/mainuser/Energy Management/targetCast.jsp</result>
+		</action>
+		
+		<action name="targetCost"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="targetCost">
+			<result name="success">/view/mainuser/Energy Management/map.jsp</result>
+		</action>
+		<action name="dashboarddetails"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardDetailsAction">
+			<result name="success">/view/mainuser/dashboarddetails.jsp</result>
+		</action>
+		
+		
+		<action name="totarrifConfig"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="totarrifConfig">
+			<result name="success">/view/mainuser/Energy Management/tarrifConfig.jsp</result>
+		</action>
+		
+		<action name="tarrifConfig"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="tarrifConfig">
+			<result name="success">/view/mainuser/Energy Management/map.jsp</result>
+		</action>
+		
+		<action name="removeRow"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="removeRow">
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/Energy Management/map.jsp</result>
+		</action>
+		<!-- ********************************naveen start******************************** -->
+		<action name="listAlertsFromBackup"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listImvgOldAlertForAlarm">
+			<result name="success">/view/mainuser/devicemanagement/listOfAlertBackupForAlarm.jsp
+			</result>
+		</action>
+		<action name="listAlarmsFromBackup"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listImvgOldAlarm">
+			<result name="success">/view/mainuser/devicemanagement/listOfAlarm.jsp
+			</result>
+		</action>
+		
+		<action name="requetForOldPdf"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="requetForOldPdf">
+			<result name="success">/view/mainuser/devicemanagement/downloadSlerts.jsp</result>
+		</action>
+		
+		
+		<action name="DeleteSelectedOldAlarm"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="deleteOldAlaram">
+			<result name="success">/view/mainuser/devicemanagement/ListOfAlarmsPerDeviceAndDate.jsp</result>
+		</action>
+		<!--  ******************************naveen end******************************** -->
+		
+		<action name="isAttachmentforbackup"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="uploadedImvgAlertAttachmentfrombackup">
+			<result name="success">/view/mainuser/devicemanagement/alertAttachmentbackup.jsp
+			</result>
+		</action>
+		
+		<action name="toUserConfigure"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toUserConfigure">
+			<result name="success">/view/mainuser/usermanagement/toUserConfigure.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="togetDeviceListWithDeadNodes"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="togetDeviceListWithDeadNodes">
+			<result name="success">/view/mainuser/deviceList.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/toUserConfigure.jsp</result>
+		</action>
+		
+		<action name="deleteDeadNode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="deleteDeadNode">
+			<!--  <result name="success">/view/mainuser/usermanagement/success.jsp</result>  -->
+			<result name="success" type="redirect">editCustomerByuser</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		
+		
+		<action name="GetHourlyDatafromDB"
+			class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="GetHourlyDatafromDB">
+			<result name="success">/view/mainuser/Energy Management/hourlydatapercustomer.jsp</result>
+		</action>
+		
+		<action name="GetRoomWiseDataFromDB"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="GetRoomWiseDataFromDB">
+			<result name="success">/view/mainuser/Energy Management/hourlydatapercustomer.jsp</result>
+		</action>
+		
+		<action name="GetDeviceWiseDataFromDB"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="GetDeviceWiseDataFromDB">
+			<result name="success">/view/mainuser/Energy Management/Devicedataofcustomer.jsp</result>
+		</action>
+			
+		<action name="GetTargetGraphOfCustomer"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="GetTargetCostdetailsOfCustomer">
+			<result name="success">/view/mainuser/Energy Management/targetCostDetails.jsp</result>
+		</action>
+		
+		<action name="GetDailyPieChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="piechartroomfordaily">
+			<result name="success">/view/mainuser/Energy Management/chartpie.jsp</result>
+		</action>
+		<action name="GetWeekPieChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="piechartroomforweekly">
+			<result name="success">/view/mainuser/Energy Management/chartpie.jsp</result>
+		</action>
+		
+		<action name="GetMonthlyPieChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="piechartroomformonthly">
+			<result name="success">/view/mainuser/Energy Management/chartpie.jsp</result>
+		</action>
+		
+		<action name="GetsubDailyPieChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="subpiefordaily">
+			<result name="success">/view/mainuser/Energy Management/piechartmonth.jsp</result>
+		</action>
+		
+		<action name="GetsubweekPieChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="subpieforweek">
+			<result name="success">/view/mainuser/Energy Management/piechartmonth.jsp</result>
+		</action>
+		
+		<action name="GetsubmonthPieChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="subpieformonth">
+			<result name="success">/view/mainuser/Energy Management/piechartmonth.jsp</result>
+		</action>
+		
+		<action name="GetMonthlybarChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="barchartroomformonth">
+			<result name="success">/view/mainuser/Energy Management/barchartweek.jsp</result>
+		</action>
+		
+		<action name="GetthreeMonthlybarChart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="barchartthreemonth">
+			<result name="success">/view/mainuser/Energy Management/barchartweek.jsp</result>
+		</action>
+		
+		<action name="resetDevicePositionIndex"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="resetDevicePositionIndex">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="getRoutingInfo"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="getDeviceRountingInfo">
+			<result name="success">/view/mainuser/devicemanagement/nodeAndRoutingInfo.jsp
+			</result>
+		</action>
+		
+		<action name="getDeviceNodeInfo"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="getSelectedDeviceNodeInfo">
+			<result name="success">/view/mainuser/devicemanagement/nodeAndRoutingInfo.jsp
+			</result>
+		</action>
+		
+		
+		<action name="togeneratePassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="togeneratePassword">
+			<result name="success">/view/mainuser/usermanagement/generatePassword.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toSaveTempPassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="saveTempPassword">
+			<result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toGetDiagnosticInfo"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="togetDiagnosticInfo">
+			<result name="success">/view/mainuser/usermanagement/toGetDiagnosticInfo.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="getEnergyPercentage"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement"
+			method="togetEnergyPercentage">
+			<result name="success">/view/mainuser/usermanagement/toGetDiagnosticInfo.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<action name="torequestforExel"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="torequestforExel">
+			<result name="success">/view/mainuser/Energy Management/powerreport.jsp</result>
+		</action>
+		<action name="getExeldata"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="togetExeldata">
+			<result name="success">/view/mainuser/Energy Management/downloadreport.jsp</result>
+		</action>
+		 <action name="GetPowerinfoOfTwoDate"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardDetailsAction"
+			method="togetTotalpowerInfoofdates">
+			<result name="success">/view/mainuser/Energy Management/hourlydatapercustomer.jsp</result>
+		</action>
+		<action name="GetPowerinfoOfTwoDateforDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardDetailsAction"
+			method="getpowerInfoofdatesfordevice">
+			<result name="success">/view/mainuser/Energy Management/hourlydatapercustomer.jsp</result>
+		</action>
+		<action name="GetPowerinfoOfTwoDateforRoom"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardDetailsAction"
+			method="getpowerInfoofdatesforroom">
+			<result name="success">/view/mainuser/Energy Management/hourlydatapercustomer.jsp</result>
+		</action> 
+				
+		<action name="GetEnergyUsageOverTime"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DashboardManagement" method="enrgyusageovertime">
+			<result name="success">/view/mainuser/Energy Management/barchartweek.jsp</result>
+		</action>
+		
+		<action name="GetComapartiveUsage"
+			class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="GetComparativeData">
+			<result name="success">/view/mainuser/Energy Management/comparativedata.jsp</result>
+		</action>
+		
+		<action name="controlIndoorUnit" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.IndoorUnitControlAction" method="controlIndoorUnit">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="fanDirectionControl" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.IndoorUnitControlAction" method="fanDirectionControl">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="fanVolumeControl" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.IndoorUnitControlAction" method="fanVolumeControl">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="CurtainOpenStart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="Curtainopenstart">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="CurtainOpenStop"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="Curtainopenstop">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="CurtainCloseStart"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="Curtainclosestart">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="CurtainCloseStop"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="Curtainclosestop">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="CurtainSliderControl"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="CurtainSliderControl">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<action name="Curtainfullopenclose"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="Curtainfullopenclose">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		<!-- 3gp by apoorva -->
+		<action name="listAlertsForMultipleGateways"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listImvgAlertForAlarmofMultipleGateway">
+			<result name="success">/view/mainuser/devicemanagement/listOfAlertsForAlarm.jsp
+			</result>
+		</action>
+		
+		<action name="requetForPdfForMultipleGateways"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="requetForPdfForMultipleGateways">
+			<result name="success">/view/mainuser/devicemanagement/downloadSlerts.jsp</result>
+		</action>
+		
+		<action name="listAlarmsForMultipleGateway"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ImvgAlertAction"
+			method="listAlarmsForMultipleGateway">
+			<result name="success">/view/mainuser/devicemanagement/listOfAlarm.jsp
+			</result>
+		</action>
+		
+		<!-- AdminSuperUser Password change -->
+		<action name="toChangeAdminSuperUserPassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toChangeAdminSuperUserPassword">
+			<result name="success">/view/superuser/toChangeSuperUserPassword.jsp
+			</result>
+		</action>
+		
+		<action name="saveNewPassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="saveNewPassword">
+			 <result name="success" type="redirect">editCustomerByuser</result> 
+			<!-- <result name="success">/view/mainuser/usermanagement/success.jsp</result> -->
+			<!-- <result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result> -->
+		</action>
+		
+		
+		
+		
+		</package>
+
+	<!-- Add packages here -->
+
+</struts>

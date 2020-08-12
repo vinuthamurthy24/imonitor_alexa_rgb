@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="15000000" />
+	<!--Changes done for Admin SUper USer -->
+	<package name="admin" namespace="/admin" extends="superuser">
+		<interceptors>
+  		    <interceptor name="params" class="com.opensymphony.xwork2.interceptor.ParametersInterceptor"/>
+			<interceptor name="adminaccess" class="in.xpeditions.jawlin.imonitor.cms.interceptor.AdminAccessInterceptor"></interceptor>
+			<interceptor-stack name="checkauth">
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize">15000000</param>
+				</interceptor-ref>
+				<interceptor-ref name="params"></interceptor-ref>
+				<interceptor-ref name="adminaccess"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="checkauth"></default-interceptor-ref>
+		<default-action-ref name="adminindex" />
+		<global-results>
+			<result name="sessionexpired">/view/admin/index.jsp</result>
+			<result name="forbidden">/view/admin/index.jsp</result>
+		</global-results>
+		<action name="home" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AdminHomeAction">
+			<result name="success">/view/admin/home.jsp</result>
+		</action>
+		
+		<action name="adminindex">
+			<result>/view/admin/index.jsp</result>
+		</action>
+		<action name="toChangeUserPassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toChangeUserPassword">
+			<result name="success">/view/admin/toChangeUserPassword.jsp
+			</result>
+		</action>
+		<action name="changePassword"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="changePasswordByAdmin">
+			<result name="success">/view/admin/user/addUserSuccess.jsp</result>
+			<result name="error">/view/admin/toChangeUserPassword.jsp</result>
+		</action>
+		<action name="toEditUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toEditAdminUser">
+			<result name="success">/view/admin/editUser.jsp
+			</result>
+		</action>
+		
+		<action name="editAdminUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="editAdminUser">
+			<result name="success">/view/admin/editUser.jsp</result>
+		</action>
+		
+		<action name="toAddMake" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="showMake">
+			<result>/view/admin/make/make.jsp</result>
+		</action>
+		
+		<action name="toEditMake" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="toEditMake">
+			<result>/view/admin/make/editMake.jsp</result>
+		</action>
+		
+		<action name="savemake" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="saveMake" >
+			<result name="success" type="redirect">toAddMake</result>
+		</action>
+		
+		<action name="updatemake" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="updateMake" >
+			<result name="success" type="redirect">/view/admin/make/listMakes.jsp</result>
+		</action>
+		
+		<action name="deleteMake" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="deleteMake" >
+			<result name="success" type="redirect">/view/admin/make/listMakes.jsp</result>
+		</action>
+		
+		<action name="listMakes" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="listMakes">
+			<result name="success">/view/admin/make/listMakes.jsp</result>
+		</action>
+		
+		<action name="listAskedMakes" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="listAdkedMakes">
+			<result name="success">/view/admin/make/listAskedMakes.jsp</result>
+		</action>
+		
+		<action name="toUploadFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="toUploadFirmWare">
+			<result>/view/admin/firmware/toUploadFirmWare.jsp</result>
+		</action>
+		
+		<action name="toUpdateFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="toUpdateFirmWare">
+			<result>/view/admin/firmware/toUpdateFirmWare.jsp</result>
+		</action>
+		
+		
+		<action name="updateFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="updateFirmWare">
+			<result name="success" type="redirect">/admin/toUpdateFirmWare.action</result>
+		</action>
+		
+		<action name="uploadFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction">
+			<result name="success" type="redirect">/admin/toUploadFirmWare.action</result>
+			<result name="input" type="redirect">/admin/toUploadFirmWare.action</result>
+		</action>
+		
+		<action name="toAddGateWayType" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayTypeAction" method="toAddGateWayType">
+			<result name="success">/view/admin/gateway/addGateWayType.jsp</result>
+		</action>
+		
+		<action name="addGateWayType" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayTypeAction" method="addGateWayType">
+			<result name="success">/view/admin/home.jsp</result>
+		</action>
+		
+		<action name="toAddGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="toAddGateWay">
+			<result>/view/admin/gateway/addGateWay.jsp</result>
+		</action>
+		
+		<action name="addGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="addGateWay">
+			<result name="success" type="redirect">/admin/toAddGateWay.action</result>
+		</action>
+
+		<action name="editGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="editGateWay">
+			<result name="success">/view/admin/gateway/listGateWays.jsp</result>
+		</action>
+
+		<action name="deleteGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="deleteGateWay">
+			<result name="success" type="redirect">toListGateWay</result>
+		</action>
+
+		<action name="toEditGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="toEditGateWay">
+			<result name="success">/view/admin/gateway/editGateWay.jsp</result>
+		</action>
+		
+		<action name="toListGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="listGateWays">
+			<result name="success">/view/admin/gateway/listGateWays.jsp</result>
+		</action>
+		
+		<action name="listAskedGateWays" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="listAskedGateWays">
+			<result name="success">/view/admin/gateway/listAskedGateWays.jsp</result>
+		</action>
+
+		<action name="toListFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="listFirmWare">
+			<result name="success">/view/admin/firmware/listFirmWare.jsp</result>
+		</action>
+
+		<action name="listAskedFirmWares" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="listAskedFirmWare">
+			<result name="success">/view/admin/firmware/listAskedFirmWares.jsp</result>
+		</action>
+
+		<action name="toEditFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="toEditFirmWare">
+			<result name="success">/view/admin/firmware/editFirmWare.jsp</result>
+		</action>
+		
+		<action name="editFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="editFirmWare">
+			<result name="success">/view/admin/firmware/listFirmWare.jsp</result>
+		</action>
+
+		<action name="deleteFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="deleteFirmWare">
+			<result name="success">/view/admin/firmware/listFirmWare.jsp</result>
+		</action>
+		
+		<action name="getGateWayByMacId" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="getGateWayByMacId">
+			<result name="success">/view/admin/gateway/gateWayDetails.jsp</result>
+		</action>
+
+		<action name="unregisterGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="unregisterGateWay">
+			<result name="success">/view/admin/gateway/editGateWaySuccess.jsp</result>
+		</action>
+		
+		<action name="removefailednodefromGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="removefailednodefromGateWay">
+			<result name="success">/view/admin/success.jsp</result>
+		</action>
+		
+		<action name="toAddUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.UserAction" method="toAddUser">
+			<result>/view/admin/user/addUser.jsp</result>
+		</action>
+		
+		<action name="toAddUserfromcustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.UserAction" method="toAddUser">
+			<result>/view/admin/user/addUserFromCustomer.jsp</result>
+		</action>
+		
+		<action name="addUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.UserAction" method="addUser">
+			<result name="success" type="redirect">/admin/toAddUser.action</result>
+		</action>
+		
+		<action name="listUsers" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.UserAction" method="listUsers">
+			<result name="success">/view/admin/user/listUsers.jsp</result>
+		</action>
+		
+		<action name="toAddDevice" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceAction" method="toAddDevice">
+			<result name="success">/view/admin/device/addDevice.jsp</result>
+		</action>
+		
+		<action name="addDevice" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceAction" method="addDevice">
+			<result name="success">/view/admin/home.jsp</result>
+		</action>
+		
+		<action name="deleteDevice" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceAction" method="deleteDevice">
+			<result name="success">/view/admin/device/toListDevices.jsp</result>
+		</action>
+		
+		<action name="toListDevices" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceAction" method="toListDevices">
+			<result name="success">/view/admin/device/toListDevices.jsp</result>
+		</action>
+		
+		<action name="toListLogs" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceAction" method="toListLogs">
+			<result name="success">/view/admin/log/toListDevices.jsp</result>
+		</action>
+		
+		<action name="listAskedDevices" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceAction" method="listAskedDevices">
+			<result name="success">/view/admin/device/listAskedDevices.jsp</result>
+		</action>
+		
+		<action name="toAddDeviceType">
+			<result>/view/admin/device/addDeviceType.jsp</result>
+		</action>
+		
+		<action name="addDeviceType" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceTypeAction" method="addDeviceType">
+			<result name="success">/view/admin/home.jsp</result>
+		</action>
+		
+		<action name="toAddAgent" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AgentAction" method="toAddAgent">
+			<result name="success">/view/admin/agent/addAgent.jsp</result>
+		</action>
+		
+		<action name="addAgent" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AgentAction" method="addAgent">
+			<result name="success" type="redirect">/admin/toAddAgent.action</result>
+		<!-- ***************************************** sumit start: handle Duplicate Agent Name *********************************************** -->
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+
+		<action name="deleteAgent" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AgentAction" method="deleteAgent">
+			<result name="success" type="redirect">toListAgent</result>
+		</action>
+		
+		<action name="toListAgent" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AgentAction" method="listAgent">
+			<result name="success">/view/admin/agent/listAgents.jsp</result>
+		</action>
+		
+		<action name="listAskedAgents" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AgentAction" method="listAskedAgents">
+			<result name="success">/view/admin/agent/listAskedAgents.jsp</result>
+		</action>
+		
+		<action name="toEditAgent" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AgentAction" method="toEditAgent">
+			<result name="success">/view/admin/agent/editAgent.jsp</result>
+		</action>
+
+		<action name="editAgent" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AgentAction" method="editAgent">
+			<result name="success">/view/admin/agent/listAgents.jsp</result>
+		</action>
+		
+		<action name="toAddCustomerByGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="toAddCustomer">
+			<result name="addcustomer">/view/admin/customer/gateWaycustomer/addCustomer.jsp</result>
+			<result name="editcustomer">/view/admin/customer/gateWaycustomer/editCustomer.jsp</result>
+		</action>
+		
+		<action name="toAddCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="toAddCustomer">
+			<result name="addcustomer">/view/admin/customer/addCustomer.jsp</result>
+		</action>
+		
+		<action name="saveCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="addCustomer">
+			<result name="success" type="redirect">toAddCustomer</result>
+			<result name="error" type="redirect">toAddCustomer</result>
+		</action>
+		
+		<action name="saveCustomerByGateway" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="saveCustomer">
+			<result name="success" type="redirect">toListGateWay</result>
+			<result name="error" type="redirect">toListGateWay</result>
+		</action>
+		
+		<action name="deleteCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="deleteCustomer">
+			<result name="success" type="redirect">/view/admin/customer/listCustomers.jsp</result>
+		</action>
+		
+		<action name="toEditCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="toEditCustomer">
+			<result name="success">/view/admin/customer/editCustomer.jsp</result>
+		</action>
+		
+		<action name="editCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="editCustomer">
+			<result name="success">/view/admin/customer/listCustomers.jsp</result>
+			<result name="error">/view/admin/customer/listCustomers.jsp</result>
+		</action>
+		
+		<action name="getCustomerByCustomerId" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="getCustomerByCustomerId">
+			<result name="success">/view/admin/customer/customerdetails.jsp</result>
+		</action>
+		
+		<action name="toListCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="listCustomers">
+			<result name="success">/view/admin/customer/listCustomers.jsp</result>
+		</action>
+		
+		<action name="listAskedCustomers" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="listAskedCustomers">
+			<result name="success">/view/admin/customer/listAskedCustomers.jsp</result>
+		</action>
+		
+		<action name="toUpdateCameraConfiguration" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CameraConfigurationManagement" method="toUpdateCameraConfiguration">
+			<result name="success">/view/admin/device/toCameraConfigurationManagement.jsp</result>
+		</action>
+		
+		<action name="updateCameraConfiguration" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CameraConfigurationManagement" method="updateCameraConfiguration">
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="listAllStreamsWithClients" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.LiveStreamAction">
+			<result name="success">/view/admin/livestreams/listStreams.jsp</result>
+		</action>
+		
+		<action name="killLiveStream" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.LiveStreamAction" method="killLiveStream">
+			<result name="success" type="redirect">listAllStreamsWithClients</result>
+		</action>
+		
+	
+		<action name="toRequestLog" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="listGateWays">
+			<result name="success">/view/admin/log/listGateWays.jsp</result>
+		</action>
+		
+		<action name="listAskedGateWaysforlog" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="listAskedGateWays">
+			<result name="success">/view/admin/log/listAskedGateWays.jsp</result>
+		</action>
+		<action name="toRequestForLog" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="toEditGateWay">
+			<result name="success">/view/admin/log/logpage.jsp</result>
+		</action>
+		<action name="RequestForLog" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="RequestForLog">
+			<result name="success">/view/admin/log/listGateWays.jsp</result>
+		</action>
+		<action name="toListoflogs" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="toEditGateWay">
+			<result name="success">/view/admin/log/toListDevices.jsp</result>
+		</action>
+		<action name="listAskedlogs" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="listAskedlogs">
+			<result name="success">/view/admin/log/toListDevices.jsp</result>
+		</action>
+	
+		<action name="listLogs" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="listLogs">
+			<result name="success">/view/admin/log/listAskedLogs.jsp</result>
+		</action>
+		
+		<action name="deleteLog" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="deleteLog">
+			<result name="success">/view/admin/log/toListDevices.jsp</result>
+		</action>
+		<action name="toCkeckPassWord" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="toCkeckPassWord">
+			<result name="success">/view/admin/log/CheckPassWord.jsp</result>
+			
+		</action>
+		
+		<action name="toExcuteCommand" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="toExcuteCommand">
+			<result name="success">/view/admin/log/ExcuteCommand.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<action name="ExecuteCommand" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="ExecuteCommand">
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<action name="MaintenanceChanelopen" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.Logcapture" method="MaintenanceChanelopen">
+			<result name="success" type="redirect">/admin/toRequestLog.action</result>
+		</action>
+		
+		<action name="toAddSMSServiceProvider" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="toAddSMSServiceProvider">
+			<result name="success" type="redirect">/view/admin/sms/toAddSMSServiceProvider.jsp</result>
+		</action>
+		<action name="tolistSMSServiceProvider" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="tolistSMSServiceProvider">
+			<result name="success" type="redirect">/view/admin/sms/tolistSMSServiceProvider.jsp</result>
+		</action>
+
+		<action name="listAskedSMSServices" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="listAskedSMSServices">
+			<result name="success" >/view/admin/sms/listAskedSMSSevices.jsp</result> 
+		</action> 
+		
+		<action name="toEditSmsService" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="toEditSmsService">
+			<result name="success" >/view/admin/sms/toEditSMSServiceProvider.jsp</result> 
+		</action> 
+		
+		<action name="deleteSmsService" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="deleteSmsService">
+			<result name="success" type="redirect" >/view/admin/sms/tolistSMSServiceProvider.jsp</result> 
+		</action> 
+		
+		<action name="editsmsserviceprovider" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="editsmsserviceprovider">
+			<result name="success" >/view/admin/sms/tolistSMSServiceProvider.jsp</result> 
+		</action>
+		
+		<action name="addsmsserviceprovider" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="AddSMSServiceProvider">
+			<result name="success" type="redirect">/view/admin/sms/tolistSMSServiceProvider.jsp</result>
+			<result name="error" type="redirect">/view/admin/sms/tolistSMSServiceProvider.jsp</result> 
+		</action> 
+		<action name="UpdateServiceStatus" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="UpdateServiceStatus">
+			<result name="success" type="redirect">/view/admin/sms/tolistSMSServiceProvider.jsp</result>
+			
+		</action> 
+		<action name="toReboot"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="remoteReboot">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		<action name="EditToMigrateGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="toEditGateWay">
+			<result name="success">/view/admin/log/migrateGateway.jsp</result>
+		</action>
+		
+		<action name="MigrateGateWay" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="migrateGateWay">
+			<result name="success">/view/admin/log/listGateWays.jsp</result>
+		</action>
+		
+		<!-- **************************************** sumit start: SI Details ************************************************* -->
+		
+		
+
+		<action name="toAddSystemIntegrator" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemIntegratorAction" method="toAddSystemIntegrator">
+			<result name="success">/view/admin/systemIntegrator/toAddSystemIntegrator.jsp</result>
+		</action>
+		
+		<action name="addSystemIntegrator" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemIntegratorAction">
+			<interceptor-ref name="fileUpload">
+        <param name="allowedTypes">
+             image/png,image/gif,image/jpeg
+        </param>
+        <param name="maximumSize">1000000</param>
+    	</interceptor-ref>
+    	<interceptor-ref name="defaultStack"/>
+    	
+    	<result name="input" type="redirect">/view/mainuser/usermanagement/success.jsp</result>
+    	<result name="error" type="redirect">/view/mainuser/usermanagement/success.jsp</result> 
+		<result name="success" type="redirect">/view/mainuser/usermanagement/success.jsp</result> 
+		</action>
+		
+		<action name="toListSystemIntegrators" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemIntegratorAction" method="toListSystemIntegrators">
+			<result name="success">/view/admin/systemIntegrator/toListSystemIntegrators.jsp</result>
+		</action>
+		
+		<action name="listAskedSystemIntegrator" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemIntegratorAction" method="listAskedSystemIntegrators">
+			<result name="success" >/view/admin/systemIntegrator/listSystemIntegratorsForTable.jsp</result> 
+		</action>
+		
+		
+		<action name="toEditSystemIntegrator" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemIntegratorAction" method="toEditSystemIntegrator">
+			<result name="success">/view/admin/systemIntegrator/toEditSystemIntegrator.jsp</result>
+		</action>
+		
+		<action name="UpdateSystemIntegrator" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemIntegratorAction">
+			
+			<interceptor-ref name="fileUpload">
+        <param name="allowedTypes">
+             image/png,image/gif,image/jpeg
+        </param>
+        <param name="maximumSize">1000000</param>
+    </interceptor-ref>
+    <interceptor-ref name="defaultStack"/>
+			
+		
+		<result name="error" type="redirect">/view/mainuser/usermanagement/success.jsp</result> 
+		 <result name="success" type="redirect">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		
+		<action name="deleteSystemIntegrtor" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemIntegratorAction" method="deleteSystemIntegrtor">
+			<result name="success" type="redirect">/view/admin/systemIntegrator/toListSystemIntegrators.jsp</result>
+		</action>
+		
+		
+		
+		 
+		<!-- **************************************** sumit start: SI Details ************************************************* -->	
+		
+<!-- **************************************** sumit start : ZXT 300 AV Blaster Feature **************************************** -->
+		<action name="toListAVBlasterCodes" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AVBlasterAction" method="toListAVBlasterCodes">
+			<result name="success">/view/admin/AVBlaster/toListAVBlasterCodes.jsp</result>
+		</action>
+		
+		<action name="toAddAVBlasterCodeInfo" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AVBlasterAction" method="toAddAVBlasterCodeInfo">
+			<result name="success">/view/admin/AVBlaster/toAddAVBlasterCodeInfo.jsp</result>
+		</action>
+		
+		<action name="addAVBlasterCodeInfo" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AVBlasterAction" method="addAVBlasterCodeInfo">
+			<result name="success" type="redirect">/view/admin/AVBlaster/toListAVBlasterCodes.jsp</result>
+			<result name="error" type="redirect">/view/admin/AVBlaster/toListAVBlasterCodes.jsp</result>
+		</action>
+		
+		<action name="toEditAVBlasterCodeInfo" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AVBlasterAction" method="toEditAVBlasterCodeInfo">
+			<result name="success" >/view/admin/AVBlaster/toEditAVBlasterCodeInfo.jsp</result> 
+		</action> 
+		
+		<action name="updateAVBlasterCodeInfo" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AVBlasterAction" method="updateAVBlasterCodeInfo">
+			<result name="success" type="redirect">/view/admin/AVBlaster/toListAVBlasterCodes.jsp</result>
+			<result name="error" type="redirect">/view/admin/AVBlaster/toListAVBlasterCodes.jsp</result>
+		</action>
+		
+		<action name="deleteAVBlasterCodeInfo" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AVBlasterAction" method="deleteAVBlasterCodeInfo">
+			<result name="success" type="redirect">/view/admin/AVBlaster/toListAVBlasterCodes.jsp</result>
+			<result name="error" type="redirect">/view/admin/AVBlaster/toListAVBlasterCodes.jsp</result> 
+		</action>
+		
+		<action name="listAskedAVBlasterCodes" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AVBlasterAction" method="listAskedAVBlasterCodes">
+			<result name="success" >/view/admin/AVBlaster/listAskedAVBlasterCodes.jsp</result> 
+		</action>
+		
+		<!-- **************************************** sumit start : ZXT 300 AV Blaster Feature **************************************** -->
+
+		<action name="listAskedUsersFromAdmin" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.UserAction" method="listAskedUsers">
+			<result name="success">/view/admin/user/listAskedusers.jsp</result>
+		</action>
+		
+		<action name="deleteUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.UserAction" method="deleteUser">
+			<result name="success" type="redirect">/view/admin/user/listUsers.jsp</result>
+		</action>
+		
+		
+		
+		
+		<action name="tolistSMSReports" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="tolistSMSServiceProvider">
+			<result name="success" type="redirect">/view/admin/sms/toListSmsReports.jsp</result>
+		</action>
+	<action name="listSMSReports" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SMSService" method="listAskedSmsReports">
+			<result name="success">/view/admin/user/listAskedSmsReports.jsp</result>
+		</action>
+
+	   <action name="ToupdateCustomerService" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="toEnableCustomerServices">
+			<result name="success" >/view/admin/customer/toEnableCustomerServices.jsp</result>
+		</action>	
+		<action name="updateCustomerService" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="EnableCustomerServices">
+			<result name="success" >/view/admin/customer/listCustomers.jsp</result>
+			<result name="error" type="redirect">/view/admin/customer/listCustomers.jsp</result>
+		</action>
+
+        <action name="ToRenewCustomerService" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="ToRenewCustomerService">
+			<result name="success" >/view/admin/customer/toRenewCustomerService.jsp</result>
+			<result name="error" type="redirect">/view/admin/customer/listCustomers.jsp</result>
+		</action>	
+		 
+		<action name="toAddDeviceDetails" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="toAddEnergydeviceDetails">
+			<result name="success" >/view/admin/customer/DeviceDetails/toAddDeviceDetails.jsp</result>
+		</action>
+
+       <action name="RenewCustomerService" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="RenewalCustomerServices">
+			<result name="success" >/view/admin/customer/listCustomers.jsp</result>
+			<result name="error" type="redirect">/view/admin/customer/listCustomers.jsp</result>
+		</action>		
+	<!-- Admin Adding New Device -->
+		<action name="addNewDeviceType" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceTypeAction" method="toAddNewDeviceType">
+			<result name="success">/view/admin/deviceType/addDeviceType.jsp</result>
+		</action>
+		
+		<action name="saveNewDeviceType" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceTypeAction" method="toSaveNewDeviceType">
+			<result name="success" type="redirect">/admin/addNewDeviceType.action</result>
+		</action>
+		
+		<action name="listDeviceTypes" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceTypeAction" method="listDeviceTypes">
+			<result name="success">/view/admin/deviceType/listAskedDeviceTypes.jsp</result>
+		</action>
+		
+		<action name="listAskedDeviceTypes" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.DeviceTypeAction" method="listAskedDeviceTypes">
+			<result name="success">/view/admin/deviceType/listAskedDeviceTypes.jsp</result>
+		</action>
+		
+		<action name="saveSceneControllermake" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.MakeAction" method="saveSceneControllermake" >
+			<result name="success" type="redirect">toAddMake</result>
+		</action>
+		
+		<action name="toAddGatewwayList" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="toAddGatewwayList">
+			<result name="success" >/view/admin/gateway/toAddZingGatewayList.jsp</result>
+		</action>
+		
+		<action name="toAddGatewayList" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="toAddGatewwayList">
+			<result name="success" >/view/admin/gateway/toAddZingGatewayList.jsp</result>
+		</action>
+		
+		<action name="addZingGatewayEntry" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="addZingGatewayEntry">
+			<result name="success" type="redirect">/admin/toAddGatewayList.action</result>
+		</action>
+		
+		<!-- Get ZingGateway list -->
+		<action name="toListZingGateWays" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="toListZingGateWays">
+			<result name="success">/view/admin/gateway/listZingGateWays.jsp</result>
+		</action>
+		
+		<action name="listAskedZingGateWays" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="listAskedZingGateWays">
+			<result name="success">/view/admin/gateway/listAskedZingGateways.jsp</result>
+		</action>
+		
+		<action name="toEditZingGateway" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="toEditZingGateway">
+			<result name="success">/view/admin/gateway/toEditZingGateway.jsp</result>
+		</action>
+		
+		<action name="saveEditedZingDetails" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="saveEditedZingDetails">
+			<result name="success">/view/admin/gateway/listZingGateWays.jsp</result>
+		</action>
+		
+		<action name="deleteZingGateway" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.GateWayAction" method="deleteZingGateway">
+			<result name="success" type="redirect">toListZingGateWays</result> 
+		</action>
+		<!-- Get ZingGateway list end -->
+		
+		
+		
+		
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>

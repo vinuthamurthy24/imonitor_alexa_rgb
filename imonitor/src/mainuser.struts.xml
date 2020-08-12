@@ -1,0 +1,1246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="15000000" />
+	<package name="mainuser" namespace="/mainuser" extends="normaluser">
+		<interceptors>
+			<interceptor name="params"
+				class="com.opensymphony.xwork2.interceptor.ParametersInterceptor" />
+			<interceptor name="mainuseraccess"
+				class="in.xpeditions.jawlin.imonitor.cms.interceptor.MainUserAccessInterceptor"></interceptor>
+			<interceptor-stack name="checkauth">
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize">15000000</param>
+				</interceptor-ref>
+				<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="mainuseraccess"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	 <default-interceptor-ref name="checkauth"></default-interceptor-ref> 
+		<default-action-ref name="home"/>
+       
+        <global-results>
+			<result name="sessionexpired" type="redirectAction">logout</result>
+			<result name="forbidden" type="redirectAction">logout</result>
+		</global-results>
+		<action name="home"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.UserHomeAction">
+			<result name="success">/view/mainuser/home.jsp</result>
+		</action>
+		
+		<!-- ************************************** sumit start: forgot password user authentication ***************************************** --> 
+		<action name="forgotPassword">
+			<result>/view/mainuser/usermanagement/forgotPasswordAssistance.jsp</result>
+		</action>
+		<!-- ****************************************************** sumit end **************************************************************** -->
+		
+		<action name="editCustomerByuser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="editCustomerByCustomer">
+			<result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result>
+		</action>
+		
+		<action name="updateCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="updatCustomer">
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toAddsystemAlert" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemAlertManagement" method="toAddSystemAlert">
+			<result name="success">/view/mainuser/usermanagement/systemAlert.jsp</result>
+		</action>
+		
+		<action name="updatesystemAlert" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SystemAlertManagement" method="updateSystemAlert">
+			<result name="success" type="redirect">toAddsystemAlert</result>
+		</action>
+		
+		<!-- Set up and its sub menu starts here -->
+
+		<action name="scenario">
+			<result>/view/mainuser/scenario/scenario.jsp</result>
+		</action>
+		
+		<action name="listScenario">
+			<result>/view/mainuser/scenario/scenarios.jsp</result>
+		</action>
+		
+		<action name="listAskedScenario"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions">
+			<result name="success">/view/mainuser/scenario/listAskedScenarios.jsp
+			</result>
+		</action>
+		
+		<action name="toAddScenario"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions"
+			method="toAddScenario">
+			<result name="success">/view/mainuser/scenario/addScenario.jsp</result>
+		</action>
+		
+		<action name="saveScenario"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions"
+			method="saveScenario">
+			<result name="success" type="redirect">listScenario</result>
+			<!-- <result name="error">/view/mainuser/usermanagement/success.jsp
+			</result> -->
+			<result name="error" type="redirect">listScenario</result>
+		</action>
+
+		<action name="deleteScenario"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions"
+			method="deleteScenario">
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+
+		<action name="toEditScenario"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions"
+			method="toEditScenario">
+			<result name="success">/view/mainuser/scenario/editScenario.jsp
+			</result>
+		</action>
+
+		<action name="updateScenario"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ScenariosActions"
+			method="updateScenario">
+			<result name="success" type="redirect">listScenario</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+
+		
+		
+		<!-- Scenario and its sub menu end here -->
+		
+		<!-- Scenario and its sub menu starts here -->
+
+		<action name="listLocation">
+			<result>/view/mainuser/setup/locations.jsp</result>
+		</action>
+
+		<action name="listAskedLocations"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction">
+			<result name="success">/view/mainuser/setup/listAskedLocations.jsp
+			</result>
+		</action>
+
+		<action name="toAddLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="toAddLocation">
+			<result name="success">/view/mainuser/setup/addLocations.jsp</result>
+			<!--  <result>/view/mainuser/setup/addLocations.jsp</result> -->
+		</action>
+
+		<action name="addLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="addLocation">
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+
+		<action name="toEditLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="toEditLocation">
+			<result name="success">/view/mainuser/setup/editLocation.jsp</result>
+		</action>
+
+		<action name="deleteLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="deleteLocation">
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+
+		<action name="editLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="editLocation">
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+
+		<action name="toUserList">
+			<result>/view/mainuser/usermanagement/listUsers.jsp</result>
+		</action>
+
+		<action name="listAskedUsers"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="listAskedUsers">
+			<result name="success">/view/mainuser/usermanagement/listAskedUsers.jsp
+			</result>
+		</action>
+
+		<action name="toEditUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toEditUser">
+			<result name="success">/view/mainuser/usermanagement/editUser.jsp
+			</result>
+		</action>
+
+		<action name="editUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="editUser">
+			<result name="success">/view/mainuser/usermanagement/listUsers.jsp
+			</result>
+		</action>
+		
+		<action name="suspendUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="suspendUser">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		<action name="revokeUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="revokeUser">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+			
+		<action name="deleteUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="deleteUser">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+
+		<action name="toAddUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toAddUser">
+			<result name="success">/view/mainuser/usermanagement/addUser.jsp
+			</result>
+		</action>
+
+		<action name="addUser"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="addUser">
+			<result name="success">/view/mainuser/usermanagement/listUsers.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		<!-- Set up and its sub menu ends here -->
+
+		<action name="toGetDevices">
+		<result>/view/mainuser/devicemanagement/toGetDevices.jsp</result>
+		</action>
+		
+		<!-- 
+		<action name="toaddPanic"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.PanicManagement"
+			method="toEditPanic">
+			<result name="success">/view/mainuser/panic/addpanic.jsp</result>
+		</action>
+		
+		<action name="updatePanic"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.PanicManagement"
+			method="updatePanic">
+			<result name="success" >/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/panic/addpanic.jsp
+			</result>
+		</action>
+		
+		<action name="savePanic"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.PanicManagement"
+			method="savePanic">
+			<result name="success" >/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/panic/addpanic.jsp
+			</result>
+		</action>
+		-->
+
+		<action name="listRule">
+			<result>/view/mainuser/rules/rules.jsp</result>
+		</action>
+
+		<action name="listAskedRules"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement">
+			<result name="success">/view/mainuser/rules/listAskedRules.jsp</result>
+		</action>
+
+		<action name="viewRules"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="viewRules">
+			<result>/view/mainuser/rules/viewRules.jsp</result>
+		</action>
+
+		<action name="toAddRule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="toAddRule">
+			<result name="success">/view/mainuser/rules/addRule.jsp</result>
+		</action>
+		<action name="saveRule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="saveRule">
+			<result name="success" type="redirect">listRule</result>
+			<!-- <result name="error">/view/mainuser/usermanagement/success.jsp -->
+			<result name="error" type="redirect">listRule</result>
+			<!-- </result> -->
+		</action>
+
+		<action name="toEditRule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="toEditRule">
+			<result name="success">/view/mainuser/rules/editRule.jsp</result>
+		</action>
+		
+		<action name="toChooseAlert"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toChooseAlert">
+			<result name="success">/view/mainuser/devicemanagement/alerts.jsp</result>
+		</action>
+		<action name="saveUserAlerts"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="saveUserAlerts">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<!-- *************************************************************** sumit begin *************************************************** -->
+		<action name="toEditMode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toEditMode">
+			<result name="success">/view/mainuser/rules/editMode.jsp</result>
+		</action>
+		
+		<action name="saveMode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="saveMode">
+			<result name="success" type="redirect">listRule</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="checkDeviceForRule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="checkDeviceForRule">
+			<!-- handle REDIRECT -->
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+		
+		<!-- *************************************************************** sumit end ***************************************************** -->
+
+		<action name="deleteRule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="deleteRule">
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+
+		<action name="listSchedule">
+			<result>/view/mainuser/schedules/schedules.jsp</result>
+		</action>
+
+		<action name="listAskedSchedules"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction">
+			<result name="success">/view/mainuser/schedules/listAskedSchedules.jsp
+			</result>
+		</action>
+
+		<action name="toAddSchedule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction"
+			method="toAddSchedule">
+			<result name="success">/view/mainuser/schedules/addSchedule.jsp</result>
+		</action>
+
+		<action name="saveSchedule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction"
+			method="saveSchedule">
+			<result name="success" type="redirect">listSchedule</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+
+		<action name="deleteSchedule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction"
+			method="deleteSchedule">
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+
+		<action name="toEditSchedule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction"
+			method="toEditSchedule">
+			<result name="success">/view/mainuser/schedules/editSchedule.jsp
+			</result>
+		</action>
+
+		<action name="updateSchedule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction"
+			method="updateSchedule">
+			<result name="success" type="redirect">listSchedule</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+
+		<action name="getActionsOfDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="getActionsOfDevice">
+			<result name="success">/view/mainuser/rules/getActionsOfDevice.jsp
+			</result>
+		</action>
+
+		<!-- Bug Fixed -->
+		<action name="updateRule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="updateRule">
+			<result name="success" type="redirect">listRule</result>
+			<result name="error" type="redirect">listRule</result>
+		</action>
+		
+		<action name="toReboot"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="remoteReboot">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		<action name="updateLatestFirmWare" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.FirmWareAction" method="updateLatestFirmWare">
+			<result name="success" type="redirect">/admin/toUpdateFirmWare.action</result>
+		</action>
+		
+
+	<action name="deviceStatusUpdate"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="deviceStatusUpdate">
+			<result name="success">/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		
+		<action name="toDeviceManagement"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement">
+			<result name="success">/view/mainuser/devicemanagement/home.jsp</result>
+		</action>
+
+		<action name="removeDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="removeDevice">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action
+			</result>
+		</action>
+		<!-- bhavya start -->
+       <action name="ScanNow"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="ScanNow">
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="CurrentStatus"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="CurrentStatus">
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<action name="removeDeviceup"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="removeDeviceup">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action
+			</result>
+			<result name="error">/view/admin/gateway/setDeviceDiscoveryModeError.jsp
+			</result>
+			</action>
+
+        <action name="setToCameraPreset"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="activateSet">
+			<result name="success" >/view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>
+		<action name="removeAllDevices"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="removeAllDevices">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action
+			</result>
+			</action>
+				<!-- bhavya start -->
+		<!-- vibhu start -->
+		<action name="nupdateDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="nupdateDevice">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		<!-- vibhu start -->
+
+		<action name="saveAlert"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="saveAlert">
+			<result name="success">/view/mainuser/devicemanagement/alertManagement.jsp
+			</result>
+		</action>
+
+		<action name="toUpdateFriendlyNameAndLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toUpdateFriendlyNameAndLocation">
+			<result name="success">/view/mainuser/devicemanagement/updateFriendlyNameAndLocation.jsp
+			</result>
+		</action>
+
+<!-- pari added set camera preset -->
+		<action name="setToCameraPreset"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"
+			method="activateSet">
+			<result name="success"><!-- /view/mainuser/devicemanagement/updateFriendlyNameAndLocation.jsp--> /view/mainuser/usermanagement/success.jsp
+			</result>
+		</action>		
+		<!-- **************************************** sumit start: No Motion Time Out for PIR Sensor **************************************** -->
+		<action name="toConfigureNoMotionPeriod"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toConfigureNoMotionPeriod">
+			<result name="success">/view/mainuser/devicemanagement/updateNoMotionTimeOut.jsp
+			</result>
+		</action>
+		
+		<action name="updateNoMotionTimeOut"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="updateNoMotionTimeOut">
+			<result name="success" type="redirect">toGetDevices</result>
+			<!-- <result name="success">/view/mainuser/usermanagement/success.jsp</result> -->
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<!-- ****************************************************** sumit end *************************************************************** -->
+		
+		<action name="toUpdateModelNumber" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toUpdateModelNumber">
+			<result name="success">/view/mainuser/devicemanagement/updateModelNumber.jsp</result>
+		</action>
+		
+		<action name="toupdateCurtainModel" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toupdateCurtainModel">
+			<result name="success">/view/mainuser/devicemanagement/curtainModelNumber.jsp</result>
+		</action>
+		<action name="updateCurtainModel" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="updateCurtainModel">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+<!-- bhavya start -->
+		<action name="toupdatehealthcheckModel" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toupdatehealthcheckModel">
+			<result name="success">/view/mainuser/devicemanagement/healthcheckdevice.jsp</result>
+		</action>
+		<action name="updatehealthcheckModel" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="updatehealthcheckModel">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<!-- bhavya end -->
+
+		<action name="updateFriendlyNameAndLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="updateFriendlyNameAndLocation">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="updateModelNumber" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="updateModelNumber">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+
+<action name="abortMode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="sendAbortMode">
+			<result name="success">/view/admin/gateway/setDeviceDiscoveryModeSuccess.jsp
+			</result>
+			<result name="error">/view/admin/gateway/setDeviceDiscoveryModeError.jsp
+			</result>
+		</action>
+	
+		<action name="setDeviceDiscoveryMode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="sendDeviceDiscoveryMode">
+			<result name="success">/view/admin/gateway/setDeviceDiscoveryModeSuccess.jsp
+			</result>
+			<result name="error">/view/admin/gateway/setDeviceDiscoveryModeError.jsp
+			</result>
+		</action>
+
+		<action name="toNotifications"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction"
+			method="toNotifications">
+			<result name="success">/view/mainuser/notifications/home.jsp</result>
+		</action>
+
+		<action name="toAddNotification"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction"
+			method="toAddNotification">
+			<result name="success">/view/mainuser/notifications/addNotification.jsp
+			</result>
+		</action>
+
+		<action name="addNotification"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction"
+			method="addNotification">
+			<result name="success" type="redirect">toNotifications</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+
+		<action name="listAskedSystemNotifications"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction"
+			method="listAskedSystemNotifications">
+			<result name="success">/view/mainuser/notifications/listAskedSystemNotifications.jsp
+			</result>
+		</action>
+
+		<action name="toEditSystemNotification"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction"
+			method="toEditSystemNotification">
+			<result name="success">/view/mainuser/notifications/editSystemNotification.jsp
+			</result>
+		</action>
+
+		<action name="editSystemNotification"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction"
+			method="editSystemNotification">
+			<result name="success" type="redirect">toNotifications</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+
+		<action name="deleteSystemNotification"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction"
+			method="deleteSystemNotification">
+<!--  vibhu start -->
+		    			<!--  <result name="success">/view/mainuser/notifications/success.jsp</result> -->
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+		  			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+<!--  vibhu end -->
+		</action>
+		
+		<!-- ************************************************ sumit start: Camera Orientation Configuration ************************************ -->
+		<action name="toConfigureCameraOrientation"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="toConfigureCameraOrientation">
+		    <result name="success">/view/mainuser/devicemanagement/updateCameraOrientationConfiguration.jsp</result>
+		</action>
+		
+		<action name="saveCameraOrientationConfiguration"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="saveCameraOrientationConfiguration">
+		    <result name="success" type="redirect">toGetDevices</result>
+		    <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<!-- *************************************************************** sumit end ********************************************************* -->
+		<!-- *************************************************************** bhavya start lcd config ********************************************************* -->
+		
+		
+		<action name="toLCDremoteConfiguration"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="toLCDremoteConfiguration">
+		    <result name="success">/view/mainuser/devicemanagement/LCDremoteconfiguration.jsp</result>
+		</action>
+		
+		<action name="saveLCDremoteConfiguration"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="saveLCDremoteConfiguration">
+		    <result name="success" type="redirect">toGetDevices</result>
+		    <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<!-- *************************************************************** bhavya start lcd config ********************************************************* -->
+		
+		<!-- *************************************************************** Apoorva start Scene Controller config ********************************************************* -->
+		<action name="toSceneControllerConfiguration"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.SceneControllerManagement"
+		    method="toSceneControlConfiguration">
+		    <result name="success">/view/mainuser/devicemanagement/SceneController.jsp</result>
+		     <result name="error" type="redirect">SceneRedirectAction</result>
+		</action>
+		
+		<action name="saveSceneControlConfiguration"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.SceneControllerManagement"
+		    method="saveSceneControlConfiguration">
+		    <result name="success" type="redirect">toGetDevices</result>
+		    <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<!-- *************************************************************** Apoorva end Scene Controller config ********************************************************* -->
+		
+		
+		<!-- ************************************************bhavya end: LCD config *********************************************** -->
+		<!-- ************************************************ sumit start: ReOrdering Of Devices *********************************************** -->
+		<action name="reOrderDevicesListing"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.UserHomeAction"
+		    method="reOrderDevicesList">
+			<result name="success">/view/mainuser/home.jsp</result>
+		</action>
+		<!-- ************************************************  sumit end: ReOrdering Of Devices ************************************************ -->
+		<!-- ****************************************** sumit start: Schedule Activate/De-Activate ********************************************* -->
+		<action name="toActivateSchedule"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction"
+		    method="toActivateSchedule">
+<!-- 			<result name="success">/view/mainuser/setup/success.jsp</result> -->
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toDeactivateSchedule"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.EventScheduleAction"
+		    method="toDeactivateSchedule">
+<!-- 			<result name="success">/view/mainuser/setup/success.jsp</result> -->
+			<result name="success">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<!-- ******************************************* sumit end: Schedule Activate/De-Activate ********************************************* -->
+		<!-- <action name="getlistofLocation"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="getlistofLocation">
+			<result name="success">/view/mainuser/locations/map.jsp</result>
+			</action>
+		<action name="listlocationsForMap"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.LocationManagementAction"
+			method="listlocationsForMap">
+			<result name="success">/view/mainuser/locations/listoflocations.jsp</result>
+		</action> -->
+			<!-- ****************************************** sumit start: Rocker or Tact Switch Type ********************************************* -->
+		<action name="toConfigureSwitchType"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toConfigureSwitchType">
+			<result name="success">/view/mainuser/devicemanagement/toConfigureSwitchType.jsp
+			</result>
+		</action>
+		
+		<action name="toConfigureDimmer"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toConfigureDimmerType">
+			<result name="success">/view/mainuser/devicemanagement/toConfigureDimmer.jsp
+			</result>
+		</action>
+		
+		<action name="updateSwitchTypeForSwitchesAndDimmers"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="updateSwitchType">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toConfigureRGB"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toConfigureRGB">
+			<result name="success">/view/mainuser/devicemanagement/toConfigureRGB.jsp
+			</result>
+		</action>
+		
+		
+		<action name="UpdateRgb"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="UpdateRgb">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		<!-- ****************************************** sumit end: Rocker or Tact Switch Type ********************************************* -->
+		<action name="ToNupdateDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="ToNupdateDevice">
+			<result name="success">/view/mainuser/devicemanagement/toNUpdateDevice.jsp
+			</result>
+		</action>
+		
+		<!-- ************************************************* sumit start: AV Blaster Feature ******************************************************** -->
+		
+		<action name="toAVBlasterModelNumber" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toAVBlasterModelNumber">
+			<result name="success">/view/mainuser/devicemanagement/updateBlasterModelNumber.jsp</result>
+		</action>
+		
+		<action name="updateAVBlasterModelNumber" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="updateAVBlasterModelNumber">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="getBrandListByCategory" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="getBrandListByCategory">
+			<result name="success">/view/mainuser/AVBrands.jsp</result>
+		</action>
+		
+		<action name="getCodeListByCategoryAndBrand" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="getCodeListByCategoryAndBrand">
+			<result name="success">/view/mainuser/AVCodes.jsp</result>
+		</action>
+		<!-- ****************************************************** sumit end: AV Blaster Feature ***************************************************** -->
+	    
+	    		
+		<!-- *************************************************** sumit start : Sub-User Restriction **************************************************** -->
+		<action name="toCustomizeSubUserAccess"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="toCustomizeSubUserAccess">
+			<result name="success">/view/mainuser/usermanagement/customizeSubUserAccess.jsp</result>
+		</action>
+
+		<action name="customizeSubUserAccess"
+			class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction"
+			method="customizeSubUserAccess">
+			<result name="success">/view/mainuser/usermanagement/listUsers.jsp</result>
+		</action>
+		<!-- ***************************************************** sumit start : Sub-User Restriction ************************************************* -->
+	    
+	    <action name="toallon"  class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"  method="allOnOff">
+	    <result name="success">/view/mainuser/usermanagement/success.jsp</result>
+	    </action>
+	    
+		<action name="ToConfigureSiren"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="ToConfigureSiren">
+			<result name="success">/view/mainuser/devicemanagement/toConfigureSiren.jsp
+			</result>
+		</action>
+		<!-- ***************************naveen start*********************************** -->
+		<action name="Updatesiren"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="UpdateSiren">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		<!-- ***************************naveen end*********************************** -->
+		<action name="toalloff"  class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceControlAction"  method="allOnOff">
+	    <result name="success">/view/mainuser/usermanagement/success.jsp</result>
+	    </action>
+	      <!-- ****************************************************** Aditya End: All on and All off Feature ***************************************************** -->
+	       <!-- ****************************************************** Naveen Start: For door lock feature ***************************************************** -->
+	      <action name="Toupdateusermode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toupdateUsermode">
+			<result name="success">/view/mainuser/devicemanagement/toConfigureUserMode.jsp</result>
+		</action>
+		
+	      <action name="Updateuserconfigurfordoorlock"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toupdateUsermodefordoorlock">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		
+		 <action name="tosetAcCode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="tosetAcbrandcode">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		
+		 <action name="togetAcbrandCodes"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="togetAcbrandCodes">
+			<result name="success">/view/mainuser/AcCodes.jsp</result>
+		</action>
+		
+		<action name="getModelListOfAc"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="togetModelListofAc">
+			<result name="success">/view/mainuser/AcBrands.jsp</result>
+		</action>
+		
+		<action name="togetbrandCodesforselect"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="togetAcbrandCodesForManualSelect">
+			<result name="success">/view/mainuser/AcCodes.jsp</result>
+		</action>
+		
+			<action name="tosetAvCode"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="tosetAvcodeForSelectedBrand">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		
+		<action name="toLearnAc"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toLearnAcMode">
+		  <result name="success">/view/mainuser/usermanagement/success.jsp</result>
+			<!-- <result name="success" type="redirect">/view/mainuser/devicemanagement/updateModelNumber.jsp</result>-->
+		</action>
+		
+		<action name="controlactoTestlearn" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ACControlAction" method="controlAc">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		
+		<action name="changeAcTemperatureForLearn" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ACControlAction" method="changeAcTemperature">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		
+		<action name="toUpdateminimoteConfiguration"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toUpdateminimoteConfiguration">
+			<result name="success">/view/mainuser/devicemanagement/toConfigureMinimote.jsp</result>
+		</action>
+		
+		<action name="UpdateminimoteConfiguration"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="UpdateminimoteConfiguration">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		
+<action name="toVerifyMobileNumber" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction" method="toVerifyMobileNumber">
+		 <result name="success" >/view/mainuser/notifications/validateOtp.jsp</result>
+		 <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+
+		<action name="VerifyMobileNumber" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction" method="verifyMobileNumber">
+		 <result name="success" type="redirect">toNotifications</result>
+		 <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="RegenerateOtp" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.NotificationAction" method="regenerateOtp">
+		 <result name="success" type="redirect">toNotifications</result>
+		 <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="showLoginTips"
+		class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction" method="showTipsToUser">
+		<result name="success">/view/mainuser/userTips.jsp</result>
+		</action>
+		
+		<action name="updateShowTipsForUser"
+		class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction" method="updateUserTipsStatus">
+		<result name="success">/view/mainuser/userTips.jsp</result>
+		</action>
+		
+		<action name="toConfigAlexa"
+		class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction" method="toConfigAlexa">
+		<result name="success">/view/mainuser/usermanagement/toConfigAlexa.jsp</result>
+		</action>
+		
+		<action name="updateAmazondetails"
+		class="in.xpeditions.jawlin.imonitor.cms.action.mainuser.UserManagementAction" method="updateAmazondetails">
+		<result name="success">/view/mainuser/usermanagement/editCustomer.jsp</result>
+		</action>
+		
+		
+		<!-- ****************************************************** Actions Feature ***************************************************** -->
+		<action name="toAddNewAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="toAddNewAction">
+			<result name="success">/view/mainuser/actions/home.jsp</result>
+		</action>
+		
+		<action name="toAddAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="toAddAction">
+			<result name="success">/view/mainuser/actions/addaction.jsp
+			</result>
+		</action>
+		
+		<action name="saveAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="toSaveAction">
+			<result name="success">/view/mainuser/actions/home.jsp
+			</result>
+			<result name="error">/view/mainuser/actions/home.jsp</result>
+		</action>
+		
+		<action name="getDeviceListByAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="getDeviceListByAction">
+			<result name="success">/view/mainuser/actions/deviceList.jsp
+			</result>
+		</action>
+		
+		<action name="getNonHmdDeviceListByAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="getNonHmdDeviceListByAction">
+			<result name="success">/view/mainuser/actions/deviceList.jsp
+			</result>
+		</action>
+		
+		<action name="getScenarioListByAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="getScenarioListByAction">
+			<result name="success">/view/mainuser/actions/scenarioList.jsp
+			</result>
+		</action>
+		
+		<action name="listAskedDeviceActions"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="tolistAskedDeviceActions">
+			<result name="success">/view/mainuser/actions/listAskedAction.jsp</result>
+		  	
+		</action>
+		
+		<action name="deleteDeviceAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="toDeleteDeviceActions">
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		  	
+		</action>
+		
+		<!-- <action name="deleteDeviceAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="toDeleteDeviceActions">
+			<result name="success">/view/mainuser/actions/listAskedAction.jsp</result>
+		  	
+		</action> -->
+		
+		<action name="toEditDeviceActions"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="toEditDeviceActions">
+			<result name="success">/view/mainuser/actions/toEditDeviceAction.jsp</result>
+		  	
+		</action>
+		
+			<action name="editDeviceAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="editDeviceActions">
+			<result name="success">/view/mainuser/actions/home.jsp</result>
+			</action>
+			
+		
+			<!-- Diaken VIA -->
+		<action name="toModbusSlave"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toModbusSlave">
+		     <result name="success">/view/mainuser/devicemanagement/DiscoverModbus.jsp</result>
+		    <!--  <result name="error">/view/mainuser/usermanagement/success.jsp</result>   -->
+		     	<!-- <result name="success" type="redirect">toGetDevices</result> -->
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		     
+		</action>	
+		
+			<!-- Diaken VIA -->
+		<action name="toDiscoverSlaveUnit"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="toDiscoverSlaveUnit">
+		       <result name="success" type="redirect">toGetDevices</result> 
+		         <result name="error">/view/mainuser/usermanagement/success.jsp</result> 
+		</action>	
+		
+		<!-- Diaken VIA -->
+		<action name="toDiscoverIndoorUnit"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toDiscoverIndoorUnit">
+		    <result name="success" >/view/mainuser/devicemanagement/DiscoveredSlave.jsp</result> 
+		</action>
+			
+			<action name="SceneRedirectAction"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.AddNewAction"
+			method="toAddAction">
+			<result name="success">/view/mainuser/actions/SceneRedirect.jsp
+			</result>
+		</action>
+			
+		
+		
+		
+		<action name="sendNetworkStatusRequest"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="sendNetworkStatusRequest">
+			 <result name="success">/view/mainuser/devicemanagement/networkStatus.jsp</result> 
+			 <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+         </action>
+			
+
+       <!-- Diaken VIA -->
+		<action name="DiscoverIndoorUnit"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="DiscoverIndoorUnit">
+		   <result name="success" type="redirect">toGetDevices</result> 
+		</action>
+		
+		<!-- Diaken VIA -->
+		<action name="toUpdateFriendlyNameAndLocationForSlave"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toUpdateFriendlyNameAndLocationForSlave">
+			<result name="success">/view/mainuser/devicemanagement/updateFriendlyNameAndLocationForSlave.jsp
+			</result>
+		</action>
+		
+		<!-- Diaken VIA -->
+			<action name="updateFriendlyNameAndLocationForSlave"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="updateFriendlyNameAndLocationForSlave">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		
+		<!-- Diaken VIA  for Indoor Unit-->
+		<action name="toUpdateFriendlyNameAndLocationForIndoorUnit"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toUpdateFriendlyNameAndLocationForIndoorUnit">
+			<result name="success">/view/mainuser/devicemanagement/updateFriendlyNameAndLocationForIndoorUnit.jsp
+			</result>
+		</action>
+		
+		<!-- Diaken VIA for Indoor Unit-->
+			<action name="updateFriendlyNameAndLocationForIndoorUnit"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="updateFriendlyNameAndLocationForIndoorUnit">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		
+			<!-- Diaken VIA -->
+			<action name="removeVIADevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="removeVIADevice">
+			<result name="success" type="redirect">/mainuser/toGetDevices.action
+			</result>
+		</action>
+		
+			<!-- Diaken VIA -->
+			<action name="removeSlaveDevice"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="removeSlaveDevice">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		
+		<action name="toGetCapability"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toGetCapability">
+		    <result name="success" >/view/mainuser/devicemanagement/GetCapability.jsp</result> 
+		</action>
+	
+			<!-- Diaken VIA -->
+		<action name="getCapability"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="getCapability">
+		    
+		    <result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+			
+        <action name="checkViaForSlave"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ModbusDeviceControlAction"
+			method="checkViaForSlave">
+			<!-- handle REDIRECT -->
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+		
+		
+		   <action name="checkSlaveForIndoorUnits"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ViaSlaveControlAction"
+			method="checkSlaveForIndoorUnits">
+			<!-- handle REDIRECT -->
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+		
+		 <action name="removeIndoorUnit"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="removeIndoorUnit">
+			<!-- handle REDIRECT -->
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="checkIDUDeviceForRule"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="checkIDUDeviceForRule">
+			<!-- handle REDIRECT -->
+			<result name="success">/view/mainuser/setup/success.jsp</result>
+		</action>
+		
+		<action name="changeIduTemperature" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.ModbusDeviceControlAction" method="changeIduTemperature">
+			<result name="success">/view/mainuser/devicecontrol/onoffresult.jsp</result>
+		</action>
+		
+		
+		<action name="toResetFilterStatus"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toResetFilterStatus">
+		    <result name="success">/view/mainuser/devicemanagement/updateFilterStatus.jsp</result>
+		</action>
+		
+		
+		<action name="resetFilterStatus"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="resetFilterStatus">
+		    <result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+	<!-- 3 gateways changes -->
+		<action name="3gatewayDevices"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.MulipleGatewayDevices">
+			<result name="success">/view/mainuser/userdetails.jsp</result>
+		</action>
+		
+		<!-- 3 gateways changes -->
+		<action name="3gatewayDevicesHMD"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.MultipleGatewayDevicesNonHmd">
+			<result name="success">/view/mainuser/userdetails.jsp</result>
+		</action>
+		
+		<!-- 3 gateways changes -->
+		<action name="getGatewaysForRename" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="getGatewaysForRename">
+			<result name="success">/view/mainuser/usermanagement/gatewayRename.jsp</result>
+		</action>
+		
+		<!-- 3 gateways changes -->
+			<action name="saveGatewayNames" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.CustomerAction" method="saveGatewayNames">
+			<result name="success" type="redirectAction">editCustomerByuser</result>
+		</action>
+		
+		<action name="toEditRuleSecurity"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="toEditRuleSecurity">
+			<result name="success">/view/mainuser/rules/triggerAlarm.jsp</result>
+		</action>
+		
+		<action name="saveSecurityConfigure"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.RuleManagement"
+			method="toSaveSecurityConfiguration">
+			<result name="success" type="redirect">listRule</result>
+			<result name="error" type="redirect">listRule</result>
+		</action>
+		
+		<action name="toWallmoteConfiguration"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.WallmoteDeviceManagement"
+		    method="toWallmoteConfiguration">
+		    <result name="success">/view/mainuser/devicemanagement/WallmoteConfig.jsp</result>
+		     <result name="error" type="redirect">SceneRedirectAction</result>
+		</action>
+		
+		<action name="saveWallmoteConfiguration"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.WallmoteDeviceManagement"
+		    method="saveWallmoteConfiguration">
+		    <result name="success" type="redirect">toGetDevices</result>
+		    <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toKeyfobeConfiguration"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.SceneControllerManagement"
+		    method="toKeyfobeConfiguration">
+		    <result name="success">/view/mainuser/devicemanagement/KeyfobeConfiguration.jsp</result>
+		     <result name="error" type="redirect">SceneRedirectAction</result>
+		</action>
+		
+		<action name="saveKeyfobeConfiguration"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.SceneControllerManagement"
+		    method="saveKeyfobeConfiguration">
+		    <result name="success" type="redirect">toGetDevices</result>
+		    <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+	<!-- RGB -->
+		<action name="sendRGBValue"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="sendRGBValue">
+		    <result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		    <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<!-- RGB End-->
+		
+		<!-- IR Output changes AV Blaster  -->
+			<action name="toIROutputValue" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="toIROutputValue">
+			<result name="success">/view/mainuser/devicemanagement/IROutput.jsp</result>
+		</action>
+		
+		<action name="updateIROutputValue" class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="updateIROutputValue">
+			<result name="success" type="redirect">toGetDevices</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<!-- IR Output changes AV Blaster End -->
+		
+		
+		<!-- Virtual Switch start -->
+		<action name="toConfigureVirtualSwitchType"
+			class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+			method="toConfigureSwitchType">
+			<result name="success">/view/mainuser/devicemanagement/toConfigureVirtualSwitchType.jsp
+			</result>
+		</action>
+		
+		<action name="toVirtualSwitchConfiguration"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="toVirtualSwitchConfiguration">
+		    <result name="success">/view/mainuser/devicemanagement/toVirtualSwitchConfiguration.jsp</result>
+		     <result name="error" type="redirect">SceneRedirectAction</result> 
+		</action>
+		
+		
+			<action name="saveVirtualSwitchConfiguration"
+		    class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement"
+		    method="saveVirtualSwitchConfiguration">
+		    <result name="success" type="redirect">toGetDevices</result>
+		    <result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<!-- TouchPanel -->
+		<action name="multichannel"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="multichannel">
+		    <result name="success">/view/mainuser/actions/deviceList.jsp</result>
+		</action>
+		
+		<action name="sendMultiAssociateDevices"
+		   class="in.xpeditions.jawlin.imonitor.cms.action.normaluser.DeviceManagement" method="sendMultiAssociateDevices">
+		    <result name="success" type="redirect">/mainuser/toGetDevices.action</result>
+		</action>
+		</package>
+		</struts>
+      
+
+         

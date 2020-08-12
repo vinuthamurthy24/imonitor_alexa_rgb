@@ -1,0 +1,273 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  margin : 0 auto;
+}
+.maindiv{
+  margin : 0 auto;
+  width: 1224px;
+  height: 619px;
+  background-color: #EEEEEE;
+}
+
+.maindivdash{
+	width: 1024px;	
+	margin:0 auto;	
+	border-left:0px #E5EEF2 solid;
+	border-right:0px #E5EEF2 solid;	
+	background-color:#eef2f8;	/*EEEEEE;*/
+	height: 655px;	
+}
+.logo{
+  height: 50px;
+/*   background-image: url('/imonitor/resources/images/logoBlack.png'); */
+  background-repeat: no-repeat;
+}
+.logo1{
+  height: 50px;
+/*   background-image: url('/imonitor/resources/images/logoBlack.png'); */
+  background-repeat: no-repeat;
+}
+.logoforatm{
+	
+ background-repeat: no-repeat;
+ height: 105px;
+ width: 1024px;
+	
+}
+
+.logofortsi{
+	
+ 
+
+
+
+ height: 100px;
+ width: 50%;
+ float: left;	
+}
+
+.titlebar{
+  height: 31px;
+  width: 100%;
+  background-image: url('/imonitor/resources/images/titlebar.png');
+  background-repeat:no-repeat;
+}
+.leftmenu{
+  float:left;
+  width:203px;
+  height: 519px;
+  background-image: url('/imonitor/resources/images/menubar.png');
+}
+.Energymenu{
+overflow: auto;
+  float:left;
+  width:661px;
+  height: 310px;
+  /*   background-color: rgb(49, 158, 205);  */
+ /* background-color: black;*/
+/*   border-radius: 2px; */
+  /* outer shadows  (note the rgba is red, green, blue, alpha) */
+  /* -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+  -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5); */
+		
+/* rounded corners */
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 7px; 
+	border-radius: 7px;
+	margin: 1px 0px 0px 1px;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+.xpaccordionmenu, .xpaccordionmenu ul {
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+  width: 203px;
+}
+
+.xpaccordionmenu a {
+  display: block;
+  text-decoration: none;	
+}
+
+.xpaccordionmenu li {
+  margin-top: 1px;
+}
+
+.xpaccordionmenu li a {
+  background: #333;
+  color: #fff;	
+  padding: 0.5em;
+}
+
+.xpaccordionmenu li a:hover {
+  background: #000;
+}
+
+.xpaccordionmenu li ul li a {
+  background: #ccc;
+  color: #000;
+  padding-left: 20px;
+}
+
+.xpaccordionmenu li ul li a:hover {
+  background: #aaa;
+  border-left: 5px #000 solid;
+  padding-left: 15px;
+}
+.contentsection{
+  float:left;
+  width:980px;
+  height:519px;
+  margin-left:10px;
+  background-color: #F4F5E9;
+  padding-left:20px;
+  padding-top:20px;
+  overflow:auto;
+}
+.footer{
+  clear: both;
+  font-size:small;
+  width: 100%;
+  height: 19px;
+  background-image: url('/imonitor/resources/images/footer.png');
+  text-align:center;
+  color:inactivecaptiontext;
+}
+.errorclass{
+	border: 1px solid red;
+}
+.errormessageclass{
+	color: black;
+}
+.formalign{
+	text-align: left;
+}
+/* login */ 
+.bodyclasslogin{
+	margin:0;
+	background-color:#6A5ACD;
+} 
+.maindivlogin{
+	height: 400px;
+	width: 600px;
+	margin:0 auto;	
+	border-left:0px #E5EEF2 solid;
+	border-right:0px #E5EEF2 solid;
+	font-size:11pt;		
+	background-color:#6A5ACD;	
+}
+.mainmenu{float:right;
+margin-right:30px;}
+.mainmenu ul li{
+	list-style:none;
+	display: table-cell;
+	width:80px;
+	height:30px;	
+	text-align:center;
+	background-image:url('../images/loginmenubg.png');
+	line-height:30px;	
+}
+.mainmenu li a{text-decoration:none; color:#FFFFFF;}
+.mainmenu li a:hover { color: #B8B8B8; }
+.loginbg{
+	background-image:url('../images/loginbg.png');
+	height:327px;
+	width: 598px;
+	background-repeat: no-repeat;	
+	margin-top:20px;
+}
+.login{
+	margin-left:226px;	
+	padding-top:65px;
+	font-size:13px;
+	Color:#FFFFFF;
+	Font-family:verdana,arial;
+	Font-weight:550;
+	font-weight:bold;
+	
+}
+ .loginbutton{
+	background-image:url('../images/loginbutton.png');
+	height: 29px;
+	width: 82px;
+	background-repeat: no-repeat;
+	margin-left:615px;	
+	margin-top:15px;
+ }
+ .loginbutton ul {
+  list-style:none;
+
+ }
+ .loginbutton ul li a{
+	text-decoration: none;
+	text-align:left;
+	line-height:30px; 
+	color:#000000;
+	font-size:17px;
+	font-family:arial;
+	width:50px;
+	margin-left:-24px;	
+ }
+ .loginbutton ul li a:hover { color: #800101; }
+  .loginbutton ul li a :link {text-decoration: none}
+  
+  .loginlang
+  {
+	margin-left:450px;	
+	padding-top:10px;
+	font-size:15px;
+	Color:#FFFFFF;
+	Font-family:verdana,arial;
+	Font-weight:550;
+	font-weight:bold;
+ }
+/* login close */ 
+.editlink img{
+	border-style: none;
+}
+.deletelink img{
+	border-style: none;
+	}
+.unregisterlink img{
+	border-style: none;
+}
+#logoutlink{
+	text-decoration: none;
+	position: relative;
+	top: 7px;
+	left: 1160px;
+	color: white;
+}
+#logoutlink:HOVER {
+	color:#D2D2D2;
+}
+.pagetitleline{
+	position: absolute;
+	height:4px;
+	width:78%;
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+	border-bottom-color: #0000ff;
+}
+.maindivsupport{
+	height: 400px;
+	width: 600px;
+	margin:0 auto;	
+	border-left:0px #E5EEF2 solid;
+	border-right:0px #E5EEF2 solid;
+	font-size:11pt;		
+	background-color:#2F2D3F;;	
+}
+.bodyclasssupportlogin{
+	margin:0;
+	 /*  background-color:#2F2D3F; */  
+	  background: url('/imonitor/resources/images/maxresdefault.jpg')no-repeat fixed center; 
+	  background-size: 100% auto;
+	/* -moz-background-size: cover;
+-webkit-background-size: cover; */
+} 

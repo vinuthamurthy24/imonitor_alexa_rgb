@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+	<package name="mid" namespace="/mid" extends="struts-default">
+		<!--
+		The following actions are for testing purpose...
+		 -->
+		<action name="home">
+			<result name="success">/view/mid/index.jsp</result>
+		</action>
+		
+		<!--
+		The following actions are for real purpose... Don't Delete it !! 
+		
+		 -->
+		
+		<action name="synchronizegatewaydetails" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="synchronizeGateWayDetails">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="synchronizedevicedetails" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="synchronizeDeviceDetails">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="synchronizescenariodetails" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="synchronizeScenarioDetails">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controldevice" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controldevice">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+
+		<!-- Execute Scenario.-->
+		<action name="executeScenario" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="executeScenario">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- STAY/ARM/DISARM.-->
+		<action name="armDevice" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="armDevice">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="disarmDevice" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="disarmDevice">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!--  ENABLE Camera -->
+		<action name="EnableCamera" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="EnableCamera" >
+		<result name="success">/view/mid/home.jsp</result></action>
+		
+		<action name="DisableCamera" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="DisableCamera" >
+		<result name="success">/view/mid/home.jsp</result></action>
+	
+		<action name="devicestatus" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="Devicestatus" >
+		<result name="success">/view/mid/home.jsp</result></action>
+		
+		<!-- Live Stream and Camera Control. -->
+		<action name="startlivestream" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="startLiveStream">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controlcamera" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlCamera">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controlnightvision" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlNightVision">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+
+		<action name="Alaram" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="GetAlarm">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controlFanModes" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlFanModes">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="ControlGateway" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="ControlGateway">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="partialopenstart" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialopenstart">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<action name="partialopenstop" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialopenstop">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<action name="partialclosestart" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialclosestart">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<action name="partialclosestop" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialclosestop">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="fullOpenClose" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="fullOpenCLose">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="getDeviceRssi" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="getRSSIValues">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+			<action name="controlIdu" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlIduDevice">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controlIDUFanModes" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlIDUFanModes">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="filterSignMid" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="filterSignMid">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+	
+		<!-- SuperUser -->
+		<action name="verifySuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="verifySuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- SuperUser -->
+		<action name="customerListForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="customerListForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- SuperUser -->
+		<action name="singleCustomerDeviceDetailsForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="singleCustomerDeviceDetailsForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- SuperUser -->
+		<action name="multipleCustomerDeviceDetailsForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="multipleCustomerDeviceDetailsForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- STAY/ARM/DISARM SuperUser.-->
+		<action name="armDevicesSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="armDevicesSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="disArmDevicesSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="disArmDevicesSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+			<action name="scenarioDetailsSingleUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="scenarioDetailsSingleUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="executeScenarioSingleUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="executeScenarioSingleUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="scenarioDetailsMultipleUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="scenarioDetailsMultipleUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="GetAlarmForSingleUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="GetAlarmForSingleUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="GetAlarmForMultipleUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="GetAlarmForMultipleUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="ScheduleDetailsForSingleUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="ScheduleDetailsForSingleUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="ScheduleDetailsForMultipleUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="ScheduleDetailsForMultipleUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="activateScheduleforSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="activateScheduleforSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		
+		<!-- Controlling SuperUser Devices -->
+		<action name="controlSuperUserdevice" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlSuperUserdevice">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="startLiveStreamForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="startLiveStreamForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controlCameraForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlCameraForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controlNightVisionForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlNightVisionForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="partialOpenStartForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialOpenStartForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<action name="partialOpenStopForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialOpenStopForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<action name="partialCloseStartForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialCloseStartForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<action name="partialCloseStopForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="partialCloseStopForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="fullOpenCloseForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="fullOpenCloseForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="controlFanModesForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="controlFanModesForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		
+		<!-- push notification Android -->
+		<action name="getDetailsForAndroidPushNotification" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="saveDeviceDetailsForAndroidPushNotification">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="disablePushNotification" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="disablePushNotification">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="disablePushNotificationForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="disablePushNotificationForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="saveDeviceDetailsForIOSPushNotification" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="saveDeviceDetailsForIOSPushNotification">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="disablePushNotificationForIOS" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="disablePushNotificationForIOS">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- RGB -->
+		<action name="sendRGBValue" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="sendRGBValue">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="sendRGBValueForSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="sendRGBValueForSuperUser">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		
+		<!-- syncGatewayDetails with Mobile Icons start-->
+		<action name="synchronizegatewaydetailsLiIcon" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="synchronizegatewaydetailsLiIcon">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="singleCustomerDeviceDetailsForSuperUserLiIcon" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="singleCustomerDeviceDetailsForSuperUserLiIcon">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="multipleCustomerDeviceDetailsForSuperUserLiIcon" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="multipleCustomerDeviceDetailsForSuperUserLiIcon">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- syncGatewayDetails with Mobile Icons end -->
+		
+		
+		
+		
+		
+		
+		
+		
+<!-- 	Mid Self Registration -->
+		<action name="zingMacIdValidationForMid" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="zingMacIdValidationForMid">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="customerIdValidationForMid" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="customerIdValidationForMid">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+			<action name="saveZingGatewayDetailsForMid" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="saveZingGatewayForMid">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="sendOTPForSelfRegistration" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="sendOTPForSelfRegistration">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- 	Mid Self Registration End-->
+		
+		<!-- Renaming devices from MID start -->
+		<action name="editDeviceNameMID" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="editDeviceNameMID">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<!-- Renaming devices from MID end -->
+		
+		<!-- Add new room from MID start -->
+		<action name="addNewRoomMID" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="addNewRoomMID">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<!-- Add new room from MID end -->
+		
+		<!-- Getting all the locations of customer start -->
+		<action name="synchronizeLocationDetails" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="synchronizeLocationDetails">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<!-- Getting all the locations of customer end -->
+		
+		<!-- Device Discovery Mode MID  -->
+		<action name="deviceDiscoveryMID" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="deviceDiscoveryMID">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Device Discovery Abort Mode MID  -->
+		<action name="deviceDiscoveryAbortMID" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="deviceDiscoveryAbortMID">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Device Discovery Abort Mode MID  -->
+		<action name="panicRing" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="panicRing">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="changeUserPassword" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="changeUserPassword">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="requestAssociation" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="requestAssociation">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Schedule  start-->
+		
+		
+		<action name="createSchedule" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="createSchedule">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Schedule act deacivate-->
+		<action name="synchronizescheduledetails" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="synchronizeScheduleDetails">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+
+		<action name="ActivateSchedule" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="ActivateSchedule">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="saveSchedule" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="saveSchedule">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		
+
+		<action name="editSchedule" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="editSchedule">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+
+		<action name="deleteSchedule" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="deleteSchedule">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<!-- Schedule  end-->
+		
+		<!-- SSID -->
+		<action name="getSSIDInfo" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="getSSIDInfo">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+
+		<action name="setSSIDInfo" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="setSSIDInfo">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Device remove -->
+		<action name="removeDevice" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="removeDevice">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		
+		<!-- create scenario -->
+		<action name="createScenario" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="createScenario">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- save scenario -->
+		<action name="saveScenario" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="saveScenario">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Modify scenario -->
+		<action name="editScenario" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="editScenario">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- delete scenario -->
+		<action name="deleteScenario" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="deleteScenario">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- list Actions -->
+		<action name="listActions" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="listActions">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- save virtual switch configuration -->
+		<action name="saveVirtualSwitchConfig" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="saveVirtualSwitchConfig">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- display virtual switch configuration -->
+		<action name="listVirtualSwitchConfig" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="listVirtualSwitchConfig">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- create action -->
+		<action name="createAction" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="createAction">
+		<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Save Actions -->
+		<action name="saveAction" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="saveAction">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- modify action -->
+		<action name="editAction" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="editAction">
+		<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- delete action -->
+		<action name="deleteAction" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="deleteAction">
+		<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<!-- Registration DIY -->
+		<action name="registerCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="registerCustomerFromMid">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="registerGatewayWithCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="registerGatewayWithCustomer">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		
+		<action name="unregisterGatewayRequest" class="in.xpeditions.jawlin.imonitor.cms.action.mid.MidCommonActions" method="unregisterGatewayRequest">
+			<result name="success">/view/mid/home.jsp</result>
+		</action>
+		<!-- RegistrationEnd -->
+		
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>

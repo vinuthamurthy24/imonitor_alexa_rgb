@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="15000000" />
+	<include file = "adminuser.struts.xml"/>
+	<include file = "normaluser.struts.xml"/>
+	<include file = "mainuser.struts.xml"/>
+	<package name="superuser" namespace="/superuser" extends="struts-default">
+		 <interceptors>
+  		    <interceptor name="params" class="com.opensymphony.xwork2.interceptor.ParametersInterceptor"/>
+			<interceptor name="adminaccess" class="in.xpeditions.jawlin.imonitor.cms.interceptor.AdminAccessInterceptor"></interceptor>
+			<interceptor-stack name="checkauth">
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize">15000000</param>
+				</interceptor-ref>
+				<interceptor-ref name="params"></interceptor-ref>
+				<interceptor-ref name="adminaccess"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="checkauth"></default-interceptor-ref>
+		<default-action-ref name="home" />
+		<global-results>
+			<result name="sessionexpired">/view/admin/index.jsp</result>
+			<result name="forbidden">/view/admin/index.jsp</result>
+		</global-results> 
+		
+		
+		<action name="home" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction">
+			<result name="success">/view/admin/superuser/home.jsp</result>
+		</action>
+		
+		
+		<!-- SuperUSer -->
+		<action name="toAddSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="toAddSuperUser">
+			<result name="success">/view/admin/superuser/addSuperUser.jsp</result>
+		</action>
+		
+		<action name="saveSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="saveSuperUser">
+			<result name="success" type="redirect">/superuser/toAddSuperUser.action</result>
+		</action>
+		
+		<action name="tolistSuperUsers" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="tolistAskedSuperUsers">
+			<result name="success">/view/admin/superuser/listSuperUsers.jsp</result>
+		</action>
+		
+		<action name="listAskedSuperUsers" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="listAskedSuperUsers">
+			<result name="success">/view/admin/superuser/listASkedSuperUsers.jsp</result>
+		</action>
+		
+		<!-- SuperUSer -->
+		<action name="toMapSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="toMapSuperUser">
+			<result name="success">/view/admin/superuser/mapSuperUser.jsp</result>
+		</action>
+		
+		<action name="saveSuperUserToCustomer" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="saveSuperUserToCustomer">
+			 <result name="success">/view/admin/customer/listCustomers.jsp</result> 
+		</action>
+		
+		<action name="toEditAdminSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="toEditAdminSuperUser">
+			 <result name="success">/view/admin/superuser/toEditSuperUser.jsp</result> 
+		</action>
+		
+		<action name="saveEditedSuperUserDetails" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="saveEditedSuperUserDetails">
+			<result name="success" >/view/admin/superuser/listSuperUsers.jsp</result>
+		</action>
+		
+		<action name="deleteAdminSuperUser" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.SuperUserAction" method="deleteAdminSuperUser">
+			<result name="success" type="redirect">tolistSuperUsers</result> 
+		</action>
+		
+		
+		
+		
+		
+		
+		
+
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>

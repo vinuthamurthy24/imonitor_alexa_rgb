@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2015 iMonitor Solutions India Private Limited -->
+
+<struts>
+<constant name="struts.multipart.maxSize" value="15000000" />
+	<include file = "adminuser.struts.xml"/>
+	<include file = "normaluser.struts.xml"/>
+	<include file = "mainuser.struts.xml"/>
+<package name="support" namespace="/support" extends="struts-default">
+<interceptors>
+  		    <interceptor name="params" class="com.opensymphony.xwork2.interceptor.ParametersInterceptor"/>
+			<interceptor name="supportaccess" class="in.xpeditions.jawlin.imonitor.cms.interceptor.SupportAccessInterceptor"></interceptor>
+			<interceptor-stack name="checkauth">
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize">15000000</param>
+				</interceptor-ref>
+				<interceptor-ref name="params"></interceptor-ref>
+				<interceptor-ref name="supportaccess"></interceptor-ref>
+			</interceptor-stack>
+</interceptors>
+	<default-interceptor-ref name="checkauth"></default-interceptor-ref>
+		<default-action-ref name="home" />
+		<global-results>
+			<result name="sessionexpired">/view/support/index.jsp</result>
+			<result name="forbidden">/view/support/index.jsp</result>
+		</global-results>
+		<action name="home" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AdminHomeAction">
+			<result name="success">/view/support/home.jsp</result>
+		</action>
+		
+		<action name="supportindex">
+			<result>/view/support/index.jsp</result>
+		</action>
+		
+        <action name="createnewreport" class="in.imsipl.cms.action.supportuser.SupportAction" method="createnewreport">
+			<result name="success">/view/support/newCustomerIssue.jsp</result>
+		</action>
+        
+        
+        <action name="saveCustomerReport" class="in.imsipl.cms.action.supportuser.SupportAction" method="saveCustomerReport">
+			<result name="success" type="redirect" >createnewreport.action</result>
+		</action>
+		
+		
+		
+		<action name="listAskedCustomerReports" class="in.imsipl.cms.action.supportuser.SupportAction" method="tpListCustomerReports">
+			<result name="success">/view/support/listaskedreports.jsp</result>
+		</action>
+		
+		<action name="listResolvedCustomerReports" class="in.imsipl.cms.action.supportuser.SupportAction" method="toListResolvedReports">
+			<result name="success">/view/support/listresolvedreports.jsp</result>
+		</action>
+			
+					
+		<action name="redirectToCustomerList" class="in.imsipl.cms.action.supportuser.SupportAction" method="toredirect">
+			<result name="success">/view/support/home.jsp</result>
+		</action>
+		
+				
+		<action name="toViewCustomerReport" class="in.imsipl.cms.action.supportuser.SupportAction" method="toViewSelectedReport">
+			<result name="success">/view/support/toViewCustomerReport.jsp</result>
+		</action>
+		
+		
+		<action name="downloadCustomerReports" class="in.imsipl.cms.action.supportuser.SupportAction" method="todownloadcustomerreports">
+		     <result name="success">/view/support/downloadreports.jsp</result>
+		</action>
+		
+		
+		<action name="updateCustomerReport" class="in.imsipl.cms.action.supportuser.SupportAction" method="toUpdateCustomerReport">
+		    <result name="success">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		<action name="toDeleteCustomerReport" class="in.imsipl.cms.action.supportuser.SupportAction" method="toDeleteReports">
+		     <result name="success">/view/support/CheckPassWord.jsp</result>
+		</action>
+		
+		<action name="deleteCustomerReport" class="in.imsipl.cms.action.supportuser.SupportAction" method="deleteCustomerReports">
+		     <result name="success">/view/mainuser/usermanagement/success.jsp</result>
+			<result name="error">/view/mainuser/usermanagement/success.jsp</result>
+		</action>
+		
+		
+		<action name="getreportsortinglist" class="in.imsipl.cms.action.supportuser.SupportAction" method="togetrfslist">
+		     <result name="success">/view/support/home.jsp</result>
+		</action>
+		
+</package>
+</struts>

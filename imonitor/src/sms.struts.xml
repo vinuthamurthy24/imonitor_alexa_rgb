@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<struts>
+	<package name="sms" namespace="/sms" extends="struts-default">
+	
+		<action name="smsreport" class="in.xpeditions.jawlin.imonitor.cms.action.sms.SmsReportAction" method="SaveSMSReport">
+			<result name="success">/view/sms/home.jsp</result>
+		</action>
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>

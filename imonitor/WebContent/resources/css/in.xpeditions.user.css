@@ -1,0 +1,220 @@
+.bodyclass{
+	margin:0;
+	background-color:#565555;
+}
+.maindiv{
+	height: 660px;
+	width: 1024px;
+	margin:0 auto;	
+	border-left:0px #E5EEF2 solid;
+	border-right:0px #E5EEF2 solid;
+	font-size:11pt;		
+	background-color:#000000;	
+}
+.ui-dialog-titlebar { display:none; }
+
+
+.headerbg{	
+	background-image:url('../images/headerbg.png');
+	height:30px;	
+	background-repeat: no-repeat;	
+}
+.titlebg{	
+	background-image:url('../images/titlebg.png');
+	height:315px;	
+	background-repeat: no-repeat;	
+}
+.logo{
+	margin-left:30px;
+	margin-top:20px;
+}
+.slidermenubg{
+	position:absolute;
+	background-image:url('../images/slidermemubar.png');
+	height:24px;
+	width:660px;
+	margin-left:314px;
+	margin-top:31px;
+}
+.leftsidemenu{
+	position:absolute;
+	margin-left:35px;
+	margin-top:0px;
+	background-image:url('../images/leftsidemenubg1.png');
+	height:235px;
+	width:250px;
+}
+.contantbg{
+	position:relative;
+	background-image:url('../images/contantbg.png');
+	margin-left:0px;
+	margin-top:10px;
+	width:1024px;
+	height:270px;
+	background-repeat: no-repeat;	
+}
+.boottom{
+	position:relative;
+	background-image:url('../images/boottombg.png');
+	width:1024px;
+	height:30px;
+	margin-top:10px;
+	line-height:30px;
+	text-align:center;
+	color:#6E7A7D;
+	font-family:arial;
+	font-size:12px;
+}
+.buttonbg{	
+	width:255px;
+	height:280px;		
+}
+.menubutton{
+	width:239px;
+	height:25px;	
+	background-image:url('../images/buttonbg.png');	
+	list-style-type: none;
+	margin-left:-24px;	
+	background-repeat: no-repeat;
+`	text-align:center;
+	padding-left:20px;
+	line-height:20px;
+	color:#FFFFFF;	
+}
+.menubutton  a:link {text-decoration: none}
+.menubutton  a:visited {text-decoration: none}
+.menubutton  a:active {text-decoration: none}
+.menubutton  a:hover { color: #FFFFFF; }
+.menuiteam{
+	font-size:11pt;	
+	color:#9D9C9C;
+	font-family:arial;
+	text-decoration: none;
+}
+.menuul{
+	padding-top:50px;	
+}
+.devicelocatebutton{
+	height:235px;
+	width:250px;
+	margin-top:120px;
+	margin-left:20px;	
+}
+.devicelocatebutton li{
+	background-repeat: no-repeat;
+	width:131px;
+	height:24px;
+	list-style-type: none;
+	padding-top:3px;
+	
+}
+.devicelocatebuttonnormal {
+	background-image:url('../images/divicelocatebutton.png');
+}
+.devicelocatebuttonselected {
+	background-image:url('../images/divicelocatebuttonselected.png');
+}
+.devicelocatebutton li  a:link {text-decoration: none}
+.devicelocatebutton li  a:visited {text-decoration: none}
+.devicelocatebutton li  a:active {text-decoration: none}
+.devicelocatebutton li  a:hover { color: #FFFFFF; }
+.leftmenuitems{
+	font-size:11pt;	
+	color:#9D9C9C;
+	font-family:arial;
+	margin-left:35px;	
+}
+#headermenu{
+	margin-left:400px;
+
+}
+#headermenu ul{	
+	list-style:none;
+	margin: 0;
+	height:30px;	
+}
+#headermenu ul li { display: inline; }
+#headermenu ul li a
+{
+	text-decoration: none;
+	color:#53A6D6;
+	font-family:arial;
+	line-height:30px;
+	padding-left:20px;
+	text-align:center;
+	white-space:100px;
+}
+#headermenu a:link {text-decoration: none}
+#headermenu a:visited {text-decoration: none}
+#headermenu a:active {text-decoration: none}
+#headermenu a:hover { color: #FFFFFF; }
+.switchbutton{
+	background-color:red;
+}
+.onoffswitch{
+	position:absolute;	
+	width:52px;
+	height:63px;
+	margin-left:300px;
+	margin-top:-190px;
+	text-align:center;
+}
+.controlposition{
+	position:absolute;	
+	width:52px;
+	height:163px;
+	margin-left:450px;
+	margin-top:-200px;
+	
+}
+.switchicon{
+	position:absolute;	
+	width:52px;
+	height:63px;
+	margin-left:800px;
+	margin-top:-190px;
+}
+.locationordevice img{
+	border: 0px;
+}
+.anchorwithimg img{
+	border: 0px;
+}
+
+/* dvice management*/
+.deviceleftmenu{
+	background-image:url('../images/deviceleftsidemenubg.png');
+	width:233px;
+	height: 526px;
+	margin-top:-228px;
+}
+.devicemenuul{
+	padding-top:132px;	
+}
+.devicemenubutton{
+	width:239px;
+	height:25px;		
+	list-style-type: none;
+	margin-left:0px;	
+	background-repeat: no-repeat;
+`	text-align:center;
+	padding-left:15px;
+	line-height:20px;
+	color:#FFFFFF;	
+}
+.devicemenubutton  a:link {text-decoration: none}
+.devicemenubutton  a:visited {text-decoration: none}
+.devicemenubutton a:active {text-decoration: none}
+.devicemenubutton  a:hover { color: #FFFFFF; }
+.devicemgmtcontent{
+	background-color: #FFFFFF;
+    float: right;
+    height: 412px;
+    margin-right: 10px;
+    margin-top: -109px;
+    width: 769px;
+}
+/* dvice management close*/
+.removedevicelink img{
+	border: 0px;
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Copyright © 2015 iMonitor Solutions India Private Limited -->
+<struts>
+<constant name="struts.multipart.maxSize" value="15000000" />
+	<include file = "adminuser.struts.xml"/>
+	<include file = "normaluser.struts.xml"/>
+	<include file = "mainuser.struts.xml"/>
+<package name="alerts" namespace="/alerts" extends="struts-default">
+<interceptors>
+  		    <interceptor name="params" class="com.opensymphony.xwork2.interceptor.ParametersInterceptor"/>
+			<interceptor name="alertmonitoraccess" class="in.xpeditions.jawlin.imonitor.cms.interceptor.AlertMonitorInterceptor"></interceptor>
+			<interceptor-stack name="checkauth">
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize">15000000</param>
+				</interceptor-ref>
+				<interceptor-ref name="params"></interceptor-ref>
+				<interceptor-ref name="alertmonitoraccess"></interceptor-ref>
+			</interceptor-stack>
+</interceptors>
+	<default-interceptor-ref name="checkauth"></default-interceptor-ref>
+		<default-action-ref name="home" />
+		<global-results>
+			<result name="sessionexpired">/view/alertMonitor/index.jsp</result>
+			<result name="forbidden">/view/alertMonitor/index.jsp</result>
+		</global-results>
+		<action name="home" class="in.xpeditions.jawlin.imonitor.cms.action.adminuser.AdminHomeAction">
+			<result name="success">/view/alertMonitor/home.jsp</result>
+		</action>
+		
+		<action name="alertindex">
+			<result>/view/alertMonitor/index.jsp</result>
+		</action>
+		
+		<action name="getListOfMonitoringAlerts" class="in.imsipl.cms.action.supportuser.MonitoringAlertAction" method="togetMonitoringAlerts">
+			<result name="success">/view/alertMonitor/ViewAlerts.jsp</result>
+		</action>
+        		
+		<action name="listAllCustomersAlerts" class="in.imsipl.cms.action.supportuser.MonitoringAlertAction" method="toListAllCustomerAlerts">
+			<result name="success">/view/alertMonitor/toListCustomerAlerts.jsp</result>
+		</action>
+		
+		<action name="manageCustomersAlerts" class="in.imsipl.cms.action.supportuser.MonitoringAlertAction" method="toManageCustomerAlerts">
+			<result name="success">/view/alertMonitor/toManageCustomerAlerts.jsp</result>
+		</action>
+		
+		<action name="getListToModifyAlerts" class="in.imsipl.cms.action.supportuser.MonitoringAlertAction" method="togetMonitoringAlerts">
+			<result name="success">/view/alertMonitor/ConfigAlerts.jsp</result>
+		</action>
+		
+		<action name="toViewCustomerReport" class="in.imsipl.cms.action.supportuser.MonitoringAlertAction" method="toViewCustomerReport">
+		<result name="success">/view/alertMonitor/toviewalerts.jsp</result>
+		</action>
+		
+		<action name="updatecustomeralerts" class="in.imsipl.cms.action.supportuser.MonitoringAlertAction" method="updatecustomeralerts">
+		<result name="success" type="redirect">/view/alertMonitor/ConfigAlerts.jsp</result>
+		</action>
+		
+		<action name="toDeleteCustomerReport" class="in.imsipl.cms.action.supportuser.MonitoringAlertAction" method="deleteCustomerReport">
+		<result name="success">/view/alertMonitor/ConfigAlerts.jsp</result>
+		</action>
+</package>
+</struts>
