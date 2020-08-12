@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<alerts>
+	<alert>
+		<id>IMVG_UP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ImvgUpAlert</class>
+		<method>updateAlert</method>
+	</alert>
+</alerts>

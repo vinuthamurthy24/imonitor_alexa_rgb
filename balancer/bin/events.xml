@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<events>
+	<event>
+		<id>IMVG_REGISTER</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RegisterEventUpdater</class>
+		<method>updateEvent</method>
+	</event>
+	<event>
+		<id>BALANCER_SHUTDOWN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ShutdownEventUpdater</class>
+		<method>updateEvent</method>
+	</event>
+</events>
