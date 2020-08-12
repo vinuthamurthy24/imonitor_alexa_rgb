@@ -1,0 +1,15 @@
+2013-10-31 12:44:34,272 0    [main] ERROR org.apache.axis.utils.Admin  - Usage:  Admin client|server <xml-file>
+2013-10-31 12:44:34,273 1    [main] ERROR org.apache.axis.utils.Admin  - Where <xml-file> looks like:
+2013-10-31 12:44:34,273 1    [main] ERROR org.apache.axis.utils.Admin  - <deploy>
+2013-10-31 12:44:34,273 1    [main] ERROR org.apache.axis.utils.Admin  -   <handler name=a class=className/>
+2013-10-31 12:44:34,273 1    [main] ERROR org.apache.axis.utils.Admin  -   <chain name=a flow="a,b,c" />
+2013-10-31 12:44:34,273 1    [main] ERROR org.apache.axis.utils.Admin  -   <chain name=a request="a,b,c" pivot="d"
+2013-10-31 12:44:34,273 1    [main] ERROR org.apache.axis.utils.Admin  -                   response="e,f,g" />
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  -   <service name=a handler=b />
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  - </deploy>
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  - <undeploy>
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  -   <handler name=a/>
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  -   <chain name=a/>
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  -   <service name=a/>
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  - </undeploy>
+2013-10-31 12:44:34,274 2    [main] ERROR org.apache.axis.utils.Admin  - <list/>

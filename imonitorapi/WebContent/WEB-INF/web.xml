@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>imonitor</display-name>
+  <servlet>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.mobile.login</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>Jersey action Service</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.scopes</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>Jersey Oauth Service</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitor.authcontroller</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>Jersey Token Service</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.service.manager</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>Jersey Device Control</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.action</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/mobile/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Jersey Device Control</servlet-name>
+    <url-pattern>/control/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Jersey action Service</servlet-name>
+    <url-pattern>/action/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Jersey Oauth Service</servlet-name>
+    <url-pattern>/ims/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Jersey Token Service</servlet-name>
+    <url-pattern>/service/*</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>in.imonitor.cms.listener.XpeditionsServletListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>Index</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.login</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+      <param-value>/WEB-INF/</param-value>
+    </init-param>
+  </servlet>
+   <servlet>
+    <servlet-name>Alexa</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.alexalogin</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+      <param-value>/WEB-INF/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+      <param-value>/(resources|(WEB-INF/))/.*</param-value>
+    </init-param>
+  </servlet> 
+  
+  <servlet>
+  <servlet-name>AlexaVideo</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.alexavideo</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+      <param-value>/WEB-INF/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+      <param-value>/(resources|(WEB-INF/))/.*</param-value>
+    </init-param>
+  </servlet>
+  
+  
+  
+  <servlet>
+    <servlet-name>AlexaEurovigil</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.alexa.eurovigil</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+      <param-value>/WEB-INF/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+      <param-value>/(resources|(WEB-INF/))/.*</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>Google</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>in.imonitorapi.googlelinking</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+      <param-value>/WEB-INF/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+      <param-value>/(resources|(WEB-INF/))/.*</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Alexa</servlet-name>
+    <url-pattern>/alexa/*</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>AlexaVideo</servlet-name>
+    <url-pattern>/alexavideo/*</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet-mapping>
+    <servlet-name>AlexaEurovigil</servlet-name>
+    <url-pattern>/alexaefl/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Google</servlet-name>
+    <url-pattern>/google/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Index</servlet-name>
+    <url-pattern>/index/*</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

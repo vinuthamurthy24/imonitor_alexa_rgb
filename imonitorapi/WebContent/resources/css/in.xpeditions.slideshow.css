@@ -1,0 +1,38 @@
+.hSlideshow {
+		margin:0 auto;
+		width:742px;	
+		position:relative;
+		margin-top:55px;
+		margin-right:8px;
+}
+.hslidesContainer {
+	  margin:0 auto;
+	  width:662px;	  
+	  overflow:auto; /* allow scrollbar */  
+	  position:relative;
+}
+.hslide {	
+	width:165px; /* reduce by 20 pixels of #slidesContainer to avoid horizontal scroll */  
+	background-repeat:no-repeat;
+	background-image:url('../images/slider/slideshowbg.png');
+	height:169px;
+}
+.control {
+	display:block;
+	width:39px;	
+	text-indent:-10000px;
+	position:absolute;
+	cursor: pointer;
+}
+.leftControl {
+	top:0;
+	left:0;
+	background:transparent url('../images/control_left.png') no-repeat 0 0;
+}
+.rightControl {
+	top:0;
+	right:0;
+	background:transparent url('../images/control_right.png') no-repeat 0 0;
+}
+
+	

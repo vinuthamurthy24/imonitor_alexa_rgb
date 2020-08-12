@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.monitor.authprovider.Clients" table="Clients">  
+    	<id name="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="Client_id" unique-key="true" not-null="true">
+    	</property>
+    	<property name="ClientSecret" ></property>
+    	<property name="AuthCode" ></property>
+    	<property name="AccessToken" ></property>
+    	<property name="RefreshToken" ></property> 
+    	<property name="CreatedAT" ></property>
+    	<property name="ExpireTime" ></property>
+    	
+    	
+    	
+    	 </class>
+</hibernate-mapping>      
+   

@@ -1,0 +1,327 @@
+/** design page css starts here **/
+.bodyclass{
+	margin:0;
+	background-color:#E4E8EB;
+}
+.maindiv{
+	height: 668px;
+	width: 1024px;
+	margin:0 auto;	
+	border-left:0px #E5EEF2 solid;
+	border-right:0px #E5EEF2 solid;
+	font-size:11pt;		
+	background-color:#E4E8EB;		
+}
+
+.titlebg{	
+	background-image:url('../images/titlebg.png');
+	height:159px;	
+	background-repeat: no-repeat;	
+}
+.logo{
+	margin-left:30px;
+	margin-top:-100px;
+}
+.boottom{
+	position:relative;
+	background-image:url('../images/boottombg.png');
+	width:1024px;
+	height:30px;
+	margin-top:10px;
+	line-height:30px;
+	text-align:center;
+	color:#6E7A7D;
+	font-family:arial;
+	font-size:12px;
+}
+
+.menuul{
+	margin-top: 0;
+	margin-left: 109px;
+	padding:0;
+	list-style-type: none;
+	text-align: left;
+	padding-top:0px;
+	padding-left:2px;
+	word-spacing:60px;
+	height: 35px;
+	width: 550px;	
+	font-family:arial;
+}
+#topmenu{
+	margin-top: 0;
+	margin-left: 369px;
+	padding:0;
+	list-style-type: none;
+	text-align: left;
+	padding-top:54px;
+	padding-left:5px;	
+	height: 34px;
+	width: 650px;	
+	font-family:arial;
+}
+
+.menuitem{ 
+	display: table-cell;
+	*display: inline;
+	width:115px;
+	height:30px;
+	text-align:center;
+	font-weight:;
+	padding-top:3px;
+}
+.hoverstyle{ 
+	background-image:url('../images/mouseover.png');
+	background-repeat:no-repeat;
+	width:115px;
+	height:30px;
+}
+
+
+.menuitemnormal{
+	text-decoration: none;
+	color:#8CD8FF;
+}
+.menuul li a:link {text-decoration: none}
+.menuul li a:visited {text-decoration: none}
+.menuul li a:active {text-decoration: none}
+.menuitemnormal li a:hover {color: #F0FF00;}
+.listbg{
+	height: 558px;
+	width:222px;	
+	background-color:#E4E8EB;
+	border-radius: 1em 1em 1em 1em;
+	*border-radius: 1em 1em 1em 1em;
+	margin-left:20px;		
+	border: solid 1px #C3C6C9;		
+}
+.menulist{
+	background-image:url('../images/listbg.png');
+	height:70px;
+	width:262px;
+	list-style:none;	
+	float:right;
+	text-decoration: none;
+	color:#8CD8FF;	
+	border: none;
+}
+.menulistcontant{
+	border: none;
+}
+
+
+.menulist  a:link {text-decoration: none}
+.menulist  a:visited {text-decoration: none}
+.menulist  a:active {text-decoration: none}
+.menulist  a:hover {color:#000000 ;}
+.menulist a{
+	color:#727272;
+	font-size:16px;
+	font-family:arial;
+	margin-left:0px;	
+}
+.listhoverstyle{
+	background-image:url('../images/listitemsmouseover.png');
+	background-repeat:no-repeat;
+	width:262px;
+	height:70px;
+}
+.listclickedstyle{
+	background-image:url('../images/listitemsclicke.png');
+	background-repeat:no-repeat;
+	width:262px;
+	height:70px;
+}
+.rulesmenulist{
+	background-image:url('../images/ruleslistbg.png');
+	height:68px;
+	width:262px;
+	list-style:none;	
+	float:right;
+	text-decoration: none;
+	color:#8CD8FF;	
+}
+.menulistlast{
+	height:68px;
+	width:262px;
+	list-style:none;	
+	float:right;
+	text-decoration: none;
+	color:#8CD8FF;	
+}
+.rulesmenulist  a:link, .menulistlast  a:link {text-decoration: none}
+.rulesmenulist  a:visited, .menulistlast  a:visited{text-decoration: none}
+.rulesmenulist  a:active, .menulistlast  a:active {text-decoration: none}
+.rulesmenulist  a:hover, .menulistlast  a:hover {color:#000000;}
+.rulesmenulist a, .menulistlast a{
+	color:#727272;
+	font-size:16px;
+	font-family:arial;
+	margin-left:0px;	
+}
+
+.contantbgpreferences{
+	position:relative;
+	height: 396px;
+	width:971px;	
+	background-color:#E4E8EB;
+	border-radius: 0em 0em 1em 1em;
+	margin-left:23px;
+	margin-top:-3px;	
+	border: solid 1px #8B8B8B;
+	box-shadow:inset 0 0 50px #B7BBBD;		
+}
+.preferencestopline{
+	background-color:#A2A5A7;
+	height:1px;
+	width:980px;
+	margin-left:22px;
+	margin-top:15px;	
+}
+.contralpanel {
+	color: #0062A4;
+    text-decoration: none;
+	margin-top:10px;
+		
+}
+.contralpanel li {
+	display: table-cell;
+	*display: inline;
+	width:200px;
+	height:30px;
+	text-align:left;
+	font-weight:;
+	padding-top:3px;			
+}
+.contralpanel li a:link {text-decoration: none}
+.contralpanel li a:visited {text-decoration: none}
+.contralpanel li  a:active {text-decoration: none}
+.contralpanel li  a:hover {color:#000000 ;}
+.contralpanel  a: {
+	color:#0062A4;	
+	font-size:16px;
+	font-family:arial;
+	margin-left:0px;	
+}
+.contralpanel ul{
+	margin-top: 0;
+	margin-left:35px;
+	padding:0;
+	list-style-type: none;
+	text-align:center;	
+	height: 35px;
+	width: 650px;	
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;	
+}
+.preferencesbgbar{
+	height: 40px;
+	width:973px;	
+	background-color:#6E6D6D;
+	border-radius: 1em 1em 0em 0em;
+	margin-left:22px;
+	margin-top:20px;	
+	border: solid 1px #C3C6C9;
+	box-shadow:inset 0 0 30px #464545;	
+}
+.widgetheding{
+	margin-top:30px
+}
+.contantbox{
+	height: 316px;
+	width:300px;	
+	background-color:#DFE1E2;
+	border-radius: 1em 1em 1em 1em;	
+	margin-top:10px;	
+	border: solid 1px #BEBFC0;
+	font-family:arial;
+	float:left;
+	margin-left:13px;
+	
+}
+.contantbox2{
+	height: 316px;
+	width:300px;	
+	background-color:#DFE1E2;
+	border-radius: 1em 1em 1em 1em;	
+	margin-top:10px;
+	margin-right:13px;	
+	border: solid 1px #BEBFC0;
+	float:right;
+	font-family:arial;		
+}
+.contantbox3{
+	height: 316px;
+	width:300px;	
+	background-color:#DFE1E2;
+	border-radius: 1em 1em 1em 1em;	
+	margin-top:10px;
+	margin-left:20px;	
+	border: solid 1px #BEBFC0;
+	float:left;
+	font-family:arial;	
+}
+#widget1{
+	margin-top:5px;
+}
+#widget2{
+	vertical-align:top;		
+}
+/** design page css ends here **/
+
+.portlet { margin: 0 0em 1em 0; }
+
+.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+
+.portlet-header .ui-icon { float: right; }
+
+.portlet-content { padding: 0.4em; }
+z
+.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+
+.ui-sortable-placeholder * { visibility: hidden; }
+
+.devicelist{
+	list-style: none outside none;	
+}
+.devicelist li{
+	display: table-cell;	
+	width: 130px;
+}
+
+.gatewaylist{
+	list-style: none outside none;	
+}
+.gatewaylist li{
+	display: table-cell;
+	padding-left: 20px;
+}
+.evenul{
+	background-color:aqua;
+}	
+.oddul{
+	background-color:gray;
+}	
+.onlinestatus{
+	font-weight: bold;
+	color: green;
+}
+.offlinestatus{
+	font-weight: bold;
+	color: red;
+}
+.updategatewaylink img{
+	border : 0 none;
+}
+.updatedevicelink img{
+	border : 0 none;
+}
+.contentsection{
+  position: absolute;
+  left: 470px;
+  width:695px;
+  height:519px;
+  background-color: #E4E8EB;
+  top: 200px;
+}

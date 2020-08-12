@@ -1,0 +1,285 @@
+@charset "utf-8";
+
+/* CSS Document */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+h1,h2,h3,h4,h5,h6,p,a,img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+
+h1 {
+	font-size: 25px;
+}
+
+h2 {
+	font-size: 20px;
+	color: #000;
+}
+
+h3 {
+	font-size: 19px;
+}
+
+@font-face {
+	font-family: 'applane';
+	src: url('lvnm.eot');
+	src: local('☺'), url('lvnm.woff') format('woff'), url('lvnm.ttf')
+		format('truetype'), url('lvnm.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*@font-face
+{
+font-family: applane;
+src: url('lvnm.ttf'),
+     url('lvnm.eot'); /* IE9 
+} 
+*/
+.container {
+	width: 100%;
+}
+
+.header_container {
+	width: 100%;
+	height: 91px;
+	background: url(../images/header_bg.jpg) repeat-x left top
+		;
+}
+
+.header,.body,.footer {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.logo {
+	padding: 39px 0 0;
+	margin: 0;
+	width: 340px;
+}
+
+.body_container {
+	width: 100%;
+	height: 480px;
+	}
+
+.left_part {
+	width: 625px;
+	margin: 0px 15px 0 15px;
+	float: left;
+	padding: 40px 0 0 0;
+}
+
+.left_part h1 {
+	margin-bottom: 5px;
+}
+
+.left_part h1.blue {
+margin-bottom: 4px;
+margin: -105px 0px 0px 577px;
+width: 390px;
+}
+
+
+.banner {
+margin: 89px 0px 0px 0px; 
+}
+
+.signup {
+	float: left;
+	width: 660px;
+	margin-top: 15px;
+}
+
+.signup h3 {
+	float: left;
+	margin-top: 7px;
+	margin-right: 10px;
+}
+
+.signup input.signup_btn {
+	background: #4c90fd;
+	color: #fff;
+	font-size: 14px;
+	width: 61px;
+	text-align: center;
+	border: 0 none;
+	padding: 7px 0;
+	margin: 0;
+	float: left;
+	cursor: pointer;
+}
+
+.right_part {
+	width: 345px;
+	margin: 0px;
+	padding: 0;
+	float: left;
+	padding: 40px 0 0 0;
+}
+.second_right_part {
+	width: 345px;
+	margin: 0px;
+	padding: 0;
+	float: left;
+	padding: 40px 0 0 0;
+}
+
+.login {
+	height: 356px;
+padding: 15px 30px 30px;
+width: 284px;
+border-left: 1px rgb(202, 200, 200) solid;
+border-right: 1px rgb(202, 200, 200) solid;
+border-bottom: 1px rgb(202, 200, 200) solid;
+border-top: 1px rgb(202, 200, 200) solid;
+background-color:rgb(236, 229, 229);
+}
+
+.login label {
+	margin: 15px 0 5px 0;
+	font-size: 16px;
+	width: 100%;
+	float: left;
+}
+
+.login input.username,.login input.password {
+	height: 28px;
+width: 277px;
+line-height: 28px;
+padding: 3px;
+margin: 26px 0px 0px 0px;
+float: left;
+}
+
+.login .signin_row {
+	padding: 0;
+	margin: 32px 0 0 0;
+	float: left;
+	width: 100%;
+}
+
+.login .signin {
+	padding: 0;
+	margin: 0;
+	float: left;
+	width: 85px;
+}
+
+.login input.signin_btn {
+	background: #4c90fd;
+	color: #fff;
+	font-size: 14px;
+	width: 61px;
+	text-align: center;
+	border: 0 none;
+	padding: 10px 0;
+	margin: 0;
+	float: left;
+	cursor: pointer;
+}
+
+.remember {
+	float: left;
+	margin-top: 10px;
+}
+
+.access_problem {
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+}
+
+.access_problem a {
+	text-decoration: none;
+	color: #000;
+}
+
+.access_problem a:hover {
+	text-decoration: underline;
+	color: #000;
+}
+
+.socialweb_login {
+	padding: 18px 30px 0;
+	width: 285px;
+	margin-top: 25px;
+	height: 57px;
+	background: #d3d2d3;
+}
+
+.socialweb_login h3 {
+	margin: 0px 40px 0 0;
+	float: left;
+}
+
+.socialweb_link {
+	margin-left: 0;
+	float: left;
+	width: 120px;
+}
+
+.weblink_row1,.weblink_row2 {
+	width: 100%;
+	float: left;
+}
+
+.weblink_row1 .website_icon,.weblink_row2 .website_icon {
+	float: left;
+	width: 30px;
+	margin: 2px 0 8px;
+}
+
+.footer_container {
+	width: 100%;
+	height: 21px;
+	padding: 15px 0 0;
+	//background: url(../images/footer_bg.jpg) repeat-x left top
+		;
+	font-size: 14px;
+}
+
+.copyright {
+	float: left;
+	margin-left: 66px;
+}
+
+.copyright span {
+	padding: 0 35px 0 0px;
+	color: #0f84ec;
+	font-family: applane;
+	font-size: 19px;
+	line-height: 12px;
+}
+
+.footer_link {
+	float: right;
+	margin-right: 33px;
+}
+
+.footer a {
+	text-decoration: none;
+	color: #000;
+	font-size: 14px;
+	margin: 0px;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}
+
+.footer_link a {
+	text-decoration: none;
+	color: #000;
+	font-size: 14px;
+	margin: 0 5px;
+}
+
