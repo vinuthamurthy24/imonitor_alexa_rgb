@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<controls>
+	<control>
+		<id>ZW_DEVICE_CONTROL</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.control.ZwDeviceControl</class>
+		<method>updateControl</method>		
+	</control>
+	
+	<control>
+		<id>ZW_GET_TEMPERATURE_VALUE</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.control.ZwDeviceControl</class>
+		<method>updateTemperature</method>		
+	</control>
+	
+	<control>
+		<id>REMOVE_DEVICE</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.control.RemoveDeviceControl</class>
+		<method>updateControl</method>		
+	</control>
+	
+	<control>
+		<id>IPC_CAMARA_UPDATION</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.control.CameraConfControl</class>
+		<method>updateControl</method>		
+	</control>
+	
+	<control>
+		<id>IPC_GET_LIVE_STREAM</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.control.CameraLiveStramControl</class>
+		<method>updateControl</method>		
+	</control>
+</controls>

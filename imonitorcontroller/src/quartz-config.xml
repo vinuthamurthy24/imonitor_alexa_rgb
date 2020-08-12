@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job-scheduling-data
+xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData 
+http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+version="1.8">
+ 
+<schedule>
+    <job>
+        <name>sampleaction</name>
+        <group>IMS</group>
+        <description>Check the contracts idle period</description>
+        <job-class>in.xpeditions.jawlin.imonitor.controller.action.sampleaction</job-class>
+    </job>
+    
+    <trigger>
+    <cron>
+        <name>sampleactionTr</name>
+        <group>IMS</group>
+        <job-name>sampleaction</job-name>
+        <job-group>IMS</job-group> 
+        <cron-expression>0 0 * * * ?</cron-expression>
+    </cron>
+    </trigger>
+    
+</schedule>
+<schedule>
+    <job>
+        <name>Every15Minuteaction</name>
+        <group>IMS</group>
+        <description>Check the contracts idle period</description>
+        <job-class>in.xpeditions.jawlin.imonitor.controller.action.EnergyConsumptionAction</job-class>
+    </job>
+    
+    <trigger>
+    <cron>
+        <name>Every15MinuteactionTr</name>
+        <group>IMS</group>
+        <job-name>Every15Minuteaction</job-name>
+        <job-group>IMS</job-group> 
+        <cron-expression>0 0/15 * * * ?</cron-expression>
+    </cron>
+    </trigger>
+    
+</schedule>
+<schedule>
+    <job>
+        <name>UpdateDevicedetailsInreporting</name>
+        <group>IMS</group>
+        <description>Check the contracts every 5 seconds</description>
+        <job-class>in.xpeditions.jawlin.imonitor.controller.action.UpdateDevicedetailsInreporting</job-class>
+    </job>
+
+    <trigger>
+      <simple>
+        <name>UpdateDevicedetailsInreportingTr</name>
+        <group>IMS</group>
+        <job-name>UpdateDevicedetailsInreporting</job-name>
+        <job-group>IMS</job-group>
+        <repeat-count>-1</repeat-count>
+        <repeat-interval>10000</repeat-interval>
+      </simple>
+    </trigger>
+</schedule>
+
+
+<schedule>
+    <job>
+        <name>Every24hoursAction</name>
+        <group>Every24hoursActionIMS</group>
+        <description>Check the contracts every 24 hours</description>
+        <job-class>in.xpeditions.jawlin.imonitor.controller.action.Every24hoursAction</job-class>
+    </job>
+
+    <trigger>
+    <cron>
+        <name>Every24hoursActionTr</name>
+        <group>Every24hoursActionIMS</group>
+        <job-name>Every24hoursAction</job-name>
+        <job-group>Every24hoursActionIMS</job-group> 
+        <cron-expression>0 0 0 * * ?</cron-expression>
+    </cron>
+    </trigger>
+</schedule>
+
+<!-- <schedule>
+    <job>
+        <name>IntimateCustomerAction</name>
+        <group>IntimateCustomerActionIMS</group>
+        <description>Check the contracts every 24 hours</description>
+        <job-class>in.xpeditions.jawlin.imonitor.controller.action.IntimateCustomerAction</job-class>
+    </job>
+
+    <trigger>
+    <cron>
+        <name>IntimateCustomerActionTr</name>
+        <group>IntimateCustomerActionIMS</group>
+        <job-name>IntimateCustomerAction</job-name>
+        <job-group>IntimateCustomerActionIMS</job-group> 
+        <cron-expression>0 30 0 * * ?</cron-expression>
+    </cron>
+    </trigger>
+</schedule> -->
+
+<schedule>
+    <job>
+        <name>ReportGatewayStatus</name>
+        <group>ReportGatewayStatusIMS</group>
+        <description>Send gateway status report every monday</description>
+        <job-class>in.xpeditions.jawlin.imonitor.controller.action.SendGatewayStatusReportAction</job-class>
+    </job>
+
+    <trigger>
+    <cron>
+        <name>ReportGatewayStatus</name>
+        <group>ReportGatewayStatusIMS</group>
+        <job-name>ReportGatewayStatus</job-name>
+        <job-group>ReportGatewayStatusIMS</job-group> 
+        <cron-expression>0 0 9 ? * MON</cron-expression>
+    </cron>
+    </trigger>
+</schedule>
+
+</job-scheduling-data>

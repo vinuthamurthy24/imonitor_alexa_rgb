@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-configuration>    
+    <session-factory>        
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/imonitor?useSSL=false</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Imonitor@1356</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dbcp.maxActive">20</property>
+        <property name="hibernate.dbcp.maxIdle">2</property>
+        <property name="hibernate.dbcp.maxWait">60000</property>
+        <property name="hibernate.dbcp.whenExhaustedAction">1</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <property name="show_sql">false</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.max_size" >20</property>
+        <property name="hibernate.c3p0.min_size">0</property>
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.max_statements">0</property>
+        <property name="hibernate.c3p0.timeout">100</property>
+      
+        
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/make.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/status.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/location.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/role.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/agent.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/gatewaytype.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/devicetype.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/alerttype.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/gateway.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/customer.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/user.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/device.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/deviceconfiguration.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/firmware.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/alertfromimvg.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/devicealert.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/rule.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/actiontype.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/usernotificationprofile.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/imvgalertnotification.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/imvgalertactions.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/uploadsbyimvg.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/schedule.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/scheduleactions.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/scenario.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/scenarioactions.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/panic.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/panicactions.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/panicalertnotification.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/systemalert.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/systemalertaction.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/timezone.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/icon.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/imvgLog.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/locationMap.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/userChoosenAlerts.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/systemIcon.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/forgotpasswordquestion.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/smsservices.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/smsreport.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/systemIntegrator.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/avblaster.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/avcategory.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/backupOfAlertsFromimvg.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/imvgalertnotificationforScedule.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/subuserdeviceaccess.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/subuserscenarioaccess.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/powerInformationFromImvg.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/energyInformationFromImvg.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/doorLockConfiguration.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/customerReports.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/severity.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/issueStatus.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/rootCause.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/customerServices.hbm.xml"/>
+      	<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/showTips.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/areacode.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/alertmonitor.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/alertstatus.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/alexa.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/googlehome.hbm.xml"/>
+	    <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/gatewayStatus.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/functions.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/action.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/newDeviceType.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/sceneControllerMake.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/keyconfiguration.hbm.xml"/>	
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/networkStats.hbm.xml"/>
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/zingGatewayList.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/modbusSlave.hbm.xml"/>
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/imvgsecurityactions.hbm.xml"/>
+		<!-- SuperUser -->
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/adminsuperuser.hbm.xml"/> 
+		<mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/customerandSuperUser.hbm.xml"/>
+		
+		 <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/pushNotification.hbm.xml"/> 
+		 
+		 <!-- SelfRegistration -->
+		 <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/otpSelfRegistration.hbm.xml"/> 
+	     <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/wallmote.hbm.xml"/> 
+	     
+	   <!--   alexa video control -->
+	    
+	     <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/avremotecontrol.hbm.xml"/> 
+</session-factory>    
+    
+</hibernate-configuration>

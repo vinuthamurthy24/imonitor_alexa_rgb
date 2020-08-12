@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.Customer" table="customer">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="customerId" unique-key="true" not-null="true"></property>
+    	<property name="firstName"></property>
+    	<property name="middleName"></property>
+    	<property name="lastName"></property>
+    	<property name="place"></property>
+    	<property name="post"></property>
+    	<property name="city"></property>
+    	<property name="province"></property>
+    	<property name="pincode"></property>	 
+    	<property name="phoneNumber"></property>
+    	<property name="email"></property>
+    	<property name="mobile"></property>
+    	<property name="dateOfRegistration"></property>
+    	<property name="dateOfInstallation"></property>
+    	<property name="dateOfExpiry"></property>
+    	
+    	<!-- sumit start: added 2 fields -->
+     	<property name="forgotPasswordAnswer"></property> 
+<!--     	<many-to-one name="quesId" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.ForgotPasswordHintQuestion" lazy="false"></many-to-one> -->
+    	<!-- sumit end -->
+    	
+    	<many-to-one name="status" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Status" lazy="false"></many-to-one>
+    	<many-to-one name="systemIntegrator" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.SystemIntegrator" lazy="false"></many-to-one>
+    	<many-to-one name="timeZone" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.TimeZone" lazy="false"></many-to-one>
+    	<property name="freeStorageMB"></property>
+    	<property name="paidStorageMB"></property>
+    	<property name="featuresEnabled"></property>
+    	<set name="users" inverse="true" lazy="true" cascade="all-delete-orphan">
+      		<key column="customer" />
+            <one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.User"/>
+        </set>
+    	<set name="gateWays" inverse="true" lazy="true">
+      		<key column="customer"/>
+            <one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.GateWay"/>
+        </set>
+    	<set name="locations" inverse="true" lazy="true" cascade="all-delete-orphan">
+      		<key column="customer"/>
+      		<one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Location" />
+        </set>
+    	<set name="userNotificationProfiles" inverse="true" lazy="true" cascade="all-delete-orphan">
+      		<key column="customer"/>
+      		<one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.UserNotificationProfile" />
+        </set>
+          <property name="backup"></property>
+          <property name="intimationCount"></property>
+          <many-to-one name="customerService" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.CustomerServices" lazy="false"></many-to-one>
+          <property name="smsThreshold"></property>
+           <property name="renewalDate"></property>
+            <property name="renewalDuration"></property>
+     </class>
+</hibernate-mapping>      
+   

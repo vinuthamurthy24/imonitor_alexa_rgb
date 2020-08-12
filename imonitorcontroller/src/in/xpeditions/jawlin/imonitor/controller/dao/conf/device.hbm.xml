@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.Device" table="device">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<properties name="devIdGateWay" unique="true">
+	    	<property name="deviceId"></property>
+	    	<many-to-one name="gateWay" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.GateWay" lazy="proxy"></many-to-one>
+    	</properties>
+    	<property name="generatedDeviceId" unique="true"></property>
+    	<property name="friendlyName"></property>
+    	<property name="batteryStatus"></property>
+    	<property name="modelNumber"></property>
+    	    	<!--  sumit start -->
+    	<property name="mode"></property>
+    	<property name="enableList"></property>
+    	<property name="posIdx"></property> <!-- Re-Ordering Of Device -->
+    	    	<!--  sumit end -->
+    	<many-to-one name="deviceType" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.DeviceType" lazy="proxy"></many-to-one>
+    	<property name="commandParam"></property>
+    	<many-to-one name="lastAlert" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.AlertType" lazy="proxy"></many-to-one>
+    	<many-to-one name="armStatus" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Status" lazy="proxy"></many-to-one>
+    	<many-to-one name="make" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Make" lazy="proxy"></many-to-one>
+    	<many-to-one name="location" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Location" lazy="proxy" cascade="none" not-null="true"></many-to-one>
+    	<many-to-one name="deviceConfiguration" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.DeviceConfiguration" lazy="proxy"></many-to-one>
+		
+   	<property name="enableStatus"></property>
+    	
+    	<many-to-one name="locationMap" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.LocationMap" lazy="proxy" cascade="all"></many-to-one>
+		
+
+    	<list name="rules" table="device_rules" cascade="all">
+    		<key column="deviceId" foreign-key="id"></key>
+    		<index column="idr"></index>
+    		<many-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Rule" column="ruleId" />
+    	</list>
+    	<set name="imvgAlertsActions" lazy="true" cascade="all">
+      		<key column="device" />
+            <one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.ImvgAlertsAction"/>
+        </set>
+    	<set name="alertsFromImvgs" lazy="true" cascade="all">
+      		<key column="device" />
+            <one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.AlertsFromImvg"/>
+        </set>
+		<many-to-one name="icon" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Icon" lazy="proxy"></many-to-one> 
+		<property name="switchType"></property> <!-- Rocker or Tact -->
+		<property name="pulseTimeOut"></property>
+     </class>
+</hibernate-mapping>

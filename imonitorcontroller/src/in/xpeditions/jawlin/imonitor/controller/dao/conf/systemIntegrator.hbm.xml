@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+	<class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.SystemIntegrator" table="systemIntegrator">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="systemIntegratorId" unique-key="true" ></property>
+    	<property name="name"></property>
+    	<property name="address"></property>
+    	<property name="city"></property>
+    	<property name="province"></property>
+    	<property name="pincode"></property>	 
+    	<property name="phoneNumber"></property>
+    	<property name="email"></property>
+    	<property name="mobile"></property>
+    	<many-to-one name="status" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Status" lazy="false"></many-to-one>
+    	<property name="logo"></property>
+    	<many-to-one name="agent" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Agent" lazy="proxy" cascade="none"></many-to-one>
+    </class>
+</hibernate-mapping>      
+   

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.Agent" table="agent">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="ip"></property>
+    	<property name="name"></property>
+    	<property name="balancerPort"></property>
+    	<property name="receiverPort"></property>
+    	<property name="controllerReceiverPort"></property>
+    	<property name="controllerBroadCasterPort"></property>
+    	<property name="streamingIp"></property>
+    	<property name="streamingPort"></property>
+    	<property name="rtspPort"></property>
+    	<property name="ftpIp"></property>
+    	<property name="ftpPort"></property>
+    	<property name="ftpNonSecurePort"></property>
+    	<property name="ftpUserName"></property>
+    	<property name="ftpPassword"></property>
+    	<many-to-one name="status" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Status" lazy="false" cascade="none"></many-to-one>
+    	<property name="location"></property>
+    	<property name="details"></property>
+     </class>
+</hibernate-mapping>      
+   

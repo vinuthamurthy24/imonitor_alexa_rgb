@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-configuration>    
+    <session-factory>        
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/reporting_database?useSSL=false</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Imonitor@1356</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dbcp.maxActive">20</property>
+        <property name="hibernate.dbcp.maxIdle">2</property>
+        <property name="hibernate.dbcp.maxWait">60000</property>
+        <property name="hibernate.dbcp.whenExhaustedAction">1</property>
+        <property name="current_session_context_class">thread</property>
+    <!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property> -->
+        <property name="show_sql">false</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.max_size" >20</property>
+        <property name="hibernate.c3p0.min_size">0</property>
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.max_statements">0</property>
+        <property name="hibernate.c3p0.timeout">100</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+    
+        
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/DevaiceDetails.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/powerinformation.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/powerinfo.hbm.xml"/> 
+        <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/targetcost.hbm.xml"/> 
+	    <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/TariffConfig.hbm.xml"/> 
+	    <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/instantpow.hbm.xml"/>
+	    <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/dashboardconfig.hbm.xml"/>
+	    <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/costdetails.hbm.xml"/> 
+	    <mapping resource="in/xpeditions/jawlin/imonitor/controller/dao/conf/energyConsumption.hbm.xml"/>       
+	   
+	</session-factory>    
+    
+</hibernate-configuration>

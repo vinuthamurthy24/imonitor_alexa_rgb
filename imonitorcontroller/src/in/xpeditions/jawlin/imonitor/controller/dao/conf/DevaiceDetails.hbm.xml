@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.DeviceDetails" table="devicedetails">  
+    	<!-- <cache usage="read-write"/> -->
+    	<cache usage="read-write"/>
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="did" unique="true"></property>
+	    <property name="deviceName" unique="true"></property>
+	    <property name="deviceIcon"></property>
+    	<property name="gateway"></property>
+    	<property name="locationName"></property>
+    	<property name="locationId"></property>
+    	<property name="enableList"></property>
+    	<property name="deviceType"></property>
+    	<property name="alertParam"></property>
+    	<property name="customer"></property>
+    	
+    	
+     </class>
+</hibernate-mapping>  

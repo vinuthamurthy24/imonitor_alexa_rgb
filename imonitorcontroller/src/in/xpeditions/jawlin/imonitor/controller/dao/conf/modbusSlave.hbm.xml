@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.ModbusSlave" table="Modbus_Slave">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="Connected_Units"></property>
+    	<property name="FriendlyName"></property>
+    	<property name="HAIF_Id"></property>
+    	<property name="enableStatus"></property>
+    	<property name="enableList"></property>
+    	<property name="posIdx"></property>
+    	<property name="SlaveId"></property>
+    	
+    	<many-to-one name="deviceId" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Device" lazy="proxy"></many-to-one>
+    	<many-to-one name="deviceType" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.DeviceType" lazy="proxy"></many-to-one>
+    	<many-to-one name="location" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Location" lazy="proxy"></many-to-one>
+    	<many-to-one name="icon" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Icon" lazy="proxy"></many-to-one>
+    	<many-to-one name="gateWay" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.GateWay" lazy="proxy"></many-to-one>
+    	<many-to-one name="locationMap" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.LocationMap" lazy="proxy"></many-to-one>
+     </class>
+</hibernate-mapping>      
+   

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<actions>
+	<action>
+		<id>SWITCH_ON</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.SwitchOnAction</class>
+	</action>
+	<action>
+		<id>SWITCH_OFF</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.SwitchOffAction</class>
+	</action>
+	<action>
+		<id>ACTIVATE_ALARM</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.SwitchOnAction</class>
+	</action>
+	<action>
+		<id>DEACTIVATE_ALARM</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.SwitchOffAction</class>
+	</action>
+	<action>
+		<id>CAPTURE_IMAGE</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.CaptureImageAction</class>
+	</action>
+	<action>
+		<id>PRESET</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.CameraMoveControlAction</class>
+	</action>
+	<action>
+		<id>START_RECORDING</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.GetStoredStreamAction</class>
+	</action>
+	<action>
+		<id>DIMMER_CHANGE</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.DimmerLevelChangeAction</class>
+	</action>
+	<action>
+		<id>GET_TEMPERATURE</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.RetrieveTemperatureAction</class>
+	</action>
+	<action>
+		<id>IMVG_REBOOT</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.IMVGRebootAction</class>
+	</action>
+	<action>
+		<id>AC_CONTROL</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.AcTempeartureControlAction</class>
+	</action>
+	<action>
+		<id>AC_ON</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.AcControlOnAction</class>
+	</action>
+	<action>
+		<id>AC_OFF</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.AcControlOffAction</class>
+	</action>
+	<action>
+		<id>CURTAIN_OPEN</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.CurtainOpenSliderAction</class>
+	</action>
+	<action>
+		<id>CURTAIN_CLOSE</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.CurtainCloseSliderAction</class>
+	</action>
+	<action>
+		<id>ENABLE_CAMERA</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.EnableAction</class>
+	</action>
+	<action>
+		<id>DISABLE_CAMERA</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.DisableAction</class>
+	</action>
+	<action>
+		<id>LOCK</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.Doorlock</class>
+	</action>
+	<action>
+		<id>UNLOCK</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.DoorUnlock</class>
+	</action>
+	
+	<action>
+		<id>AC_MODE</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.AcControlAction</class>
+	</action>
+
+
+<action>
+		<id>IDU_ONOFF</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.action.IndoorUnitActionControl</class>
+	</action>
+</actions>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.ImvgAlertsAction" table="imvgalertaction">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<many-to-one name="device" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Device" lazy="false"></many-to-one>
+    	<many-to-one name="actionType" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.ActionType" lazy="proxy"></many-to-one>
+    	<many-to-one name="rule" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Rule" lazy="proxy"></many-to-one>
+  		<property name="level"></property>
+  		<property name="afterDelay"></property>
+     </class>
+</hibernate-mapping>      
+   

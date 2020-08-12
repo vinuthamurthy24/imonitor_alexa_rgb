@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.User" table="user">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="userId" unique-key="true" not-null="true"></property>
+    	<property name="password"></property>
+    	<property name="forgetPassword"></property>
+    	<many-to-one name="role" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Role" lazy="proxy" cascade="none"></many-to-one>
+    	<many-to-one name="customer" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Customer" foreign-key="CustomerFK" lazy="proxy" not-null="true" cascade="none"></many-to-one>
+    	<many-to-one name="status" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Status" lazy="proxy" cascade="none"></many-to-one>
+    	<property name="registrationDate"></property>
+    	<property name="lastLoginTime"></property>
+    	<property name="currentLoginTime"></property>
+    	<property name="email"></property>
+    	<property name="mobile"></property>
+    	<property name="tempPassword"></property>
+    	<property name="expireDate"></property>
+    	<property name="showTips"></property>
+    	
+
+     </class>
+</hibernate-mapping>      
+   

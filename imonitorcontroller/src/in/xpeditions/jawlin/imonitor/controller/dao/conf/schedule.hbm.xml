@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.Schedule" table="schedule">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<!-- <properties name="lNameCId" unique="true"> -->
+	    	<property name="name"></property>
+	    	<many-to-one name="gateWay" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.GateWay" lazy="proxy"></many-to-one>
+    	<!-- </properties> -->
+    	<property name="scheduleTime"></property>
+    	<property name="description"></property>
+    	<!-- sumit start: Schedule Activate/De-Activate -->
+    	<property name="activationStatus"></property>
+    	<!-- sumit end: Schedule Activate/De-Activate -->
+    	<set name="scheduleActions" lazy="true" cascade="all">
+      		<key column="schedule" />
+            <one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.ScheduleAction"/>
+        </set>
+        <set name="imvgAlertNotificationsForScedule" lazy="true" cascade="all">
+      		<key column="schedule" />
+            <one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.ImvgAlertNotificationForScedule"/>
+        </set>
+        <property name="endSchedule"></property>
+        <property name="scheduleType"></property>
+     </class>
+</hibernate-mapping>      
+   

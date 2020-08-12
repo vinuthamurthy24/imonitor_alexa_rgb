@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.energyInformationFromImvg" table="energyInformationFromImvg">  
+    <!-- 	<cache usage="read-write"/> -->
+    	
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<many-to-one name="device" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Device" lazy="false" cascade="none"></many-to-one>
+    	<many-to-one name="alertType" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.AlertType" lazy="false" cascade="none"></many-to-one>
+    	<property name="alertTime"></property>
+    	 <property name="alarmStatus"></property>
+    	 <property name="alertValue"></property>
+    	 <!-- <set name="uploadsByImvgs"  lazy="true">
+    		<key column="alertsFromImvg"/>
+    		<one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.UploadsByImvg"/>
+    	</set> -->
+     </class>
+</hibernate-mapping>      

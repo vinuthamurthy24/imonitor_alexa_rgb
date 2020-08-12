@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<notifications>
+	<notification>
+		<id>SMS</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.notifications.SmsNotifications</class>
+		<method>notify</method>		
+	</notification>
+	<notification>
+		<id>E-Mail</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.notifications.EMailNotifications</class>
+		<method>notify</method>		
+	</notification>
+	
+	
+	<notification>
+		<id>EmailAndSMS</id>
+		<class>in.xpeditions.jawlin.imonitor.controller.notifications.EMailNotifications</class>
+		<method>notify</method>		
+	</notification>
+	
+</notifications>

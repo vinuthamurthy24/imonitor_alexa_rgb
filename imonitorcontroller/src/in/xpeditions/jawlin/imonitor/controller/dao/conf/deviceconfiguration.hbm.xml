@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.DeviceConfiguration" table="deviceconfiguration">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.CameraConfiguration" table="cameraconfiguration">
+    		<key column="id"></key>
+	    	<property name="jpegResolution"></property>
+	    	<property name="jpegQuality"></property>
+	    	<property name="videoColorBalance"></property>
+	    	<property name="videoBrightness"></property>
+	    	<property name="videoSharpness"></property>
+	    	<property name="videoHue"></property>
+	    	<property name="videoSaturation"></property>
+	    	<property name="videoContrast"></property>
+	    	<property name="videoAcFrequency"></property>
+	    	<property name="mpeg4Resolution"></property>
+	    	<property name="mpeg4QualityControl"></property>
+	    	<property name="mpeg4QualityLevel"></property>
+	    	<property name="mpeg4BitRate"></property>
+	    	<property name="mpeg4FrameRate"></property>
+	    	<property name="mpeg4BandWidth"></property>
+	    	<property name="pantiltControl"></property>
+	    	<property name="pantiltVsMotionArbitration"></property>
+	    	<property name="pantiltPatrolStyle"></property>
+	    	<property name="pantiltPanSpeed"></property>
+	    	<property name="pantiltTiltSpeed"></property>
+	    	<property name="controlPantilt"></property>
+	    	<property name="networkMode"></property>
+	    	<property name="adminUserName"></property>
+	    	<property name="adminPassword"></property>
+	    	<property name="systemNightVisionControl"></property>
+	    	<property name="systemPrivacyControl"></property>
+	    	<property name="systemPirControl"></property>
+	    	<property name="motionDetectionWindow"></property>
+	    	<property name="controlNightVision">       </property>
+
+<property name="presetvalue"></property>
+	    	<!-- sumit start: Camera Orientation -->
+	    	<property name="cameraOrientation"></property>
+	    	<!-- sumit end: Camera Orientation -->
+    	</joined-subclass>
+    	<joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.H264CameraConfiguration" table="h264cameraconfiguration">
+    		<key column="id"></key>
+	    	<property name="videoBrightness"></property>
+	    	<property name="videoContrast"></property>
+	    	<property name="videoAcFrequency"></property>
+	    	<property name="videoFrameRate"></property>
+	    	<property name="videoResolution"></property>
+	    	<property name="videoQuality"></property>
+	    	<property name="videoBitRate"></property>
+	    	<property name="videoBitRateMode"></property>
+	    	<property name="videoKeyFrame"></property>
+	    	<property name="ledMode"></property>
+	    	<property name="ptzPatrolRate"></property>
+	    	<property name="ptzPatrolUpRate"></property>
+	    	<property name="ptzPatrolDownRate"></property>
+	    	<property name="ptzPatrolLeftRate"></property>
+	    	<property name="ptzPatrolRightRate"></property>
+	    	<property name="adminUserName"></property>
+	    	<property name="adminPassword"></property>
+	    	<property name="pantiltControl"></property>
+	    	<property name="controlNightVision"></property>
+	    	<!-- sumit start: Camera Orientation -->
+	    	<property name="cameraOrientation"></property>
+	    	<!-- sumit end: Camera Orientation -->
+	    	<property name="presetvalue"></property>
+	    	
+    	</joined-subclass>
+    	<joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.MotorConfiguration" table="motorconfiguration">
+    		<key column="id"></key>
+	    	<property name="length"></property>
+	    	<property name="mountingtype"></property>
+	    </joined-subclass>
+	    <!-- sumit start: ZXT120 Temperature Sensor -->
+	    <joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.PIRConfiguration" table="pirconfiguration">
+	    	<key column="id"></key>
+	    	<property name="noMotionDetectionTimeOut"></property>    
+	    	<property name="pollingInterval"></property>
+	    </joined-subclass>
+	    <!-- sumit end: ZXT120 Temperature Sensor -->
+     <!-- bhavya start: LCD Remote -->
+	    <joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.LCDRemoteConfiguration" table="lcdremoteconfiguration">
+	    	<key column="id"></key>
+	    	<property name="f1"></property>    
+	    	<property name="f2"></property>
+	    	<property name="f3"></property>
+	    </joined-subclass>
+	    <!-- bhavya end: LCD Remoter -->
+	     <!-- bhavya start: acThermostat -->
+	    <joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.acConfiguration" table="acConfiguration">
+	    	<key column="id"></key>
+	    	<property name="pollingInterval"></property>
+	    	<property name="fanModeValue"></property>   
+	    	<property name="fanMode"></property>
+	    	<property name="acSwing"></property>
+	    	<property name="acLearnValue"></property>
+	    	<property name="sensedTemperature"></property>    
+	    	  
+	    </joined-subclass>
+	    <!-- bhavya end: acThermostat -->
+	    <!-- Naveen start: minnimoteConfiguration -->
+	    <joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.MinimoteConfig" table="minimoteconfiguration">
+	    	<key column="id"></key>
+	    	<property name="buttonone"></property>
+	    	<property name="buttontwo"></property>   
+	    	<property name="buttonthree"></property>
+	    	<property name="buttonfour"></property>
+	    	 
+	    	
+	    </joined-subclass>
+	    <!-- Naveen end: minimoteConfiguration -->
+	    
+	     <!-- Indoor Unit Configuration -->
+	    <joined-subclass name="in.xpeditions.jawlin.imonitor.controller.dao.entity.IndoorUnitConfiguration" table="Indoor_Unit_Configuration">
+	    	<key column="id"></key>
+	    	<property name="fanModeCapability"></property>
+	    	<property name="coolModeCapability"></property>   
+	    	<property name="heatModeCapability"></property>
+	    	<property name="autoModeCapability"></property>
+	    	<property name="dryModeCapability"></property>
+	    	<property name="fanDirectionLevelCapability"></property>
+	    	<property name="fanDirectionCapability"></property>
+	    	<property name="fanVolumeLevelCapability"></property>
+	    	<property name="fanVolumeCapability"></property>
+	    	<property name="coolingUpperlimit"></property>
+	    	<property name="coolingLowerlimit"></property>
+	    	<property name="heatingUpperlimit"></property>
+	    	<property name="heatingLowerlimit"></property>
+	    	<property name="ConnectStatus"></property>
+	    	<property name="CommStatus"></property>
+	    	<property name="fanModeValue"></property>
+	    	<property name="sensedTemperature"></property>
+	    	<property name="fanVolumeValue"></property>
+	    	<property name="fanDirectionValue"></property>
+	    	<property name="errorMessage"></property>
+	    	<property name="filterSignStatus"></property>
+	    	<property name="temperatureValue"></property>
+	    </joined-subclass>
+	     <!-- Indoor Unit Configuration -->
+	    
+     </class>
+</hibernate-mapping>      
+   

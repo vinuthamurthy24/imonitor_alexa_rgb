@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.AlertMonitor" table="alertMonitor">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	
+    	<property name="alertTime"></property>
+    	<many-to-one name="areaCode" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.AreaCode" lazy="false"></many-to-one>
+    	<many-to-one name="customer" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Customer"></many-to-one>
+    	<many-to-one name="rule" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Rule" lazy="false"></many-to-one>
+        <many-to-one name="alertStatus" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.AlertStatus" lazy="false"></many-to-one>
+        <property name="attended"></property>
+        <property name="contactnumber"></property>
+     </class>
+</hibernate-mapping>      

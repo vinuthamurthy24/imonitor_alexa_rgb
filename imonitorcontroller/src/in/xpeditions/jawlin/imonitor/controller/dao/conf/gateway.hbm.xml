@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.GateWay" table="gateway">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="macId" unique-key="true" not-null="true"></property>
+    	<property name="localIp"></property>
+    	<!--  sumit start -->
+    	<property name="currentMode"></property>
+    	<property name="delayHome"></property>
+    	<property name="delayStay"></property>
+    	<property name="delayAway"></property>
+    	<many-to-one name="alertDevice" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Device" lazy="false"></many-to-one>
+    	<!--  sumit end -->
+    	<many-to-one name="gateWayType" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.GateWayType"></many-to-one>
+    	<many-to-one name="status" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Status" lazy="false"></many-to-one>
+    	<property name="entryDate"></property>
+    	<property name="remarks"></property>
+    	<many-to-one name="agent" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Agent"></many-to-one>
+    	<many-to-one name="customer" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Customer" foreign-key="CustomerFK" not-null="false" cascade="none"></many-to-one>
+    	<set name="devices" inverse="true" lazy="true">
+      		<key column="gateWay" />
+            <one-to-many class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Device" />
+        </set>
+     <property name="maintenancemode"></property>
+     <property name="gateWayVersion"></property>
+     <property name="allOnOffStatus"></property>
+      <property name="name"></property>
+      <property name="SSID"></property>
+     
+     </class>
+</hibernate-mapping>      

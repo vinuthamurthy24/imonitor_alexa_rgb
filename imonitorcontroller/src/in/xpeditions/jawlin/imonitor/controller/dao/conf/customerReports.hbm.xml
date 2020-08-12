@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.CustomerReport" table="customerReports">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<many-to-one name="customerId" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Customer" foreign-key="CustomerFK" lazy="proxy" not-null="true" cascade="none"></many-to-one>
+         <property name="reportPerson"></property>
+         <property name="reportedDate"></property>
+         <many-to-one name="severity" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Severity"></many-to-one>
+         <property name="issueDescription"></property>
+         <property name="resolution"></property>
+         <property name="resolutionDate"></property>
+         <property name="allocatedPerson"></property>
+         <property name="action"></property>
+         <property name="actionDate"></property>
+          <many-to-one name="finalState" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.IssueStatus"></many-to-one>
+          <property name="finalDate"></property>
+         <many-to-one name="rootCause" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.RootCause"></many-to-one>
+          <property name="otherCause"></property>
+         <!--  <property name="type"></property> -->
+     </class>
+</hibernate-mapping>      
+   

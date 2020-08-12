@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.instantpow" table="instantpowerinformation">  
+    	
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="device"></property> 
+    	<property name="alertType"></property>
+    	<property name="alertTime"></property>
+    	<property name="alarmStatus"></property>
+        <property name="alertValue"></property>
+    	<property name="alertTypeName"></property>
+    	<property name="generatedDeviceId" unique="true"></property>
+     </class>
+</hibernate-mapping>

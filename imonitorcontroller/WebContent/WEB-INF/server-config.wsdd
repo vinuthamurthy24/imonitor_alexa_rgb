@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<globalConfiguration>
+		<parameter name="adminPassword" value="xpeditons@112233" />
+		<parameter name="attachments.Directory" value="./attachments" />
+		<parameter name="attachments.implementation"
+			value="org.apache.axis.attachments.AttachmentsImpl" />
+		<parameter name="sendXsiTypes" value="true" />
+		<parameter name="sendMultiRefs" value="true" />
+		<parameter name="sendXMLDeclaration" value="true" />
+		<parameter name="axis.sendMinimizedElements" value="true" />
+		<requestFlow>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="session" />
+			</handler>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="request" />
+				<parameter name="extension" value=".jwr" />
+			</handler>
+		</requestFlow>
+	</globalConfiguration>
+	<handler name="LocalResponder"
+		type="java:org.apache.axis.transport.local.LocalResponder" />
+	<handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" />
+	<handler name="Authenticate"
+		type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" />
+	<service name="AdminService" provider="java:MSG">
+		<parameter name="allowedMethods" value="AdminService" />
+		<parameter name="enableRemoteAdmin" value="false" />
+		<parameter name="className" value="org.apache.axis.utils.Admin" />
+		<namespace>http://xml.apache.org/axis/wsdd/</namespace>
+	</service>
+	<service name="Version" provider="java:RPC">
+		<parameter name="allowedMethods" value="getVersion" />
+		<parameter name="className" value="org.apache.axis.Version" />
+	</service>
+	
+	<service name="loginService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.LoginServiceManager" />
+	</service>
+
+    <service name="DashboardService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.DashboardServiceManager" />
+	</service>
+    
+
+	<service name="installService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.InstallServiceManager" />
+	</service>
+	
+	<service name="authenticationService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.AuthenticationServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list gateway types -->
+	<service name="gateWayTypeService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.GatewayTypeServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list make -->
+	<service name="makeService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.MakeServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list gateway -->
+	<service name="gateWayService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.GatewayServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list agent -->
+	<service name="agentService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.AgentServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list status-->
+	<service name="statusService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.StatusServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list customer-->
+	<service name="customerService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.CustomerServiceManager" />
+	</service>
+	
+		<!--To list and add delete System  alert	-->
+		
+		<service name="systemAlertService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.SystemAlertServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list user-->
+	<service name="userService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.UserServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list role-->
+	<service name="roleService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.RoleServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list control-->
+	<!--<service name="commandService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.CommandServiceManager" />
+	</service>
+	
+	--><!-- To save/update/delete/list event-->
+	<service name="customerService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.CustomerServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list devicetype-->
+	<service name="deviceTypeService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.DeviceTypeServiceManager" />
+	</service>
+	
+	<!-- To save/update/delete/list device-->
+	<service name="deviceService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.DeviceServiceManager" />
+	</service>
+
+	<service name="deviceControlService" provider="java:RPC">
+		<parameter name="allowedMethods" value="controlDevice" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.DeviceControlServiceManager" />
+	</service>
+
+	<service name="deviceConfigurationService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.DeviceConfigurationServiceManager" />
+	</service>
+	
+	<service name="locationService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.LocationServiceManager" />
+	</service>
+	
+	<!-- Icon Selection for Device based on DeviceType -->
+	<service name="iconService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*"/>
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.IconServiceManager" />
+	</service>
+	
+	<service name="commandIssueService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.CommandIssueServiceManager" />
+	</service>
+	
+	<service name="eventService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.EventServiceManager" />
+	</service>
+
+	<service name="alertService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.AlertServiceManager" />
+	</service>
+	
+	<service name="cameraStreamingService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.CameraStreamingServiceManager" />
+	</service>
+	<service name="firmWareService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.FirmWareServiceManager" />
+	</service>
+	<service name="actionTypeService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.ActionTypeServiceManager" />
+	</service>
+	<service name="systemNotificaionService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.SystemNotificaionServiceManager" />
+	</service>
+	<service name="ruleService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.RuleServiceManager" />
+	</service>
+	
+	<service name="panicService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.PanicServiceManager" />
+	</service>
+
+	<service name="scheduleService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.ScheduleServiceManager" />
+	</service>
+
+	<service name="scenarioService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.ScenarioServiceManager" />
+	</service>
+
+
+	<service name="alertsFromImvgService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.AlertsFromImvgServiceManager" />
+	</service>
+	<service name="voicecontrolservice" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.VoiceControlServices" />
+	</service>
+	<service name="mobileService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.MobileServiceManager" />
+	</service>
+	
+	<service name="midService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.MidServiceManager" />
+	</service>
+	
+	<service name="serverConfiguration" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.ServerConfigurationSevice" />
+	</service>
+	
+	<!-- ************************************** sumit start : System Integrator ************************************* -->
+	<service name="systemIntegratorService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*"></parameter>
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.SystemIntegratorServiceManager"></parameter>
+	</service>
+	<!-- ************************************** sumit end : System Integrator ************************************* -->
+	
+
+	<service name="avBlasterService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.AVBlasterSevice" />
+	</service>
+		
+	<!-- To save/update/delete/list customer-->
+	<service name="apiUserService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.ApiUserServiceManager" />
+	</service>
+	
+	<service name="alexaService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.AlexaServiceManager" />
+	</service>
+	
+	<service name="superUserService" provider="java:RPC">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="in.xpeditions.jawlin.imonitor.controller.service.SuperUserServiceManager" />
+	</service>
+	
+	
+		
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+</deployment>

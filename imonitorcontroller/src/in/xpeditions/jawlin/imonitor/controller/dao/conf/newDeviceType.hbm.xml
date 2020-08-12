@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.NewDeviceType" table="newDeviceType">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="deviceType"></property>
+    	<property name="deviceTypeNumber"></property>
+    	<property name="basicDeviceClass"></property>
+    	<property name="genericDeviceClass"></property>
+    	<property name="specificDeviceClass"></property>
+    	<property name="supportedClass"></property>
+    	<property name="manufacturerId"></property>
+    	<property name="productId"></property>
+    	<property name="modelNumber"></property>
+     </class>
+</hibernate-mapping>      
+   

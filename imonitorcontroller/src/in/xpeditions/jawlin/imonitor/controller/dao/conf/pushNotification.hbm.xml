@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<hibernate-mapping>
+    <class name="in.xpeditions.jawlin.imonitor.controller.dao.entity.PushNotification" table="pushNotification">  
+    	<id name="id" column="id">
+    		<generator class="native"></generator>
+    	</id>
+    	<many-to-one name="customer" class="in.xpeditions.jawlin.imonitor.controller.dao.entity.Customer" lazy="proxy"></many-to-one>
+    	<property name="deviceToken"></property>
+    	<property name="deviceType"></property>	
+    	<property name="ImeiNumber"></property>	
+    	<property name="appName"></property>
+    
+     </class>
+</hibernate-mapping>      
+   
