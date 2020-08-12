@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+	<event>
+		<id>MAINTENANCE_SHUTDOWN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ShutdownEventUpdater</class>
+		<method>updateEvent</method>
+	</event>
+	<event>
+		<id>PANIC_CHANNEL_UP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ImvgWanIpUpdator</class>
+		<method>panicChannelUp</method>
+	</event>
+	<event>
+		<id>EXCUTE_USER_COMMAND_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ExecuteCommandEvent</class>
+		<method>updateExcuteCommandSuccess</method>
+	</event>
+	<event>
+		<id>EXCUTE_USER_COMMAND_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ExecuteCommandEvent</class>
+		<method>updateExcuteCommandFail</method>
+	</event>
+</events>

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<alerts>
+	<alert>
+		<id>IMVG_UP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ImvgUpAlert</class>
+		<method>updateIMVGUpAlert</method>
+	</alert>
+	<alert>
+		<id>IMVG_DOWN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ImvgUpAlert</class>
+		<method>updateDownAlert</method>
+	</alert>
+	
+	<alert>
+		<id>DEVICE_UP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceAlert</class>
+		<method>updateUpAlert</method>
+	</alert>
+	
+	<alert>
+		<id>DEVICE_DOWN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceAlert</class>
+		<method>updateDownAlert</method>
+	</alert>
+	
+	<alert>
+		<id>DEVICE_REMOVED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceAlert</class>
+		<method>updateRemoveAlert</method>
+	</alert>
+	
+	<alert>
+		<id>CONFIG_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ConfigurationAlert</class>
+		<method>updateSuccessAlert</method>
+	</alert>
+	
+	<alert>
+		<id>CONFIG_PARTIAL_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ConfigurationAlert</class>
+		<method>updatePartialSuccessAlert</method>
+	</alert>
+	
+	<alert>
+		<id>CONFIG_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ConfigurationAlert</class>
+		<method>updateFailureAlert</method>
+	</alert>
+	
+	<alert>
+		<id>DEFAULT_CONFIG_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ConfigurationAlert</class>
+		<method>updateDefaultSuccessAlert</method>
+	</alert>
+	
+	<alert>
+		<id>DEFAULT_CONFIG_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ConfigurationAlert</class>
+		<method>updateDefaultFailureAlert</method>
+	</alert>
+	//BHAVYA start
+	<alert>
+		<id>MONITOR_DEVICE_HEALTH_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceHealthScanUpdateAlert</class>
+		<method>UpdateScanHealthDeviceSuccess</method>
+	</alert>
+	
+	<alert>
+		<id>MONITOR_DEVICE_HEALTH_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceHealthScanUpdateAlert</class>
+		<method>UpdateScanHealthDeviceFailed</method>
+	</alert>
+	
+	
+	
+	<alert>
+		<id>PWR_LMT_REACHED_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.PowerLimitReachedUpdateAlert</class>
+		<method>UpdatePowerLimitReachedSuccess</method>
+	</alert>
+	
+	<alert>
+		<id>PWR_LMT_REACHED_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.PowerLimitReachedUpdateAlert</class>
+		<method>UpdatePowerLimitReachedFailed</method>
+	</alert>
+	
+	
+	//BHAVYA end
+	
+	<alert>
+		<id>MOTION_DETECTED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.MotionDetectionAlert</class>
+		<method>updateMotionDetectionAlert</method>
+	</alert>
+	<!-- sumit start: No Motion alert -->
+	<alert>
+		<id>NOMOTION_DETECTED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.MotionDetectionAlert</class>
+		<method>updateNoMotionDetectionAlert</method>
+	</alert>
+	<!-- sumit end -->
+	<alert>
+		<id>IMAGE_FTP_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.CaptureImageAlert</class>
+		<method>updateCaptureImageSuccess</method>
+	</alert>
+	
+	<alert>
+		<id>IMAGE_FTP_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.CaptureImageAlert</class>
+		<method>updateCaptureImageFailure</method>
+	</alert>
+	
+	<alert>
+		<id>DOOR_OPEN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DoorAlert</class>
+		<method>updateDoorOpen</method>
+	</alert>
+	
+	<alert>
+		<id>DOOR_CLOSE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DoorAlert</class>
+		<method>updateDoorClose</method>
+	</alert>
+
+	<!-- vibhu start -->
+	<alert>
+		<id>REQUEST_NEIGHBOR_UPDATE_STARTED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateStart</method>
+	</alert>
+	
+	<alert>
+		<id>REQUEST_NEIGHBOR_UPDATE_DONE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateDone</method>
+	</alert>
+	
+	<alert>
+		<id>REQUEST_NEIGHBOR_UPDATE_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateFailed</method>
+	</alert>
+	
+	<!-- vibhu end -->
+
+	<alert>
+		<id>GETLOGS_UPLOAD_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.UploadLog</class>
+		<method>UploadLogSucess</method>
+	</alert>	
+	
+	<alert>
+		<id>DOOR_LOCK_CLOSE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DoorAlert</class>
+		<method>updateDoorLockClose</method>
+	</alert>
+	
+	<alert>
+		<id>DOOR_LOCK_OPEN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DoorAlert</class>
+		<method>updateDoorLockOpen</method>
+	</alert>
+	
+	<alert>
+		<id>BATTERY_STATUS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.BatteryStatusAlert</class>
+		<method>updateBatteryStatus</method>
+	</alert>
+	
+	<alert>
+		<id>PANIC_SITUATION</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.PanicAlert</class>
+		<method>updatePanic</method>
+	</alert>
+	
+	<alert>
+		<id>DEVICE_STATE_CHANGED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceStateChanged</class>
+		<method>updateDeviceState</method>
+	</alert>
+	
+	<!-- CameraStatusChanged -->
+	<alert>
+		<id>CAMERA_STATE_CHANGED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.CameraStatusChanged</class>
+		<method>updateCameraStatus</method>
+	</alert>	
+	<!-- CameraStatusChanged ends -->
+	
+	<alert>
+		<id>DEVICE_ARM</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>armADevice</method>
+	</alert>
+	
+	<alert>
+		<id>DEVICE_DISARM</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>disarmADevice</method>
+	</alert>
+	
+	<alert>
+		<id>ARM_DEVICES</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>armAllDevices</method>
+	</alert>
+	
+	<alert>
+		<id>DISARM_DEVICES</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>disarmAllDevices</method>
+	</alert>
+<!-- ARM/DISARM/STAY start -->
+	<alert>
+		<id>ARM_DEVICES_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>armAllDevices</method>
+	</alert>
+	
+	<alert>
+		<id>DISARM_DEVICES_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>disarmAllDevices</method>
+	</alert>
+	<alert>
+		<id>STAY_DEVICES_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>armStayDevices</method>
+	</alert>
+	<alert>
+		<id>ARM_DEVICES_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>armDevicesFailure</method>
+	</alert>
+	
+	<alert>
+		<id>DISARM_DEVICES_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>disarmDevicesFailure</method>
+	</alert>
+	<alert>
+		<id>STAY_DEVICES_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ArmDisarmHandler</class>
+		<method>armStayDevicesFailure</method>
+	</alert>	
+<!-- ARM/DISARM/STAY end -->
+	<!-- sumit start: SHOCK DETECTED -->
+	<alert>
+	    <id>SHOCK_DETECTED</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.SensorDeviceHandler</class>
+	    <method>updateShockDetected</method>
+	</alert>
+	<alert>
+	    <id>SHOCK_STOPPED</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.SensorDeviceHandler</class>
+	    <method>updateShockStopped</method>
+	</alert>
+	<!-- sumit end: SHOCK DETECTED -->
+	<!-- sumit start: SMOKE SENSED -->
+	<alert>
+	    <id>SMOKE_SENSED</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.SensorDeviceHandler</class>
+	    <method>updateSmokeDetected</method>
+	</alert>
+	<alert>
+	    <id>SMOKE_CLEARED</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.SensorDeviceHandler</class>
+	    <method>updateSmokeCleared</method>
+	</alert>
+	<!-- sumit end: SMOKE SENSED -->
+
+<!-- bhavya start: HMD device -->
+	<alert>
+	    <id>HMD_WARNING</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.HMDDeviceHandler</class>
+	    <method>updateHMDWarning</method>
+	</alert>
+	<alert>
+	    <id>HMD_NORMAL</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.HMDDeviceHandler</class>
+	    <method>updateHMDNormal</method>
+	</alert>
+	<alert>
+	    <id>HMD_FAILURE</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.HMDDeviceHandler</class>
+	    <method>updateHMDFailure</method>
+	</alert>
+	<alert>
+	    <id>POWER_INFORMATION</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.HMDDeviceHandler</class>
+	    <method>updateHMDPowerInformation</method>
+	</alert>
+	<!-- abhi started: HMD energy consumption -->
+	<alert>
+	    <id>ENERGY_INFORMATION</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.HMDDeviceHandler</class>
+	    <method>updateHMDEnergyInformation</method>
+	</alert>
+	
+	<!-- abhi end: HMD energy consumption -->		
+	<!-- bhavya end: HMD device -->		
+	<!-- sumit start: ZXT120 TEMPERATURE_CHANGE -->
+	<alert>
+	    <id>TEMPERATURE_CHANGE</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.SensorDeviceHandler</class>
+	    <method>updateTemperatureChange</method>
+	</alert>
+	<!-- sumit end: ZXT120 TEMPERATURE_CHANGE -->
+	<!-- sumit start: UPDATE_IMVG_WAN_IP -->
+	<alert>
+	    <id>UPDATE_IMVG_WAN_IP</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.GenericAlertAck</class>
+	    <method>updateImvgWanIp</method>
+	</alert>
+	<!-- sumit start: UPDATE_IMVG_WAN_IP -->
+		<!-- sumit start: FIRMWARE_UPGRADE SUCCESS/FAILURE -->
+	<alert>
+	    <id>FIRMWARE_UPGRADE_SUCCESSFULL</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.FirmwareUpgradeHandler</class>
+		<method>updateFirmwareUpgradeSuccessful</method>
+	</alert>
+	<alert>
+	    <id>FIRMWARE_UPGRADE_UNSUCCESSFULL</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.FirmwareUpgradeHandler</class>
+		<method>updateFirmwareUpgradeFailure</method>
+	</alert>
+	<!-- sumit end: FIRMWARE_UPGRADE SUCCESS/FAILURE -->
+	
+	<alert>
+	    <id>REMOVE_FAILNODE_SUCCESS</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.GenericAlertAck</class>
+	    <method>updateImvgWanIp</method>
+	</alert>
+		
+	<alert>
+	    <id>LUXLEVEL_CHANGE</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.alert.SensorDeviceHandler</class>
+	    <method>updateLUXDeviceParam</method>
+	</alert>
+	<alert>
+		<id>REQUEST_CONFIGURATION_STARTED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateStart</method>
+	</alert>
+	<alert>
+		<id>REQUEST_CONFIGURATION_DONE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateDone</method>
+	</alert>
+	
+	<alert>
+		<id>REQUEST_CONFIGURATION_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateFailed</method>
+	</alert>
+	
+	<alert>
+	<id>REQUEST_ASSOCIATION_STARTED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateStart</method>
+	</alert>
+	
+	<alert>
+		<id>REQUEST_ASSOCIATION_DONE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateDone</method>
+	</alert>
+	<alert>
+		<id>REQUEST_ASSOCIATION_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateFailed</method>
+	</alert>
+	
+	
+	
+	<alert>
+		<id>SCHEDULE_EXEC_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ScheduleExecAlert</class>
+		<method>updateScheduleExecSuccess</method>
+	</alert>
+	
+	<alert>
+		<id>SCHEDULE_EXEC_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ScheduleExecAlert</class>
+		<method>updateScheduleExecFailure</method>
+	</alert>
+	
+	
+	<alert>
+		<id>NEW_ALARM</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DoorAlert</class>
+		<method>updateNewAlarm</method>
+	</alert>
+	
+	<alert>
+		<id>ASSIGN_RETURN_ROUTE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateFailed</method>
+	</alert>
+	
+	<alert>
+		<id>ASSIGN_RETURN_ROUTE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateDone</method>
+	</alert>
+	
+	<alert>
+		<id>ASSIGN_RETURN_NO_ROUTE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateStart</method>
+	</alert>
+	
+	<alert>
+		<id>NORMAL_SWITCH_CONFIG_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateDone</method>
+	</alert>
+	
+	<alert>
+		<id>NORMAL_SWITCH_CONFIG_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateFailed</method>
+	</alert>
+	
+	<alert>
+		<id>ROUTING_INFO_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateDone</method>
+	</alert>
+	
+	<alert>
+		<id>NODE_PROTOCOL_INFO_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.NeighborUpdateAlert</class>
+		<method>updateNUpdateDone</method>
+	</alert>
+	
+   <alert>
+		<id>PMLEVEL_CHANGE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.SensorDeviceHandler</class>
+		<method>PmDevicealerthandle</method>
+	</alert>
+	
+	 <alert>
+		<id>SYNC_STATUS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceAlert</class>
+		<!-- <class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class> -->
+		<method>updateSyncStatus</method>
+	</alert>
+
+<alert>
+		<id>INDOORUNIT_STATUS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.ModBusAlertUpdator</class>
+		<method>indoorStatusAlert</method>
+	</alert>
+	
+	<alert>
+		<id>SLAVE_UP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceAlert</class>
+		<method>updateUpAlert</method>
+	</alert>
+	
+	<alert>
+		<id>SLAVE_DOWN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceAlert</class>
+		<method>updateDownAlert</method>
+	</alert>
+	
+	<!-- Added by Naveen
+	To show alert of which door is opened when schedule is executed
+	13th May 2018 -->
+	<alert>
+		<id>DOOR_IS_OPENED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DoorAlert</class>
+		<method>updateDoorOpenAfterScheduleExecution</method>
+	</alert>
+
+	</alerts>

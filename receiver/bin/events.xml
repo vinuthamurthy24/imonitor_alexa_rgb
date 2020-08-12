@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<events>
+<!-- EditMode Event start -->	
+	<event>
+		<id>EDIT_MODE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.EditModeEvent</class>
+		<method>editModeEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>EDIT_MODE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.EditModeEvent</class>
+		<method>editModeEventFailure</method>
+	</event>
+<!-- EditMode Event end -->
+	<event>
+		<id>IMVG_UNREGISTER_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RegisterEventUpdater</class>
+		<method>updateUnRegisterEvent</method>
+	</event>
+	
+	<event>
+		<id>IMVG_KEEP_ALIVE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.KeepAliveEventUpdater</class>
+		<method>updateEvent</method>
+	</event>
+	
+	<event>
+		<id>DISCOVER_DEVICES_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DiscoverDeviceUpdater</class>
+		<method>updateGateWay</method>
+	</event>
+
+	<event>
+		<id>DEVICE_DISCOVERED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DiscoverDeviceUpdater</class>
+		<method>updateEvent</method>
+	</event>
+
+<event>
+		<id>ABORT_MODE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DiscoverDeviceUpdater</class>
+		<method>abortMode</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_ALERT</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceAlertEvent</class>
+		<method>handleAlert</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_CONTROL_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_CONTROL_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	<event>
+		<id>EXECUTE_SCENARIO_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateExecuteScenarioSuccess</method>
+	</event>
+	
+	<event>
+		<id>EXECUTE_SCENARIO_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateExecuteScenarioFailure</method>
+	</event>
+	
+	 
+	<!-- KANTHA START -->
+	<event>
+		<id>DEVICE_UPDATE_MODEL_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_UPDATE_MODEL_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+<!-- 	BHAVYA START -->
+	<event>
+		<id>MONITOR_DEVICE_HEALTH_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelHealthEvent</class>
+		<method>updatehealthEventSuccess</method>
+	</event> 
+	<event>
+		<id>MONITOR_DEVICE_HEALTH_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelHealthEvent</class>
+		<method>updatehealthEventFailure</method>
+	</event> 
+	<!-- BHAVYA END -->	<event>
+		<id>GET_DEVICE_STATUS_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>updatestatusSuccess</method>
+	</event>
+	
+	<event>
+		<id>GET_DEVICE_STATUS_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>updatestatusFailure</method>
+	</event>
+	<event>
+		<id>UPDATED_DEVICE_STATUS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>UpdatedDeviceStatus</method>
+	</event>
+	<!-- KANTHA END  -->
+	<event>
+		<id>CREATE_RULE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateCreateRuleSuccess</method>
+	</event>
+	
+	<event>
+		<id>CREATE_RULE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateCreateRuleFailure</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_RULE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateModifyRuleSuccess</method>
+	</event>
+		
+	<event>
+		<id>UPDATE_LOCATION_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateModifyRuleSuccess</method>
+	</event>	
+	
+	<event>
+		<id>UPDATE_LOCATION_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateModifyRuleFailure</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_RULE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateModifyRuleFailure</method>
+	</event>
+	
+	<event>
+		<id>DELETE_RULE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateDeleteRuleSuccess</method>
+	</event>
+	
+	<event>
+		<id>DELETE_RULE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.RuleManageEvent</class>
+		<method>updateDeleteRuleFailure</method>
+	</event>
+	
+	<event>
+		<id>CREATE_SCHEDULE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+		<method>updateCreateScheduleSuccess</method>
+	</event>
+	
+	<event>
+		<id>CREATE_SCHEDULE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+		<method>updateCreateScheduleFailure</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_SCHEDULE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+		<method>updateModifyScheduleSuccess</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_SCHEDULE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+		<method>updateModifyScheduleFailure</method>
+	</event>
+	
+	<event>
+		<id>DELETE_SCHEDULE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+		<method>updateDeleteScheduleSuccess</method>
+	</event>
+	
+	<event>
+		<id>DELETE_SCHEDULE_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+		<method>updateDeleteScheduleFailure</method>
+	</event>
+	<!-- SCHEDULE ACTIVATION/DE-ACTIVATION start -->
+	<event>
+	    <id>SCHEDULE_ACTIVATION_SUCCESS</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+	    <method>updateScheduleActivationSuccess</method>
+	</event>
+	
+	<event>
+	    <id>SCHEDULE_ACTIVATION_FAIL</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.ScheduleManageEvent</class>
+	    <method>updateScheduleActivationFailure</method>
+	</event>
+	<!-- SCHEDULE ACTIVATION/DE-ACTIVATION end -->
+	
+	<!-- ********************************************* sumit start: Moving Scenarios to MID ************************************************ -->
+	<event>
+		<id>CREATE_SCENARIO_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateCreateScenarioSuccess</method>
+	</event>
+	
+	<event>
+		<id>CREATE_SCENARIO_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateCreateScenarioFailure</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_SCENARIO_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateModifyScenarioSuccess</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_SCENARIO_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateModifyScenarioFailure</method>
+	</event>
+	
+	<event>
+		<id>DELETE_SCENARIO_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateDeleteScenarioSuccess</method>
+	</event>
+	
+	<event>
+		<id>DELETE_SCENARIO_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ScenarioManageEvent</class>
+		<method>updateDeleteScenarioFailure</method>
+	</event>
+	<!-- ******************************************************** sumit end **************************************************************** -->
+	
+	<event>
+		<id>DEVICE_ARM_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateDeviceArmSuccess</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_ARM_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateDeviceArmFail</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_DISARM_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateDeviceDisArmSuccess</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_DISARM_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateDeviceDisArmFail</method>
+	</event>
+	
+	<event>
+		<id>ARM_DEVICES_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateArmDevicesAck</method>
+	</event>
+	
+	<event>
+		<id>DISARM_DEVICES_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateDisArmDevicesAck</method>
+	</event>
+	
+	<!-- ARM/DISARM/AWAY begin -->
+
+	<event>
+		<id>ARM_DEVICES_PROGRESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateArmDevicesAck</method>
+	</event>
+	
+	<event>
+		<id>DISARM_DEVICES_PROGRESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateDisArmDevicesAck</method>
+	</event>
+	
+
+	<event>
+		<id>STAY_DEVICES_PROGRESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateStayDevicesAck</method>
+	</event>
+	
+	<!-- Handle ARM_DEVICES_PROGRESS_FAIL start -->
+	<event>
+		<id>ARM_DEVICES_PROGRESS_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateArmDevicesFailure</method>
+	</event>	
+	<!-- Handle ARM_DEVICES_PROGRESS_FAIL end -->
+	
+	<!-- Handle STAY_DEVICES_PROGRESS_FAIL start -->
+	<event>
+		<id>STAY_DEVICES_PROGRESS_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ArmDisarmEvent</class>
+		<method>updateArmDevicesFailure</method>
+	</event>	
+	<!-- Handle STAY_DEVICES_PROGRESS_FAIL end -->	
+	
+	
+		
+	<!-- ARM/DISARM/AWAY end -->
+	
+	<event>
+		<id>IPC_CAPTURE_IMAGE_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.CaptureImageEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<!-- pari start- camera presets ack -->
+	<event>
+		<id>PRESET_CAMERA_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.PresetCameraEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	<!-- pari end -->
+	
+	<event>
+		<id>IPC_GET_LIVE_STREAM_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.LiveStreamEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>IPC_GET_LIVE_STREAM_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.LiveStreamEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	<event>
+		<id>RECEIVER_SHUTDOWN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ShutdownEventUpdater</class>
+		<method>updateEvent</method>
+	</event>
+	
+	<event>
+		<id>UPDATE_IMVG_WAN_IP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ImvgWanIpUpdator</class>
+		<method>updateEvent</method>
+	</event>
+	<event>
+		<id>EXCUTE_USER_COMMAND_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ExecuteCommandEvent</class>
+		<method>updateExcuteCommandSuccess</method>
+	</event>
+	<event>
+		<id>EXCUTE_USER_COMMAND_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ExecuteCommandEvent</class>
+		<method>updateExcuteCommandFail</method>
+	</event>
+	<event>
+		<id>STORE_ALARM_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>STORE_ALARM_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	<!-- sumit start: DEVICE_DISCOVERY_STOP -->
+	<event>
+		<id>DEVICE_DISCOVERY_STOP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DiscoverDeviceUpdater</class>
+		<method>stopDiscoveryEvent</method>
+	</event>
+	<!-- sumit end: DEVICE_DISCOVERY_STOP -->
+	<!-- sumit start: DEVICE_REMOVE_STOP -->
+	<event>
+	    <id>DEVICE_REMOVE_STOP</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.RemoveDeviceUpdater</class>
+		<method>stopRemoveDeviceEvent</method>
+	</event>
+	<!-- sumit end: DEVICE_REMOVE_STOP -->
+	<!-- sumit start: SYNC_DEVICE_STATUS -->
+	<event>
+	    <id>SYNC_DEVICE_STATUS</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class>
+		<method>syncDeviceStatus</method>
+	</event>
+	<!-- sumit end: SYNC_DEVICE_STATUS -->
+	
+	<event>
+		<id>MAINTENANCE_SHUTDOWN</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ShutdownEventUpdater</class>
+		<method>updateEvent</method>
+	</event>
+	<event>
+		<id>PANIC_CHANNEL_UP</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ImvgWanIpUpdator</class>
+		<method>panicChannelUp</method>
+	</event>
+<event>
+	    <id>IMVG_DEFAULTSET_SUCCESS</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.RemoveDeviceUpdater</class>
+		<method>removeAllDevicesSuccess</method>
+	</event>
+		<event>
+	    <id>IMVG_DEFAULTSET_FAIL</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.RemoveDeviceUpdater</class>
+		<method>removeAllDevicesFailure</method>
+	</event>
+	<event>
+		<id>REMOVE_FAILNODE_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	<!-- sumit start: CONFIGURE_SWITCH -->
+	<event>
+	    <id>CONFIGURE_SWITCH_SUCCESS</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.ConfigureSwitchUpdater</class>
+	    <method>updateConfigureSwitchSuccess</method>
+	</event>
+	
+	<event>
+	    <id>CONFIGURE_SWITCH_FAIL</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.ConfigureSwitchUpdater</class>
+	    <method>updateConfigureSwitchFail</method>	    
+	</event>
+	<!-- sumit end: CONFIGURE_SWITCH -->
+	
+	
+	<!--  Aditya done for AllOFF and AllOn-->
+	
+	<event>
+	    <id>SWITCH_ALL_SUCCESS</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.AllOnOffEvent</class>
+	    <method>SwitchSucess</method>	    
+	</event>
+	
+	<event>
+	    <id>SWITCH_ALL_FAIL</id>
+	    <class>in.xpeditions.jawlin.imonitor.server.event.AllOnOffEvent</class>
+	    <method>SwitchSucessFailure</method>	    
+	</event>
+
+		<event>
+		<id>PWR_LMT_REACHED_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.PowerLimitReachedEvent</class>
+		<method>UpdatePowerLimitReachedSuccess</method>
+	</event>
+	
+	<event>
+		<id>PWR_LMT_REACHED_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.PowerLimitReachedEvent</class>
+		<method>UpdatePowerLimitReachedFailed</method>
+	</event>
+	
+	<event>
+		<id>CREATE_USR_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateCreateUserSuccess</method>
+	</event>
+	
+	<event>
+		<id>CREATE_USR_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateCreateUserFailure</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_USR_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateModifyUserSuccess</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_USR_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateModifyUserFailure</method>
+	</event>
+	
+	<event>
+		<id>DELETE_USR_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateDeleteUserSuccess</method>
+	</event>
+	
+	<event>
+		<id>DELETE_USR_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateDeleteUserFailure</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_MAINUSR_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateModifyMainUserSuccess</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_MAINUSR_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateModifyMainUserFailure</method>
+	</event>
+	
+	<event>
+		<id>SUSPEND_USR_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateSuspendUserSuccess</method>
+	</event>
+	
+	<event>
+		<id>SUSPEND_USR_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateSuspendUserFailure</method>
+	</event>
+	
+	<event>
+		<id>REVOKE_USR_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateRevokeUserSuccess</method>
+	</event>
+	
+	<event>
+		<id>REVOKE_USR_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateRevokeUserFailure</method>
+	</event>
+	
+	<event>
+		<id>DEVICE_LIST</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>deviceListSuccessUpdater</method>
+	</event>
+	
+	<event>
+		<id>GET_DLSTFAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>deviceListFailureUpdater</method>
+	</event>
+	
+	<event>
+		<id>REMDEV_SUCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateDeleteNodeSuccess</method>
+	</event>
+	
+		<event>
+		<id>REMDEV_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateDeleteNodeSuccess</method>
+	</event>
+	
+		<event>
+		<id>GETZWAVEVER_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>deviceListSuccessUpdater</method>
+	   </event>
+	   
+	   <event>
+		<id>GETZWAVEVER_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>updateDeleteNodeFailure</method>
+	   </event>
+	
+	
+	<event>
+		<id>DIAGNOSTIC_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>getDiagnosticSuccess</method>
+	</event>
+	
+	
+	<event>
+		<id>DIAGNOSTIC_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.UserManageEvent</class>
+		<method>getDiagnosticFailure</method>
+	</event>
+	
+	<event>
+		<id>ADD_ACTIONS_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>ADD_ACTIONS_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	<event>
+		<id>DELETE_ACTIONS_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>DELETE_ACTIONS_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_ACTIONS_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>MODIFY_ACTIONS_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	<event>
+		<id>KEY_CONFIGURATION_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>KEY_CONFIGURATION_FAILED</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	 <event>
+		<id>NW_STATS_RES</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	<event>
+		<id>NW_STATS_RES_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event> 
+	
+	 <event>
+		<id>SYNC_STATUS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.alert.DeviceAlert</class>
+		<!-- <class>in.xpeditions.jawlin.imonitor.server.event.DeviceModelUpdateEvent</class> -->
+		<method>updateSyncStatus</method>
+	</event>
+	
+		<event>
+		<id>REMOVE_VIADEVICE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>
+	
+	 <event>
+		<id>REMOVE_VIADEVICE_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event> 
+	
+	
+	
+	<event>
+		<id>ADD_VIASLAVE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>	
+	
+	
+	  <event>
+		<id>ADD_VIASLAVE_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event> 
+	
+		<!-- VIA_SLAVE Success -->
+	<event>
+		<id>REMOVE_VIASLAVE_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>	
+	
+	  <event>
+		<id>REMOVE_VIASLAVE_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	<!-- INDOOR UNIT Success -->
+	 <event>
+		<id>DISCOVER_INDOOR_UNIT_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event> 
+	
+	<!-- INDOOR UNIT fAILURE -->
+	 <event>
+		<id>DISCOVER_INDOOR_UNIT_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event> 
+	
+	<!--VRV Indoor Capability success -->
+	 <event>
+		<id>GET_VRVINDOOR_CAPABILITY_ACK</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event> 
+	
+	<!-- VRV Indoor Capability failure -->
+	 <event>
+		<id>GET_VRVINDOOR_CAPABILITY_FAIL</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event> 
+	
+	<event>
+		<id>REMOVE_IDU_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event>	
+	
+	  <event>
+		<id>REMOVE_IDU_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event>
+	
+	 <event>
+		<id>RESET_FILTER_SIGN_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event> 
+	
+	 <event>
+		<id>RESET_FILTER_SIGN_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event> 
+
+	
+
+	<!-- IR OutPut Changes -->
+		<event>
+		<id>SET_IR_OUTPUT_PORT_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventSuccess</method>
+	</event> 
+	
+	 <event>
+		<id>SET_IR_OUTPUT_PORT_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DeviceControlEvent</class>
+		<method>updateEventFailure</method>
+	</event> 
+	
+	<!-- IR OutPut Changes End -->
+	
+	<!-- IDU Status alert -->
+	<event>
+		<id>IDUSTATUS_ALERT</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.DiscoverDeviceUpdater</class>
+		<method>updateIDUStatus</method>
+	</event>
+	<!--  start: CONFIGURE_RGB -->
+	<event>
+		<id>SET_ZWAVE_DEV_CONFIG_SUCCESS</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ConfigureRGBUpdater</class>
+		 <method>updateConfigureRGBSuccess</method>
+	</event>
+	
+	<event>
+		<id>SET_ZWAVE_DEV_CONFIG_FAILURE</id>
+		<class>in.xpeditions.jawlin.imonitor.server.event.ConfigureRGBUpdater</class>
+		 <method>updateConfigureRGBFailure</method>
+	</event>
+	
+	<!--  End: CONFIGURE_RGB -->
+</events>
