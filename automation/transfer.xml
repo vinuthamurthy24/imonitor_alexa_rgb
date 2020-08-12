@@ -1,0 +1,575 @@
+<?xml version="1.0"?>
+<project name="Transfer-Executables-Start-Servers" default="main" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+    <path id="yuicompressor.classpath">
+        <fileset dir="resources">
+            <include name="yuicompressor-2.4.7.jar"/>
+            <include name="YUIAnt.jar"/>
+        </fileset>
+    </path> 
+ 
+	<property name="local.tomcat.lib" value="resources/tomcatlib/"/>
+	<property name="remote.host" value="122.166.227.27"/>
+	<property name="remote.user" value="root"/>
+	<property name="remote.pass" value="imonitor@1356"/>
+	<property name="server.home" value="/home/imonitor/imonitor"/>
+<!-- vibhu start -->
+	<property name="local.tomcat.path" value="..\deploy"/>
+	<property name="local.deploy.dir" value="..\deploy"/>
+	
+	<property name="local.balancer.deploy.dir" value="${local.deploy.dir}\balancer"/>
+	<property name="local.receiver.deploy.dir" value="${local.deploy.dir}\receiver"/>
+	<property name="local.broadcaster.deploy.dir" value="${local.deploy.dir}\broadcaster"/>
+	<property name="local.imonitorclient.deploy.dir" value="${local.deploy.dir}\imonitorclient"/>
+	<property name="local.imonitorapi.deploy.dir" value="${local.deploy.dir}\imonitorapi"/>
+	<property name="local.imonitor.deploy.dir" value="${local.tomcat.path}\webapps"/>
+
+<!-- vibhu end -->
+	
+	<property name="servers.start.script" value="${server.home}/startservers.sh"/>
+	<property name="servers.stop.script" value="${server.home}/stopservers.sh"/>
+	<property name="servers.clean.script" value="${server.home}/cleanservers.sh"/>
+	
+	<property name="balancer.remote.dir" value="${server.home}/balancer/"/>
+	<property name="receiver.remote.dir" value="${server.home}/receiver/"/>
+	<property name="broadcaster.remote.dir" value="${server.home}/broadcaster/"/>
+	<property name="imonitorapi.remote.dir" value="${server.home}/imonitorapi/"/>
+	<property name="webapps.remote.dir" value="${server.home}/tomcat/apache-tomcat-6.0.18/webapps/"/>
+	
+	<property name="balancer.dir" location="../balancer" />	
+	<property name="balancer.src.dir" location="${balancer.dir}/src" />	
+	<property name="balancer.lib.dir" location="${balancer.dir}/lib" />
+	<property name="balancer.build.dir" location="../builds/imonitor/balancer/build" />
+	<property name="balancer.dist.dir" location="../builds/imonitor/balancer/dist" />
+	<property name="balancer.main.class" value="in.xpeditions.jawlin.imonitor.server.main.Main"/>
+	<property name="balancer.jar.name" value="balancer.jar"/>
+	
+	<property name="receiver.dir" location="../receiver" />	
+	<property name="receiver.src.dir" location="${receiver.dir}/src" />	
+	<property name="receiver.lib.dir" location="${receiver.dir}/lib" />
+	<property name="receiver.build.dir" location="../builds/imonitor/receiver/build" />
+	<property name="receiver.dist.dir" location="../builds/imonitor/receiver/dist" />
+	<property name="receiver.main.class" value="in.xpeditions.jawlin.imonitor.server.main.Main"/>
+	<property name="receiver.jar.name" value="receiver.jar"/>
+	
+	<property name="broadcaster.dir" location="../broadcaster" />	
+	<property name="broadcaster.src.dir" location="${broadcaster.dir}/src" />	
+	<property name="broadcaster.lib.dir" location="${broadcaster.dir}/lib" />
+	<property name="broadcaster.build.dir" location="../builds/imonitor/brodcaster/build" />
+	<property name="broadcaster.dist.dir" location="../builds/imonitor/brodcaster/dist" />
+	<property name="broadcaster.main.class" value="in.xpeditions.jawlin.imonitor.rtp.broadcaster.main.Main"/>
+	<property name="broadcaster.jar.name" value="broadcaster.jar"/>
+<!-- vibhu start -->
+	<property name="imonitorclient.dir" location="../imonitorclient" />	
+	<property name="imonitorclient.src.dir" location="${imonitorclient.dir}/src" />	
+	<property name="imonitorclient.lib.dir" location="${imonitorclient.dir}/lib" />
+	<property name="imonitorclient.build.dir" location="../builds/imonitor/imonitorclient/build" />
+	<property name="imonitorclient.dist.dir" location="../builds/imonitor/imonitorclient/dist" />
+	<property name="imonitorclient.main.class" value="in.xpeditions.jawlin.imonitor.client.Main"/>
+	<property name="imonitorclient.jar.name" value="imonitorclient.jar"/>
+	
+<!-- vibhu end -->	
+	<!-- abhi start -->
+	<property name="imonitorapi.dir" location="../imonitorapi" />	
+	<property name="imonitorapi.src.dir" location="${imonitorapi.dir}/src" />	
+	<property name="imonitorapi.files.dir" location="${imonitorapi.dir}/WebContent" />	
+	<property name="imonitorapi.lib.dir" location="${imonitorapi.dir}/WebContent/WEB-INF/lib" />
+	<property name="imonitorapi.build.dir" location="../builds/imonitor/imonitorapi/build" />
+		
+	<property name="imonitorapi.dist.dir" location="../builds/imonitor/imonitorapi/dist" />
+	<property name="imonitorapi.war.name" value="imonitorapi.war"/>
+	
+	
+	<!-- abhi end -->
+	<property name="imonitor.dir" location="../imonitor" />	
+	<property name="imonitor.src.dir" location="${imonitor.dir}/src" />	
+	<property name="imonitor.files.dir" location="${imonitor.dir}/WebContent" />	
+	<property name="imonitor.lib.dir" location="${imonitor.dir}/WebContent/WEB-INF/lib" />
+	<property name="imonitor.build.dir" location="../builds/imonitor/imonitor/build" />
+	<property name="imonitor.files.build.dir" location="../builds/imonitor/imonitor/WebContent" />	
+	<property name="imonitor.dist.dir" location="../builds/imonitor/imonitor/dist" />
+	<property name="imonitor.war.name" value="imonitor.war"/>
+	
+	<property name="imonitorcontroller.dir" location="../imonitorcontroller" />	
+	<property name="imonitorcontroller.src.dir" location="${imonitorcontroller.dir}/src" />	
+	<property name="imonitorcontroller.files.dir" location="${imonitorcontroller.dir}/WebContent/" />	
+	<property name="imonitorcontroller.lib.dir" location="${imonitorcontroller.dir}/WebContent/WEB-INF/lib" />
+	<property name="imonitorcontroller.build.dir" location="../builds/imonitor/imonitorcontroller/build" />
+	<property name="imonitorcontroller.dist.dir" location="../builds/imonitor/imonitorcontroller/dist" />
+	<property name="imonitorcontroller.war.name" value="imonitorcontroller.war"/>
+	
+	<property name="classloader.zip" location="resources/jar-in-jar-loader.zip" />
+	<!--
+				Create a classpath container which can be later used in the ant task
+			-->
+		<path id="balancer.build.classpath">
+			<fileset dir="${balancer.lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		
+		<path id="receiver.build.classpath">
+			<fileset dir="${receiver.lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		
+		<path id="broadcaster.build.classpath">
+			<fileset dir="${broadcaster.lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+<!-- vibhu start -->
+	<path id="imonitorclient.build.classpath">
+		<fileset dir="${imonitorclient.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+<!-- vibhu end -->	
+<!--abhi start-->
+	<path id="imonitorapi.build.classpath">
+				<fileset dir="${imonitorapi.lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+				<fileset dir="${local.tomcat.lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</path>
+	
+	
+<!-- abhi end-->	
+		<path id="imonitor.build.classpath">
+			<fileset dir="${imonitor.lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${local.tomcat.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		
+		<path id="imonitorcontroller.build.classpath">
+			<fileset dir="${imonitorcontroller.lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${local.tomcat.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+
+		<pathconvert property="balancer.mf.classpath" pathsep=" ">
+		        <path refid="balancer.build.classpath"/>
+		        <mapper>
+		                <chainedmapper>
+		                        <flattenmapper/>
+		                        <globmapper from="*.jar" to="*.jar"/>
+		                </chainedmapper>
+		        </mapper>
+		</pathconvert>
+
+		<pathconvert property="receiver.mf.classpath" pathsep=" ">
+		        <path refid="receiver.build.classpath"/>
+		        <mapper>
+		                <chainedmapper>
+		                        <flattenmapper/>
+		                        <globmapper from="*.jar" to="*.jar"/>
+		                </chainedmapper>
+		        </mapper>
+		</pathconvert>
+
+		<pathconvert property="broadcaster.mf.classpath" pathsep=" ">
+		        <path refid="broadcaster.build.classpath"/>
+		        <mapper>
+		                <chainedmapper>
+		                        <flattenmapper/>
+		                        <globmapper from="*.jar" to="*.jar"/>
+		                </chainedmapper>
+		        </mapper>
+		</pathconvert>
+	<!-- vibhu start -->
+		<pathconvert property="imonitorclient.mf.classpath" pathsep=" ">
+		        <path refid="imonitorclient.build.classpath"/>
+		        <mapper>
+		                <chainedmapper>
+		                        <flattenmapper/>
+		                        <globmapper from="*.jar" to="*.jar"/>
+		                </chainedmapper>
+		        </mapper>
+		</pathconvert>
+	<!-- vibhu end -->	
+	<!--abhi start-->
+	<pathconvert property="imonitorapi.mf.classpath" pathsep=" ">
+			        <path refid="imonitorapi.build.classpath"/>
+			        <mapper>
+			                <chainedmapper>
+			                        <flattenmapper/>
+			                        <globmapper from="*.jar" to="*.jar"/>
+			                </chainedmapper>
+			        </mapper>
+			</pathconvert>
+	
+	
+	
+	<!--abhi end-->
+		<pathconvert property="imonitor.mf.classpath" pathsep=" ">
+		        <path refid="imonitor.build.classpath"/>
+		        <mapper>
+		                <chainedmapper>
+		                        <flattenmapper/>
+		                        <globmapper from="*.jar" to="*.jar"/>
+		                </chainedmapper>
+		        </mapper>
+		</pathconvert>
+
+		<pathconvert property="imonitorcontroller.mf.classpath" pathsep=" ">
+		        <path refid="imonitorcontroller.build.classpath"/>
+		        <mapper>
+		                <chainedmapper>
+		                        <flattenmapper/>
+		                        <globmapper from="*.jar" to="*.jar"/>
+		                </chainedmapper>
+		        </mapper>
+		</pathconvert>
+	<!-- It will run the script which will start the servers -->
+	<target name="startservers">
+		<sshexec host="${remote.host}" 
+			username="${remote.user}"
+			password="${remote.pass}"
+			command="${servers.start.script}"
+		trust="true"
+		failonerror="false" />
+	</target>
+	
+	<!-- It will run the script which will stop the servers -->
+	<target name="stopservers">
+		<sshexec host="${remote.host}" 
+			username="${remote.user}"
+			password="${remote.pass}"
+			command="${servers.stop.script}"
+		trust="true"
+		failonerror="false" />
+	</target>
+	
+	<!-- It will run the script which will clean the servers -->
+	<target name="cleanservers">
+		<sshexec host="${remote.host}" 
+			username="${remote.user}"
+			password="${remote.pass}"
+			command="${servers.clean.script}"
+		trust="true"
+		failonerror="false" />
+	</target>
+	
+	<!-- Deletes the existing build, docs and dist directory-->
+		<target name="clean">
+			<delete dir="${balancer.build.dir}" />
+			<delete dir="${balancer.dist.dir}" />
+			<delete dir="${receiver.build.dir}" />
+			<delete dir="${receiver.dist.dir}" />
+			<delete dir="${broadcaster.build.dir}" />
+			<delete dir="${broadcaster.dist.dir}" />
+			<!-- vibhu start -->			
+			<delete dir="${imonitorclient.build.dir}" />
+			<delete dir="${imonitorclient.dist.dir}" />
+			<!-- vibhu end -->
+			<!-- abhi start -->
+			<delete dir="${imonitorapi.build.dir}" />
+			<delete dir="${imonitorapi.dist.dir}" />
+			<!--abhi end-->
+			<delete dir="${imonitor.build.dir}" />
+			<delete dir="${imonitor.dist.dir}" />
+			<delete dir="${imonitorcontroller.build.dir}" />
+			<delete dir="${imonitorcontroller.dist.dir}" />
+		</target>
+
+		<!-- Creates the  build, docs and dist directory-->
+		<target name="makedir">
+			<mkdir dir="${balancer.build.dir}" />
+			<mkdir dir="${balancer.dist.dir}" />
+			<mkdir dir="${receiver.build.dir}" />
+			<mkdir dir="${receiver.dist.dir}" />
+			<mkdir dir="${broadcaster.build.dir}" />
+			<mkdir dir="${broadcaster.dist.dir}" />
+			<!-- vibhu start -->			
+			<mkdir dir="${imonitorclient.build.dir}" />
+			<mkdir dir="${imonitorclient.dist.dir}" />
+			<!-- vibhu end -->	
+			<!--abhi start-->
+			<mkdir dir="${imonitorapi.build.dir}" />
+			<mkdir dir="${imonitorapi.dist.dir}" />
+			<!--abhi end-->
+			<mkdir dir="${imonitor.build.dir}" />
+			<mkdir dir="${imonitor.dist.dir}" />
+			<mkdir dir="${imonitorcontroller.build.dir}" />
+			<mkdir dir="${imonitorcontroller.dist.dir}" />
+		</target>
+
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile" depends="clean, makedir">
+		<javac srcdir="${balancer.src.dir}" destdir="${balancer.build.dir}" classpathref="balancer.build.classpath"></javac>
+		<javac srcdir="${receiver.src.dir}" destdir="${receiver.build.dir}" classpathref="receiver.build.classpath"></javac>
+		<javac srcdir="${broadcaster.src.dir}" destdir="${broadcaster.build.dir}" classpathref="broadcaster.build.classpath"></javac>
+		<!-- vibhu start -->			
+		<javac srcdir="${imonitorclient.src.dir}" destdir="${imonitorclient.build.dir}" classpathref="imonitorclient.build.classpath"></javac>
+		<!-- vibhu end -->	
+		<!--abhi start-->
+		<javac srcdir="${imonitorapi.src.dir}" destdir="${imonitorapi.build.dir}" classpathref="imonitorapi.build.classpath" includes="**/*"></javac>
+		<!--abhi end-->
+		<javac srcdir="${imonitor.src.dir}" destdir="${imonitor.build.dir}" classpathref="imonitor.build.classpath" includes="**/*"></javac>
+		<javac srcdir="${imonitorcontroller.src.dir}" destdir="${imonitorcontroller.build.dir}" classpathref="imonitorcontroller.build.classpath" includes="**/*"></javac>
+	</target>
+	
+	<target name="extractclassloader" depends="clean, makedir">
+		<unzip src="${classloader.zip}"
+		       dest="${balancer.build.dir}">
+		    <patternset>
+		        <include name="**/*.class"/>
+		    </patternset>
+		</unzip>
+		<unzip src="${classloader.zip}"
+		       dest="${receiver.build.dir}">
+		    <patternset>
+		        <include name="**/*.class"/>
+		    </patternset>
+		</unzip>
+		<unzip src="${classloader.zip}"
+		       dest="${broadcaster.build.dir}">
+		    <patternset>
+		        <include name="**/*.class"/>
+		    </patternset>
+		</unzip>
+		<!-- vibhu start -->			
+		<unzip src="${classloader.zip}"
+		       dest="${imonitorclient.build.dir}">
+		    <patternset>
+		        <include name="**/*.class"/>
+		    </patternset>
+		</unzip>
+		<!-- vibhu end -->
+	</target>
+	<!-- Copying all neccessary resources -->
+	<target name="copyresources" depends="clean, makedir">
+			<copy todir="${balancer.build.dir}" overwrite="true">
+			    <fileset dir="${balancer.src.dir}">
+			      <exclude name="**/*.java"/>
+			    </fileset>
+			  </copy>
+			<copy todir="${receiver.build.dir}" overwrite="true">
+			    <fileset dir="${receiver.src.dir}">
+			      <exclude name="**/*.java"/>
+			    </fileset>
+			  </copy>
+			<copy todir="${broadcaster.build.dir}" overwrite="true">
+			    <fileset dir="${broadcaster.src.dir}">
+			      <exclude name="**/*.java"/>
+			    </fileset>
+			  </copy>
+		<!-- vibhu start -->
+			<copy todir="${imonitorclient.build.dir}" overwrite="true">
+			    <fileset dir="${imonitorclient.src.dir}">
+			      <exclude name="**/*.java"/>
+			    </fileset>
+			  </copy>
+		<!-- vibhu end -->
+			<copy todir="${balancer.dist.dir}" overwrite="true">
+			    <fileset dir="${balancer.dir}">
+			      <include name="*.properties"/>
+			      <include name="mySrvKeystore"/>
+			    </fileset>
+			  </copy>
+			<copy todir="${receiver.dist.dir}" overwrite="true">
+			    <fileset dir="${receiver.dir}">
+			      <include name="*.properties"/>
+			      <include name="mySrvKeystore"/>
+			    </fileset>
+			  </copy>
+			<copy todir="${broadcaster.dist.dir}" overwrite="true">
+			    <fileset dir="${broadcaster.dir}">
+			      <include name="*.properties"/>
+			      <include name="mySrvKeystore"/>
+			    </fileset>
+		  	</copy>
+		<!-- vibhu start -->
+			<copy todir="${imonitorclient.dist.dir}" overwrite="true">
+			    <fileset dir="${imonitorclient.dir}">
+			      <include name="*.properties"/>
+			      <include name="mySrvKeystore"/>
+			    </fileset>
+			  </copy>
+		<!-- vibhu end -->
+		<!--abhi start-->
+		<copy todir="${imonitorapi.build.dir}" overwrite="true">
+		<fileset dir="${imonitorapi.src.dir}">
+		<exclude name="**/*.java"/>
+		</fileset>
+		</copy>
+		<!--abhi end-->
+		<!-- Copying files for imonitor.war -->
+			<copy todir="${imonitor.build.dir}" overwrite="true">
+			    <fileset dir="${imonitor.src.dir}">
+			      <exclude name="**/*.java"/>
+			    </fileset>
+		  	</copy>
+			<copy todir="${imonitorcontroller.build.dir}" overwrite="true">
+			    <fileset dir="${imonitor.src.dir}"> <!-- vibhu for MID i18n -->
+			      <include name="imsUIMsgs*.properties"/>
+			    </fileset>
+			    
+			    <fileset dir="${imonitorcontroller.src.dir}">
+			      <exclude name="**/*.java"/>
+			    </fileset>
+		  	</copy>
+		</target>
+	<!-- It will create all jar/wars. -->
+	<target name="createjwars" depends="compile, extractclassloader, minifyscripts">
+		<jar destfile="${balancer.dist.dir}\${balancer.jar.name}" basedir="${balancer.build.dir}">
+					<fileset dir="${balancer.lib.dir}" includes="**/*.jar"></fileset>
+					<manifest>
+				        <attribute name="Rsrc-Class-Path" value="./ ${balancer.mf.classpath}"/>
+						<attribute name="Rsrc-Main-Class" value="${balancer.main.class}" />
+						<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+					</manifest>
+				</jar>
+				<jar destfile="${receiver.dist.dir}\${receiver.jar.name}" basedir="${receiver.build.dir}">
+					<fileset dir="${receiver.lib.dir}" includes="**/*.jar"></fileset>
+					<manifest>
+				        <attribute name="Rsrc-Class-Path" value="./ ${receiver.mf.classpath}"/>
+						<attribute name="Rsrc-Main-Class" value="${receiver.main.class}" />
+						<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+					</manifest>
+				</jar>
+				<jar destfile="${broadcaster.dist.dir}\${broadcaster.jar.name}" basedir="${broadcaster.build.dir}">
+					<fileset dir="${broadcaster.lib.dir}" includes="**/*.jar"></fileset>
+					<manifest>
+				        <attribute name="Rsrc-Class-Path" value="./ ${broadcaster.mf.classpath}"/>
+						<attribute name="Rsrc-Main-Class" value="${broadcaster.main.class}" />
+						<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+					</manifest>
+				</jar>
+		<!-- vibhu start -->		
+		<jar destfile="${imonitorclient.dist.dir}\${imonitorclient.jar.name}" basedir="${imonitorclient.build.dir}">
+			<fileset dir="${imonitorclient.lib.dir}" includes="**/*.jar"></fileset>
+			<manifest>
+		        <attribute name="Rsrc-Class-Path" value="./ ${imonitorclient.mf.classpath}"/>
+				<attribute name="Rsrc-Main-Class" value="${imonitorclient.main.class}" />
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+			</manifest>
+		</jar>
+		<!-- vibhu end -->	
+		<!-- abhi War file :imonitorapi.war -->
+				<war destfile="${imonitorapi.dist.dir}/${imonitorapi.war.name}">
+					<fileset dir="${imonitorapi.files.dir}">
+					</fileset>
+					<classes dir="${imonitorapi.build.dir}">
+						<include name="**/*"/>
+					</classes>
+				</war>
+		<!-- War file : imonitor.war -->
+				<war destfile="${imonitor.dist.dir}/${imonitor.war.name}">
+					<fileset dir="${imonitor.files.build.dir}">
+					</fileset>
+					<classes dir="${imonitor.build.dir}">
+						<include name="**/*"/>
+					</classes>
+				</war>
+		<!-- War file : imonitorcontroller.war -->
+				<war destfile="${imonitorcontroller.dist.dir}/${imonitorcontroller.war.name}">
+					<fileset dir="${imonitorcontroller.files.dir}">
+					</fileset>
+					<classes dir="${imonitorcontroller.build.dir}">
+						<include name="**/*"/>
+					</classes>
+				</war>
+	</target>
+	
+	<!-- It will create all jar/wars. -->
+	<target name="transferjwars">
+		<scp todir="${remote.user}:${remote.pass}@${remote.host}:${balancer.remote.dir}"
+		trust="true"
+		failonerror="false">
+	    <fileset dir="${balancer.dist.dir}"/>
+	  </scp>
+	
+	<scp todir="${remote.user}:${remote.pass}@${remote.host}:${receiver.remote.dir}"
+		trust="true"
+		failonerror="false">
+	    <fileset dir="${receiver.dist.dir}"/>
+	  </scp>
+	
+	<scp todir="${remote.user}:${remote.pass}@${remote.host}:${broadcaster.remote.dir}"
+		trust="true"
+		failonerror="false">
+	    <fileset dir="${broadcaster.dist.dir}"/>
+	  </scp>
+	<!--abhi start -->
+		<scp todir="${remote.user}:${remote.pass}@${remote.host}:${webapps.remote.dir}"
+				trust="true"
+				failonerror="false">
+			    <fileset dir="${imonitorapi.dist.dir}"/>
+			  </scp>
+	<!--abhi end -->	
+	<scp todir="${remote.user}:${remote.pass}@${remote.host}:${webapps.remote.dir}"
+		trust="true"
+		failonerror="false">
+	    <fileset dir="${imonitor.dist.dir}"/>
+	  </scp>
+	
+	<scp todir="${remote.user}:${remote.pass}@${remote.host}:${webapps.remote.dir}"
+		trust="true"
+		failonerror="false">
+	    <fileset dir="${imonitorcontroller.dist.dir}"/>
+	  </scp>
+	</target>
+	
+	<!-- vibhu start -->
+	
+	<target name="compilelocal" depends="copyresources, createjwars"> 
+		<description>Compile on local machine</description>
+	</target>
+	<target name="deploylocal" depends="compilelocal"> 
+		<description>Deploy on local machine</description>
+		<mkdir dir="${local.deploy.dir}"/>
+		<mkdir dir="${local.balancer.deploy.dir}"/>
+		<mkdir dir="${local.receiver.deploy.dir}"/>
+		<mkdir dir="${local.broadcaster.deploy.dir}"/>
+		<mkdir dir="${local.imonitorclient.deploy.dir}"/>
+		
+		<copy todir="${local.deploy.dir}" overwrite="true">
+		    <fileset dir=".\windows" />
+		</copy>
+		
+		<copydir dest="${local.balancer.deploy.dir}" src="${balancer.dist.dir}"></copydir>
+		<copydir dest="${local.receiver.deploy.dir}" src="${receiver.dist.dir}"></copydir>
+		<copydir dest="${local.broadcaster.deploy.dir}" src="${broadcaster.dist.dir}"></copydir>
+		<copydir dest="${local.imonitorclient.deploy.dir}" src="${imonitorclient.dist.dir}"></copydir>
+		<copydir dest="${local.imonitorapi.deploy.dir}" src="${imonitorapi.dist.dir}"></copydir>
+		<copydir dest="${local.imonitor.deploy.dir}" src="${imonitor.dist.dir}"></copydir>
+		<copydir dest="${local.imonitor.deploy.dir}" src="${imonitorcontroller.dist.dir}"></copydir>
+	</target>
+	<!-- vibhu end -->
+	<!-- vibhu temp change start -->
+	<!-- <target name="main" depends="stopservers, cleanservers, copyresources, createjwars, transferjwars, startservers"> --> 
+	<target name="main" depends="deploylocal"> 
+	<!-- vibhu temp change end -->
+		<description>Main target</description>
+	</target> 
+	
+	<!-- vibhu start: Toggle the commented 7 lines for debugging -->
+	<target name="minifyscripts" depends="compile, extractclassloader">
+	     <taskdef name="yuicompress" classname="com.yahoo.platform.yui.compressor.YUICompressTask">
+                <classpath>
+                    <path refid="yuicompressor.classpath"/>
+                </classpath>
+            </taskdef>
+			<copydir dest="${imonitor.files.build.dir}" src="${imonitor.files.dir}"></copydir>
+<!--             <yuicompress linebreak="300" warn="false" munge="yes" preserveallsemicolons="true"  -->
+<!--                 outputfolder="${imonitor.files.build.dir}" > -->
+<!--                 <fileset dir="${imonitor.files.dir}" > -->
+<!--                     <include name="**/*.js" /> -->
+<!--                     <include name="**/*.css" /> -->
+<!--                     </fileset> -->
+<!--             </yuicompress>  -->
+
+        </target>
+<!-- vibhu end -->
+</project>
