@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright © 2012 iMonitor Solutions India Private Limited -->
+
+<actions>
+	<action>
+		<name>GET_RTSP_URL</name>
+		<class>in.xpeditions.jawlin.imonitor.rtp.broadcaster.action.GetRtspUrlAction</class>
+	</action>
+	<action>
+		<name>WAIT_GET_RTSP_URL</name>
+		<class>in.xpeditions.jawlin.imonitor.rtp.broadcaster.action.GetRtspUrlAction</class>
+		<method>executeTillTimeout</method>
+	</action>
+	<action>
+		<name>BROADCASTER_SHUTDOWN</name>
+		<class>in.xpeditions.jawlin.imonitor.rtp.broadcaster.action.ShutdownAction</class>
+		<method>execute</method>
+	</action>
+	<action>
+		<name>STOP_STREAM</name>
+		<class>in.xpeditions.jawlin.imonitor.rtp.broadcaster.action.StopStream</class>
+		<method>execute</method>
+	</action>
+</actions>
